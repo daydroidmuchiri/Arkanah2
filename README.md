@@ -1,4 +1,4 @@
-# Arkanah Residences — Marketing Site
+# Nomad Towers — Marketing Site
 
 A fast, polished one-page marketing site for a luxury residential development in
 Westlands, Nairobi. Built as a modern take on sites like Montbleu Westlands and
@@ -39,7 +39,7 @@ fonts/*.woff2       Fraunces (display) + Manrope (body), self-hosted
 ## Placeholder content to replace before launch
 
 - **Phone/WhatsApp** `+254 700 000 000` — in `index.html` (3 places) and `js/main.js`
-- **Email** `sales@arkanah.co.ke` — in `index.html` and `js/main.js`
+- **Email** `sales@nomadtowers.co.ke` — in `index.html` and `js/main.js`
 - **Prices, unit sizes, floor counts, completion date** — currently plausible
   placeholders in the hero, stats, and residence cards
 - **SVG artwork** — swap for client photography/renders when available.

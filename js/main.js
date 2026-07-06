@@ -1,4 +1,4 @@
-/* Arkanah Residences — vanilla JS, no dependencies.
+/* Nomad Towers — vanilla JS, no dependencies.
    Everything is progressive enhancement: the page is fully usable without it. */
 (() => {
   "use strict";
@@ -142,7 +142,7 @@
     const buildMessage = () => {
       const d = new FormData(form);
       return [
-        "Hello Arkanah Residences,",
+        "Hello Nomad Towers,",
         "",
         `My name is ${d.get("name")}. I would like to enquire about a ${d.get("unit")}.`,
         d.get("message") ? `\n${d.get("message")}` : "",
@@ -164,8 +164,8 @@
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       if (!validate()) return;
-      location.href = `mailto:sales@arkanah.co.ke?subject=${encodeURIComponent(
-        "Enquiry — Arkanah Residences"
+      location.href = `mailto:sales@nomadtowers.co.ke?subject=${encodeURIComponent(
+        "Enquiry — Nomad Towers"
       )}&body=${encodeURIComponent(buildMessage())}`;
       status.textContent = "Opening your email app…";
     });

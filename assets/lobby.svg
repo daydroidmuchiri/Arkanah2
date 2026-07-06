@@ -19,7 +19,7 @@
   </g>
   <!-- brand mark -->
   <g transform="translate(400 150)">
-    <path d="M0-44 38 44h-18L0-2l-20 46h-18z" fill="#c8a566"/>
+    <path d="M-26 44V-44h10l32 74V-44h10V44h-10l-32-74V44z" fill="#c8a566"/>
     <rect x="-52" y="58" width="104" height="3" fill="#c8a566" opacity=".7"/>
   </g>
   <!-- pendant lights -->
