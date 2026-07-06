@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 440" role="img" aria-label="One bedroom floor plan, schematic">
+  <style>
+    .wall{fill:none;stroke:#2b2620;stroke-width:6}
+    .inner{fill:none;stroke:#2b2620;stroke-width:3}
+    .lbl{font:600 15px system-ui,sans-serif;fill:#2b2620;letter-spacing:.06em}
+    .sub{font:400 11px system-ui,sans-serif;fill:#8a7c66;letter-spacing:.08em}
+    .gold{stroke:#b6935c}
+  </style>
+  <rect width="600" height="440" fill="#f5f1e8"/>
+  <!-- outline -->
+  <rect x="70" y="50" width="420" height="330" class="wall"/>
+  <!-- balcony -->
+  <rect x="490" y="110" width="60" height="150" class="wall gold" stroke-dasharray="10 6"/>
+  <text x="520" y="192" class="sub" text-anchor="middle" transform="rotate(90 520 188)">BALCONY</text>
+  <!-- inner walls -->
+  <line x1="300" y1="50" x2="300" y2="200" class="inner"/>
+  <line x1="300" y1="200" x2="490" y2="200" class="inner"/>
+  <line x1="70" y1="230" x2="180" y2="230" class="inner"/>
+  <line x1="180" y1="230" x2="180" y2="380" class="inner"/>
+  <!-- door arcs -->
+  <path d="M300 120a36 36 0 0 1-36 36" fill="none" stroke="#b6935c" stroke-width="2"/>
+  <line x1="300" y1="120" x2="300" y2="156" stroke="#f5f1e8" stroke-width="8"/>
+  <!-- bed -->
+  <rect x="330" y="70" width="120" height="86" class="inner"/>
+  <rect x="342" y="76" width="40" height="24" class="inner"/>
+  <rect x="398" y="76" width="40" height="24" class="inner"/>
+  <!-- sofa -->
+  <rect x="100" y="90" width="120" height="34" rx="8" class="inner"/>
+  <rect x="100" y="150" width="60" height="34" rx="6" class="inner"/>
+  <!-- dining -->
+  <circle cx="240" cy="300" r="30" class="inner"/>
+  <!-- kitchen -->
+  <rect x="90" y="250" width="70" height="110" class="inner"/>
+  <circle cx="112" cy="280" r="8" class="inner"/>
+  <circle cx="136" cy="280" r="8" class="inner"/>
+  <rect x="98" y="316" width="30" height="20" class="inner"/>
+  <!-- labels -->
+  <text x="180" y="72" class="lbl">LIVING</text>
+  <text x="330" y="185" class="lbl">BEDROOM</text>
+  <text x="90" y="244" class="lbl" font-size="12">KITCHEN</text>
+  <text x="330" y="240" class="lbl" font-size="12">EN-SUITE</text>
+  <text x="410" y="360" class="sub">62 SQM · TYPE A</text>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Bedroom with panoramic city view">
+  <defs>
+    <linearGradient id="bwin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#101a30"/>
+      <stop offset=".75" stop-color="#3d3a52"/>
+      <stop offset="1" stop-color="#b87e56"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="#2a241d"/>
+  <!-- window wall -->
+  <rect x="380" y="50" width="370" height="360" fill="url(#bwin)"/>
+  <g fill="#0f1626">
+    <rect x="410" y="260" width="60" height="150"/>
+    <rect x="500" y="220" width="44" height="190"/>
+    <rect x="570" y="280" width="70" height="130"/>
+    <rect x="660" y="240" width="50" height="170"/>
+  </g>
+  <g fill="#d9a55e" opacity=".4">
+    <rect x="506" y="232" width="32" height="140"/>
+    <rect x="664" y="252" width="40" height="120"/>
+  </g>
+  <circle cx="700" cy="110" r="22" fill="#f2e8d8" opacity=".8"/>
+  <rect x="372" y="42" width="386" height="376" fill="none" stroke="#17130f" stroke-width="14"/>
+  <line x1="565" y1="50" x2="565" y2="410" stroke="#17130f" stroke-width="8"/>
+  <!-- floor -->
+  <rect x="0" y="410" width="800" height="190" fill="#38311f"/>
+  <rect x="0" y="410" width="800" height="8" fill="#4d4229"/>
+  <!-- headboard wall accent -->
+  <rect x="40" y="80" width="300" height="330" fill="#332c24"/>
+  <rect x="60" y="100" width="260" height="290" fill="#3d352c"/>
+  <!-- art -->
+  <rect x="130" y="130" width="120" height="86" fill="#241f1a"/>
+  <circle cx="190" cy="173" r="26" fill="#c8a566"/>
+  <!-- bed -->
+  <g>
+    <rect x="70" y="300" width="280" height="110" rx="8" fill="#8a6f4e"/>
+    <rect x="70" y="270" width="280" height="44" rx="8" fill="#efe7d7"/>
+    <rect x="92" y="252" width="100" height="34" rx="10" fill="#f7f1e4"/>
+    <rect x="208" y="252" width="100" height="34" rx="10" fill="#f7f1e4"/>
+    <rect x="70" y="340" width="280" height="26" fill="#c8a566"/>
+    <rect x="82" y="410" width="12" height="26" fill="#1d1a16"/>
+    <rect x="326" y="410" width="12" height="26" fill="#1d1a16"/>
+  </g>
+  <!-- nightstand + lamp -->
+  <g>
+    <rect x="366" y="356" width="58" height="54" fill="#4a3c2e"/>
+    <line x1="395" y1="322" x2="395" y2="356" stroke="#c8a566" stroke-width="4"/>
+    <path d="M377 322h36l-7-22h-22z" fill="#e9b465"/>
+  </g>
+  <!-- bench -->
+  <rect x="120" y="470" width="200" height="22" rx="10" fill="#77603f"/>
+  <rect x="136" y="492" width="8" height="20" fill="#1d1a16"/>
+  <rect x="296" y="492" width="8" height="20" fill="#1d1a16"/>
+  <!-- plant right -->
+  <g>
+    <path d="M560 470c-16-36 4-76 20-86-2 30 8 50 6 86z" fill="#3f5a3e"/>
+    <path d="M576 470c20-30 2-70-14-80 6 26-2 50 0 80z" fill="#54754f"/>
+    <path d="M552 524h40l-7-54h-26z" fill="#77603f"/>
+  </g>
+</svg>

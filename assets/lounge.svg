@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Residents' lounge with skyline view">
+  <defs>
+    <linearGradient id="lwin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a2440"/>
+      <stop offset=".7" stop-color="#5a4a58"/>
+      <stop offset="1" stop-color="#c98a5f"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="#241f1a"/>
+  <!-- panoramic window -->
+  <rect x="60" y="60" width="680" height="330" fill="url(#lwin)"/>
+  <g fill="#131b2c">
+    <rect x="100" y="230" width="70" height="160"/>
+    <rect x="200" y="190" width="50" height="200"/>
+    <rect x="280" y="250" width="80" height="140"/>
+    <rect x="420" y="200" width="60" height="190"/>
+    <rect x="520" y="260" width="90" height="130"/>
+    <rect x="640" y="220" width="60" height="170"/>
+  </g>
+  <g fill="#d9a55e" opacity=".45">
+    <rect x="206" y="200" width="38" height="150"/>
+    <rect x="426" y="212" width="48" height="140"/>
+  </g>
+  <g stroke="#141210" stroke-width="10">
+    <line x1="286" y1="60" x2="286" y2="390"/>
+    <line x1="513" y1="60" x2="513" y2="390"/>
+  </g>
+  <rect x="52" y="52" width="696" height="346" fill="none" stroke="#141210" stroke-width="16"/>
+  <!-- floor -->
+  <rect x="0" y="390" width="800" height="210" fill="#33291f"/>
+  <rect x="0" y="390" width="800" height="8" fill="#4a3c2e"/>
+  <!-- rug -->
+  <ellipse cx="400" cy="530" rx="260" ry="52" fill="#43352a"/>
+  <!-- sofa -->
+  <g>
+    <rect x="230" y="440" width="340" height="70" rx="14" fill="#8a6f4e"/>
+    <rect x="214" y="430" width="30" height="88" rx="10" fill="#77603f"/>
+    <rect x="556" y="430" width="30" height="88" rx="10" fill="#77603f"/>
+    <rect x="244" y="418" width="312" height="34" rx="10" fill="#9a7d59"/>
+    <rect x="270" y="432" width="52" height="26" rx="6" fill="#c8a566"/>
+    <rect x="478" y="432" width="52" height="26" rx="6" fill="#c8a566"/>
+    <rect x="240" y="510" width="10" height="24" fill="#1d1a16"/>
+    <rect x="550" y="510" width="10" height="24" fill="#1d1a16"/>
+  </g>
+  <!-- floor lamp -->
+  <g>
+    <line x1="660" y1="330" x2="660" y2="520" stroke="#c8a566" stroke-width="5"/>
+    <path d="M632 330h56l-10-34h-36z" fill="#e9b465"/>
+    <ellipse cx="660" cy="524" rx="26" ry="6" fill="#1d1a16"/>
+    <ellipse cx="660" cy="352" rx="30" ry="8" fill="#e9b465" opacity=".25"/>
+  </g>
+  <!-- coffee table -->
+  <g>
+    <ellipse cx="400" cy="560" rx="66" ry="16" fill="#c8a566"/>
+    <ellipse cx="400" cy="554" rx="66" ry="16" fill="#dfc08c"/>
+    <ellipse cx="400" cy="551" rx="18" ry="4" fill="#8a6f4e"/>
+  </g>
+  <!-- plant -->
+  <g>
+    <path d="M120 460c-18-40 6-86 22-96-2 34 10 56 8 96z" fill="#3f5a3e"/>
+    <path d="M138 460c22-34 4-80-14-92 6 30-2 58 0 92z" fill="#54754f"/>
+    <path d="M112 522h44l-8-62h-28z" fill="#77603f"/>
+  </g>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Double-height lobby with concierge desk">
+  <rect width="800" height="600" fill="#26211b"/>
+  <!-- back wall panels -->
+  <g>
+    <rect x="60" y="40" width="680" height="420" fill="#2f2922"/>
+    <g fill="#38312a">
+      <rect x="90" y="60" width="120" height="380"/>
+      <rect x="230" y="60" width="120" height="380"/>
+      <rect x="370" y="60" width="120" height="380"/>
+      <rect x="510" y="60" width="120" height="380"/>
+      <rect x="650" y="60" width="60" height="380"/>
+    </g>
+    <g fill="#c8a566" opacity=".55">
+      <rect x="210" y="60" width="3" height="380"/>
+      <rect x="350" y="60" width="3" height="380"/>
+      <rect x="490" y="60" width="3" height="380"/>
+      <rect x="630" y="60" width="3" height="380"/>
+    </g>
+  </g>
+  <!-- brand mark -->
+  <g transform="translate(400 150)">
+    <path d="M0-44 38 44h-18L0-2l-20 46h-18z" fill="#c8a566"/>
+    <rect x="-52" y="58" width="104" height="3" fill="#c8a566" opacity=".7"/>
+  </g>
+  <!-- pendant lights -->
+  <g stroke="#c8a566" stroke-width="2">
+    <line x1="180" y1="40" x2="180" y2="120"/>
+    <line x1="620" y1="40" x2="620" y2="120"/>
+  </g>
+  <circle cx="180" cy="132" r="12" fill="#e9b465"/>
+  <circle cx="620" cy="132" r="12" fill="#e9b465"/>
+  <circle cx="180" cy="132" r="22" fill="#e9b465" opacity=".18"/>
+  <circle cx="620" cy="132" r="22" fill="#e9b465" opacity=".18"/>
+  <!-- floor -->
+  <rect x="0" y="460" width="800" height="140" fill="#4d443a"/>
+  <polygon points="0,600 800,600 800,588 0,588" fill="#3a332b"/>
+  <g stroke="#5c5245" stroke-width="2" opacity=".6">
+    <line x1="120" y1="460" x2="40" y2="600"/>
+    <line x1="300" y1="460" x2="260" y2="600"/>
+    <line x1="500" y1="460" x2="540" y2="600"/>
+    <line x1="680" y1="460" x2="760" y2="600"/>
+  </g>
+  <!-- concierge desk -->
+  <g>
+    <rect x="260" y="380" width="280" height="100" rx="6" fill="#8a6f4e"/>
+    <rect x="260" y="372" width="280" height="14" rx="6" fill="#dfc08c"/>
+    <rect x="278" y="400" width="244" height="4" fill="#c8a566" opacity=".6"/>
+    <rect x="278" y="420" width="244" height="4" fill="#c8a566" opacity=".35"/>
+  </g>
+  <!-- planters -->
+  <g>
+    <path d="M120 430c-20-44 6-94 24-106-2 38 12 62 9 106z" fill="#3f5a3e"/>
+    <path d="M140 430c24-38 4-88-16-100 7 32-2 64 0 100z" fill="#54754f"/>
+    <path d="M110 500h52l-9-70h-33z" fill="#57504a"/>
+    <path d="M660 430c-20-44 6-94 24-106-2 38 12 62 9 106z" fill="#3f5a3e"/>
+    <path d="M680 430c24-38 4-88-16-100 7 32-2 64 0 100z" fill="#54754f"/>
+    <path d="M650 500h52l-9-70h-33z" fill="#57504a"/>
+  </g>
+</svg>
