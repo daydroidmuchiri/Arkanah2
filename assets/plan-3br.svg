@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 440" role="img" aria-label="Penthouse floor plan, schematic">
   <style>
-    .wall{fill:none;stroke:#2b2620;stroke-width:6}
-    .inner{fill:none;stroke:#2b2620;stroke-width:3}
-    .lbl{font:600 15px system-ui,sans-serif;fill:#2b2620;letter-spacing:.06em}
-    .sub{font:400 11px system-ui,sans-serif;fill:#8a7c66;letter-spacing:.08em}
-    .gold{stroke:#b6935c}
+    .wall{fill:none;stroke:#232a37;stroke-width:6}
+    .inner{fill:none;stroke:#232a37;stroke-width:3}
+    .lbl{font:600 15px system-ui,sans-serif;fill:#232a37;letter-spacing:.06em}
+    .sub{font:400 11px system-ui,sans-serif;fill:#707a87;letter-spacing:.08em}
+    .gold{stroke:#bd9557}
   </style>
-  <rect width="600" height="440" fill="#f5f1e8"/>
+  <rect width="600" height="440" fill="#f4f0e7"/>
   <rect x="40" y="40" width="440" height="350" class="wall"/>
   <!-- wraparound terrace -->
   <rect x="480" y="60" width="80" height="330" class="wall gold" stroke-dasharray="10 6"/>
