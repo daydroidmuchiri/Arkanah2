@@ -57,6 +57,12 @@ Floor plans remain in-house SVGs (`plan-1br/2br/3br.svg`).
    (track record, NCA/county approvals, title status) — key trust signal
    for off-plan buyers; needs client facts, do not invent
 10. Decision on a hotel/retail podium section (renders show it; open question below)
+11. Confirm drafted claims found in review (2026-07-15) that go beyond items 3–5:
+    payment plan (KES 500,000 refundable reservation, 20% deposit, quarterly
+    interest-free instalments, 10% on handover), amenity specifics (Technogym
+    brand, heated pool, solar-assisted common areas, biometric lobby access),
+    rental/tenant-placement management offering, "Westlands strongest rental
+    market" claim, and the location drive times (3/4/5/10/35 min)
 
 ## Open questions
 - Is this job billed as a custom tier? It bypasses the template pipeline
@@ -76,5 +82,6 @@ Floor plans remain in-house SVGs (`plan-1br/2br/3br.svg`).
   tel/email removed from JSON-LD, skip link, mobile-nav focus trap, lightbox
   arrow keys, WhatsApp-first form actions, PNG favicons, robots.txt +
   sitemap.xml, retired artwork SVGs deleted
-- Review (gate 2): not run
+- Review (gate 2): run 2026-07-15 → `review-report.md` (adapted automated
+  checks + judgment pass); awaiting Muchiri's eyeball of the preview
 - Deploy: not deployed; any static host (see README)
