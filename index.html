@@ -7,15 +7,24 @@
   <meta name="description" content="Nomad Towers: luxury 1, 2 &amp; 3 bedroom apartments in the heart of Westlands, Nairobi. Rooftop infinity pool, sky gym, 24-hour concierge. Off-plan from KES 9.8M.">
   <meta name="theme-color" content="#12161e">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-  <!-- Open Graph -->
+  <!-- Domain is a PLACEHOLDER pending confirmation — see brief.md Missing items -->
+  <link rel="canonical" href="https://nomadtowers.co.ke/">
+
+  <!-- Open Graph (og:image must stay an absolute URL or WhatsApp/social previews break) -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nomadtowers.co.ke/">
   <meta property="og:title" content="Nomad Towers — Westlands, Nairobi">
   <meta property="og:description" content="Luxury 1, 2 &amp; 3 bedroom apartments above the Westlands skyline. Off-plan from KES 9.8M.">
-  <meta property="og:image" content="assets/hero-tower-sunset.jpg">
+  <meta property="og:image" content="https://nomadtowers.co.ke/assets/hero-tower-sunset.jpg">
+  <meta property="og:image:width" content="1600">
+  <meta property="og:image:height" content="1200">
 
   <!-- Performance: self-hosted fonts, preloaded; single CSS file; deferred JS -->
   <link rel="preload" href="fonts/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/fraunces-italic-500.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/main.css">
   <script src="js/main.js" defer></script>
@@ -27,17 +36,19 @@
     "@type": "ApartmentComplex",
     "name": "Nomad Towers",
     "description": "Luxury 1, 2 and 3 bedroom apartments in Westlands, Nairobi.",
+    "url": "https://nomadtowers.co.ke/",
+    "image": "https://nomadtowers.co.ke/assets/hero-tower-sunset.jpg",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Westlands, Nairobi",
       "addressCountry": "KE"
-    },
-    "telephone": "+254700000000",
-    "email": "sales@nomadtowers.co.ke"
+    }
   }
   </script>
 </head>
 <body>
+
+  <a class="skip-link" href="#top">Skip to content</a>
 
   <header class="site-header">
     <div class="nav-bar">
@@ -64,7 +75,10 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero">
-      <img class="hero-art" src="assets/hero-tower-sunset.jpg" alt="Nomad Towers rising above the Westlands skyline at sunset" width="1600" height="1200" fetchpriority="high">
+      <picture>
+        <source type="image/webp" srcset="assets/hero-tower-sunset-800.webp 800w, assets/hero-tower-sunset-1200.webp 1200w, assets/hero-tower-sunset.webp 1600w" sizes="100vw">
+        <img class="hero-art" src="assets/hero-tower-sunset.jpg" srcset="assets/hero-tower-sunset-800.jpg 800w, assets/hero-tower-sunset-1200.jpg 1200w, assets/hero-tower-sunset.jpg 1600w" sizes="100vw" alt="Nomad Towers rising above the Westlands skyline at sunset" width="1600" height="1200" fetchpriority="high">
+      </picture>
       <div class="hero-inner">
         <p class="eyebrow reveal">Westlands · Nairobi</p>
         <h1 class="reveal" data-delay="1">Rise above the city, <span class="serif-accent">live within it.</span></h1>
@@ -94,7 +108,10 @@
       <div class="wrap">
         <div class="split">
           <figure class="split-media reveal">
-            <img src="assets/podium-entrance-dusk.jpg" alt="Illuminated arrival entrance and retail podium of Nomad Towers at dusk" width="1600" height="1200" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/webp" srcset="assets/podium-entrance-dusk-800.webp 800w, assets/podium-entrance-dusk-1200.webp 1200w, assets/podium-entrance-dusk.webp 1600w" sizes="(max-width: 880px) 92vw, 590px">
+              <img src="assets/podium-entrance-dusk.jpg" srcset="assets/podium-entrance-dusk-800.jpg 800w, assets/podium-entrance-dusk-1200.jpg 1200w, assets/podium-entrance-dusk.jpg 1600w" sizes="(max-width: 880px) 92vw, 590px" alt="Illuminated arrival entrance and retail podium of Nomad Towers at dusk" width="1600" height="1200" loading="lazy" decoding="async">
+            </picture>
           </figure>
           <div class="split-copy">
             <p class="eyebrow reveal">The Vision</p>
@@ -226,7 +243,7 @@
         <div class="gallery-head">
           <div class="section-head" style="margin-bottom:0">
             <p class="eyebrow reveal">Gallery</p>
-            <h2 class="reveal" data-delay="1">A first look <span class="serif-accent">inside.</span></h2>
+            <h2 class="reveal" data-delay="1">A first look, <span class="serif-accent">up close.</span></h2>
           </div>
           <div class="gal-nav reveal">
             <button class="gal-btn" data-gal-prev aria-label="Previous image"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
@@ -234,10 +251,34 @@
           </div>
         </div>
         <div class="gallery-track reveal">
-          <figure class="gal-item"><img src="assets/rooftop-pool-dusk.jpg" alt="Rooftop infinity pool at twilight overlooking the city lights" width="1600" height="878" loading="lazy" decoding="async"><figcaption>Rooftop Infinity Pool · Level 34</figcaption></figure>
-          <figure class="gal-item"><img src="assets/tower-dusk.jpg" alt="Nomad Towers seen from the gardens at dusk with lit balconies" width="1600" height="1200" loading="lazy" decoding="async"><figcaption>The Tower at Dusk</figcaption></figure>
-          <figure class="gal-item"><img src="assets/tower-aerial-morning.jpg" alt="Aerial view of Nomad Towers above Westlands in morning light" width="1600" height="1200" loading="lazy" decoding="async"><figcaption>Morning over Westlands</figcaption></figure>
-          <figure class="gal-item"><img src="assets/retail-promenade.jpg" alt="Street-level retail promenade of the podium in the evening" width="1600" height="1200" loading="lazy" decoding="async"><figcaption>The Retail Promenade · Ground</figcaption></figure>
+          <figure class="gal-item">
+            <picture>
+              <source type="image/webp" srcset="assets/rooftop-pool-dusk-800.webp 800w, assets/rooftop-pool-dusk-1200.webp 1200w, assets/rooftop-pool-dusk.webp 1600w" sizes="(max-width: 700px) 82vw, 560px">
+              <img src="assets/rooftop-pool-dusk.jpg" srcset="assets/rooftop-pool-dusk-800.jpg 800w, assets/rooftop-pool-dusk-1200.jpg 1200w, assets/rooftop-pool-dusk.jpg 1600w" sizes="(max-width: 700px) 82vw, 560px" data-full="assets/rooftop-pool-dusk.jpg" alt="Rooftop infinity pool at twilight overlooking the city lights" width="1600" height="878" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>Rooftop Infinity Pool · Level 34</figcaption>
+          </figure>
+          <figure class="gal-item">
+            <picture>
+              <source type="image/webp" srcset="assets/tower-dusk-800.webp 800w, assets/tower-dusk-1200.webp 1200w, assets/tower-dusk.webp 1600w" sizes="(max-width: 700px) 82vw, 560px">
+              <img src="assets/tower-dusk.jpg" srcset="assets/tower-dusk-800.jpg 800w, assets/tower-dusk-1200.jpg 1200w, assets/tower-dusk.jpg 1600w" sizes="(max-width: 700px) 82vw, 560px" data-full="assets/tower-dusk.jpg" alt="Nomad Towers seen from the gardens at dusk with lit balconies" width="1600" height="1200" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>The Tower at Dusk</figcaption>
+          </figure>
+          <figure class="gal-item">
+            <picture>
+              <source type="image/webp" srcset="assets/tower-aerial-morning-800.webp 800w, assets/tower-aerial-morning-1200.webp 1200w, assets/tower-aerial-morning.webp 1600w" sizes="(max-width: 700px) 82vw, 560px">
+              <img src="assets/tower-aerial-morning.jpg" srcset="assets/tower-aerial-morning-800.jpg 800w, assets/tower-aerial-morning-1200.jpg 1200w, assets/tower-aerial-morning.jpg 1600w" sizes="(max-width: 700px) 82vw, 560px" data-full="assets/tower-aerial-morning.jpg" alt="Aerial view of Nomad Towers above Westlands in morning light" width="1600" height="1200" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>Morning over Westlands</figcaption>
+          </figure>
+          <figure class="gal-item">
+            <picture>
+              <source type="image/webp" srcset="assets/retail-promenade-800.webp 800w, assets/retail-promenade-1200.webp 1200w, assets/retail-promenade.webp 1600w" sizes="(max-width: 700px) 82vw, 560px">
+              <img src="assets/retail-promenade.jpg" srcset="assets/retail-promenade-800.jpg 800w, assets/retail-promenade-1200.jpg 1200w, assets/retail-promenade.jpg 1600w" sizes="(max-width: 700px) 82vw, 560px" data-full="assets/retail-promenade.jpg" alt="Street-level retail promenade of the podium in the evening" width="1600" height="1200" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>The Retail Promenade · Ground</figcaption>
+          </figure>
         </div>
       </div>
       <dialog class="lightbox" id="lightbox">
@@ -334,10 +375,10 @@
           </div>
           <p class="form-status" role="status" aria-live="polite"></p>
           <div class="form-actions">
-            <button class="btn btn--solid" type="submit">Send Enquiry</button>
-            <button class="btn btn--ghost" type="button" data-send-wa>Send via WhatsApp</button>
+            <button class="btn btn--solid" type="button" data-send-wa>Enquire on WhatsApp</button>
+            <button class="btn btn--ghost" type="submit">Send by Email</button>
           </div>
-          <p class="form-note">Your enquiry opens in your email or WhatsApp app — nothing is stored on this site.</p>
+          <p class="form-note">Your enquiry opens in WhatsApp or your email app — nothing is stored on this site.</p>
         </form>
       </div>
     </section>

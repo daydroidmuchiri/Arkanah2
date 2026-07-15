@@ -44,13 +44,19 @@ client renders via `prep-images.mjs` (1600 px JPEG, q80):
 Floor plans remain in-house SVGs (`plan-1br/2br/3br.svg`).
 
 ## Missing items
-1. Real sales phone/WhatsApp number (site shows +254 700 000 000 in 3 places in index.html and js/main.js)
-2. Real sales email (site shows sales@nomadtowers.co.ke)
+1. Real sales phone/WhatsApp number (site shows +254 700 000 000 in index.html only — js/main.js now derives it from the page)
+2. Real sales email (site shows sales@nomadtowers.co.ke in index.html only — js/main.js derives it)
 3. Confirmed prices, unit sizes, floor count and completion date
 4. Interior renders — lounge, gym, bedroom, lobby — for the gallery
 5. Exact plot location / Google Maps coordinates for the map facade
 6. Confirm the development name: renders say "Nomad Twin Tower & Hotel", site says "Nomad Towers"
 7. Client logo, if one exists (site currently uses an in-house monogram)
+8. Production domain — canonical, og:url, JSON-LD url, robots.txt and
+   sitemap.xml currently use the placeholder `https://nomadtowers.co.ke/`
+9. Developer credibility content for a proposed "The Developer" section
+   (track record, NCA/county approvals, title status) — key trust signal
+   for off-plan buyers; needs client facts, do not invent
+10. Decision on a hotel/retail podium section (renders show it; open question below)
 
 ## Open questions
 - Is this job billed as a custom tier? It bypasses the template pipeline
@@ -64,6 +70,11 @@ Floor plans remain in-house SVGs (`plan-1br/2br/3br.svg`).
 - Intake: renders received → `clients/Arkanah2/images/` (2026-07-14)
 - Brief: this document — **GATE 1: awaiting Muchiri's approval**
 - Build: site exists (`index.html`, `css/`, `js/`, `assets/`); colors matched
-  to renders and imagery placed 2026-07-14
+  to renders and imagery placed 2026-07-14. Improvement pass 2026-07-15:
+  responsive images (800/1200/1600 JPEG+WebP via srcset), italic font preload,
+  absolute og:image + og:url/canonical (placeholder domain), placeholder
+  tel/email removed from JSON-LD, skip link, mobile-nav focus trap, lightbox
+  arrow keys, WhatsApp-first form actions, PNG favicons, robots.txt +
+  sitemap.xml, retired artwork SVGs deleted
 - Review (gate 2): not run
 - Deploy: not deployed; any static host (see README)

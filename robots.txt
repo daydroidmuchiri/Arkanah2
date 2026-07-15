@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Domain is a placeholder pending client confirmation (see brief.md)
+Sitemap: https://nomadtowers.co.ke/sitemap.xml

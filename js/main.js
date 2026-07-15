@@ -16,10 +16,11 @@
   /* ---------- Mobile nav ---------- */
   const toggle = $(".nav-toggle");
   const links = $(".nav-links");
-  const closeNav = () => {
+  const closeNav = (refocus = false) => {
     toggle.setAttribute("aria-expanded", "false");
     links.classList.remove("is-open");
     document.body.style.overflow = "";
+    if (refocus) toggle.focus();
   };
   toggle.addEventListener("click", () => {
     const open = toggle.getAttribute("aria-expanded") === "true";
@@ -31,7 +32,20 @@
     if (e.target.closest("a")) closeNav();
   });
   addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeNav();
+    if (e.key === "Escape" && links.classList.contains("is-open")) closeNav(true);
+    /* keep keyboard focus inside the fullscreen nav while it is open */
+    if (e.key === "Tab" && links.classList.contains("is-open")) {
+      const focusables = [toggle, ...$$("a", links)];
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 
   /* ---------- Reveal on scroll ---------- */
@@ -107,16 +121,28 @@
     /* Lightbox */
     const box = $("#lightbox");
     const boxImg = $("#lightbox img");
+    const galImgs = $$(".gal-item img", track);
+    let galIndex = 0;
+    const showInBox = (i) => {
+      galIndex = (i + galImgs.length) % galImgs.length;
+      const img = galImgs[galIndex];
+      /* data-full = full-res JPEG, so the zoom view never shows the small srcset pick */
+      boxImg.src = img.dataset.full || img.currentSrc || img.src;
+      boxImg.alt = img.alt;
+    };
     track.addEventListener("click", (e) => {
       const img = e.target.closest("img");
       if (!img) return;
-      boxImg.src = img.currentSrc || img.src;
-      boxImg.alt = img.alt;
+      showInBox(galImgs.indexOf(img));
       box.showModal();
     });
     $(".lightbox-close").addEventListener("click", () => box.close());
     box.addEventListener("click", (e) => {
       if (e.target === box) box.close();
+    });
+    box.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") showInBox(galIndex + 1);
+      if (e.key === "ArrowLeft") showInBox(galIndex - 1);
     });
   }
 
@@ -139,6 +165,10 @@
   const form = $("#enquiry-form");
   if (form) {
     const status = $(".form-status");
+    /* Contact details are read from the page so index.html is the single
+       place to update when the real number/email arrive (see brief.md). */
+    const waNumber = (($(".wa-float")?.getAttribute("href") || "").match(/wa\.me\/(\d+)/) || [])[1] || "";
+    const salesEmail = ($('.contact-rows a[href^="mailto:"]')?.getAttribute("href") || "mailto:").slice(7).split("?")[0];
     const buildMessage = () => {
       const d = new FormData(form);
       return [
@@ -164,14 +194,14 @@
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       if (!validate()) return;
-      location.href = `mailto:sales@nomadtowers.co.ke?subject=${encodeURIComponent(
+      location.href = `mailto:${salesEmail}?subject=${encodeURIComponent(
         "Enquiry — Nomad Towers"
       )}&body=${encodeURIComponent(buildMessage())}`;
       status.textContent = "Opening your email app…";
     });
     $("[data-send-wa]").addEventListener("click", () => {
       if (!validate()) return;
-      open(`https://wa.me/254700000000?text=${encodeURIComponent(buildMessage())}`, "_blank", "noopener");
+      open(`https://wa.me/${waNumber}?text=${encodeURIComponent(buildMessage())}`, "_blank", "noopener");
       status.textContent = "Opening WhatsApp…";
     });
   }
