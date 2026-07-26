@@ -1,8 +1,8 @@
-# Site Brief — Nomad Towers (Arkanah2)
+# Site Brief — Nomad Twin Towers (Arkanah2)
 Tier: custom (hand-built static one-pager, no template/Astro workspace) · Slug: Arkanah2 · Date: 2026-07-14
 
 ## Business summary
-Nomad Towers (renders are branded "Nomad Twin Tower & Hotel") is a luxury
+Nomad Twin Towers (renders are branded "Nomad Twin Tower & Hotel") is a luxury
 residential development off Waiyaki Way in Westlands, Nairobi: 34 storeys,
 138 residences (1–3 bedroom, off-plan from KES 9.8M), a multi-level retail
 podium and a rooftop infinity pool. The site is a single-page marketing site
@@ -19,9 +19,9 @@ Logo: none received — monogram "N" favicon/brand mark built in-house.
 
 ## Contact & location
 Phone (tel): +254 700 000 000 (PLACEHOLDER)  ·  WhatsApp: 254700000000 (PLACEHOLDER)
-Email: sales@nomadtowers.co.ke (PLACEHOLDER)  ·  Map: none — click-to-load
+Email: sales@nomadtwintowers.co.ke (PLACEHOLDER)  ·  Map: none — click-to-load
 facade currently points at central Westlands  ·  Hours: n/a (sales gallery)
-WhatsApp greeting: "Hello Nomad Towers, I'd like to enquire."
+WhatsApp greeting: "Hello Nomad Twin Towers, I'd like to enquire."
 
 ## Sitemap
 One page: Hero / Vision / Residences / Amenities / Gallery / Location /
@@ -45,14 +45,14 @@ Floor plans remain in-house SVGs (`plan-1br/2br/3br.svg`).
 
 ## Missing items
 1. Real sales phone/WhatsApp number (site shows +254 700 000 000 in index.html only — js/main.js now derives it from the page)
-2. Real sales email (site shows sales@nomadtowers.co.ke in index.html only — js/main.js derives it)
+2. Real sales email (site shows sales@nomadtwintowers.co.ke in index.html only — js/main.js derives it)
 3. Confirmed prices, unit sizes, floor count and completion date
 4. Interior renders — lounge, gym, bedroom, lobby — for the gallery
 5. Exact plot location / Google Maps coordinates for the map facade
-6. Confirm the development name: renders say "Nomad Twin Tower & Hotel", site says "Nomad Towers"
+6. ~~Confirm the development name~~ — RESOLVED 2026-07-26 (Daniel): "Nomad Twin Towers" is correct, matches the render watermark. Site updated throughout (title, meta, OG, JSON-LD, alt text, footer, js/main.js) 2026-07-26.
 7. Client logo, if one exists (site currently uses an in-house monogram)
 8. Production domain — canonical, og:url, JSON-LD url, robots.txt and
-   sitemap.xml currently use the placeholder `https://nomadtowers.co.ke/`
+   sitemap.xml currently use the placeholder `https://nomadtwintowers.co.ke/`
 9. Developer credibility content for a proposed "The Developer" section
    (track record, NCA/county approvals, title status) — key trust signal
    for off-plan buyers; needs client facts, do not invent

@@ -1,4 +1,4 @@
-# Google Stitch prompts — Nomad Towers multi-page animated site
+# Google Stitch prompts — Nomad Twin Towers multi-page animated site
 
 Upload the six renders from `images/*.jpg` as reference images before
 prompting. Paste the master prompt first, then use the per-page prompts to
@@ -9,7 +9,7 @@ add screens one at a time (Stitch iterates best screen-by-screen).
 ## Master prompt (paste first)
 
 Design a stylish, modern, polished multi-page marketing website for
-"Nomad Towers", a 34-storey luxury residential development in Westlands,
+"Nomad Twin Towers", a 34-storey luxury residential development in Westlands,
 Nairobi, with a retail podium and rooftop infinity pool. Audience:
 off-plan apartment buyers and investors. Mood: quiet luxury — cinematic,
 serene, editorial, never busy.

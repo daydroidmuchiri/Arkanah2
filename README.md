@@ -1,4 +1,4 @@
-# Nomad Towers — Marketing Site
+# Nomad Twin Towers — Marketing Site
 
 A fast, polished one-page marketing site for a luxury residential development in
 Westlands, Nairobi. Built as a modern take on sites like Montbleu Westlands and
@@ -46,9 +46,9 @@ fonts/*.woff2       Fraunces (display) + Manrope (body), self-hosted
 
 - **Phone/WhatsApp** `+254 700 000 000` — in `index.html` only (`js/main.js`
   derives it from the floating WhatsApp button's href)
-- **Email** `sales@nomadtowers.co.ke` — in `index.html` only (`js/main.js`
+- **Email** `sales@nomadtwintowers.co.ke` — in `index.html` only (`js/main.js`
   derives it from the contact mailto link)
-- **Domain** `https://nomadtowers.co.ke/` — placeholder in the canonical link,
+- **Domain** `https://nomadtwintowers.co.ke/` — placeholder in the canonical link,
   Open Graph tags, JSON-LD, `robots.txt` and `sitemap.xml`
 - **Prices, unit sizes, floor counts, completion date** — currently plausible
   placeholders in the hero, stats, and residence cards

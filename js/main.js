@@ -1,4 +1,4 @@
-/* Nomad Towers — vanilla JS, no dependencies.
+/* Nomad Twin Towers — vanilla JS, no dependencies.
    Everything is progressive enhancement: the page is fully usable without it. */
 (() => {
   "use strict";
@@ -172,7 +172,7 @@
     const buildMessage = () => {
       const d = new FormData(form);
       return [
-        "Hello Nomad Towers,",
+        "Hello Nomad Twin Towers,",
         "",
         `My name is ${d.get("name")}. I would like to enquire about a ${d.get("unit")}.`,
         d.get("message") ? `\n${d.get("message")}` : "",
@@ -195,7 +195,7 @@
       e.preventDefault();
       if (!validate()) return;
       location.href = `mailto:${salesEmail}?subject=${encodeURIComponent(
-        "Enquiry — Nomad Towers"
+        "Enquiry — Nomad Twin Towers"
       )}&body=${encodeURIComponent(buildMessage())}`;
       status.textContent = "Opening your email app…";
     });
