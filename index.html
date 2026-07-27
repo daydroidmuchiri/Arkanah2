@@ -140,7 +140,14 @@
         </div>
         <div class="res-grid">
           <article class="res-card reveal">
-            <figure><img src="assets/plan-1br.svg" alt="One bedroom floor plan, 62 square metres" width="600" height="440" loading="lazy" decoding="async"></figure>
+            <figure>
+              <div class="res-toggle" role="tablist" aria-label="View as photo or floor plan">
+                <button type="button" role="tab" aria-pressed="true" data-view="photo">Photo</button>
+                <button type="button" role="tab" aria-pressed="false" data-view="plan">Floor Plan</button>
+              </div>
+              <img data-view-img="photo" src="assets/1-br-living-room-800.jpg" srcset="assets/1-br-living-room-800.jpg 800w, assets/1-br-living-room-1200.jpg 1200w, assets/1-br-living-room.jpg 1600w" sizes="(max-width: 980px) 92vw, 380px" alt="Living room of a one bedroom residence with skyline views" width="600" height="440" loading="lazy" decoding="async">
+              <img data-view-img="plan" hidden src="assets/plan-1br.svg" alt="One bedroom floor plan, 62 square metres" width="600" height="440" loading="lazy" decoding="async">
+            </figure>
             <div class="res-body">
               <div class="res-title"><h3>One Bedroom</h3><span class="res-size">62 SQM</span></div>
               <p class="res-price"><small>Off-plan from</small>KES 9.8M</p>
@@ -154,7 +161,14 @@
             </div>
           </article>
           <article class="res-card reveal" data-delay="1">
-            <figure><img src="assets/plan-2br.svg" alt="Two bedroom floor plan, 108 square metres" width="600" height="440" loading="lazy" decoding="async"></figure>
+            <figure>
+              <div class="res-toggle" role="tablist" aria-label="View as photo or floor plan">
+                <button type="button" role="tab" aria-pressed="true" data-view="photo">Photo</button>
+                <button type="button" role="tab" aria-pressed="false" data-view="plan">Floor Plan</button>
+              </div>
+              <img data-view-img="photo" src="assets/2-br-living-room-800.jpg" srcset="assets/2-br-living-room-800.jpg 800w, assets/2-br-living-room-1200.jpg 1200w, assets/2-br-living-room.jpg 1600w" sizes="(max-width: 980px) 92vw, 380px" alt="Living room of a two bedroom residence with floor-to-ceiling glazing" width="600" height="440" loading="lazy" decoding="async">
+              <img data-view-img="plan" hidden src="assets/plan-2br.svg" alt="Two bedroom floor plan, 108 square metres" width="600" height="440" loading="lazy" decoding="async">
+            </figure>
             <div class="res-body">
               <div class="res-title"><h3>Two Bedroom</h3><span class="res-size">108 SQM</span></div>
               <p class="res-price"><small>Off-plan from</small>KES 16.5M</p>
@@ -191,6 +205,48 @@
         <div class="section-head">
           <p class="eyebrow reveal">Amenities</p>
           <h2 class="reveal" data-delay="1">Two floors devoted to <span class="serif-accent">everything but work.</span></h2>
+        </div>
+        <div class="amen-highlights reveal">
+          <figure class="amen-highlight">
+            <picture>
+              <source type="image/webp" srcset="assets/pool-closeup-800.webp 800w, assets/pool-closeup-1200.webp 1200w, assets/pool-closeup.webp 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw">
+              <img src="assets/pool-closeup-800.jpg" srcset="assets/pool-closeup-800.jpg 800w, assets/pool-closeup-1200.jpg 1200w, assets/pool-closeup.jpg 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw" alt="Resident overlooking the rooftop infinity pool at golden hour" width="1600" height="878" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <p class="amen-highlight-eyebrow">Level 34</p>
+              <h3>Rooftop Infinity Pool</h3>
+            </figcaption>
+          </figure>
+          <figure class="amen-highlight">
+            <picture>
+              <source type="image/webp" srcset="assets/gym-and-wellness-800.webp 800w, assets/gym-and-wellness-1200.webp 1200w, assets/gym-and-wellness.webp 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw">
+              <img src="assets/gym-and-wellness-800.jpg" srcset="assets/gym-and-wellness-800.jpg 800w, assets/gym-and-wellness-1200.jpg 1200w, assets/gym-and-wellness.jpg 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw" alt="Sky gym and wellness floor with floor-to-ceiling city views" width="1600" height="812" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <p class="amen-highlight-eyebrow">Amenity Floor</p>
+              <h3>Sky Gym &amp; Spa</h3>
+            </figcaption>
+          </figure>
+          <figure class="amen-highlight">
+            <picture>
+              <source type="image/webp" srcset="assets/sky-lounge-terrace-800.webp 800w, assets/sky-lounge-terrace-1200.webp 1200w, assets/sky-lounge-terrace.webp 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw">
+              <img src="assets/sky-lounge-terrace-800.jpg" srcset="assets/sky-lounge-terrace-800.jpg 800w, assets/sky-lounge-terrace-1200.jpg 1200w, assets/sky-lounge-terrace.jpg 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw" alt="Residents' lounge terrace overlooking the city at dusk" width="1600" height="1198" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <p class="amen-highlight-eyebrow">Amenity Floor</p>
+              <h3>Residents' Lounge</h3>
+            </figcaption>
+          </figure>
+          <figure class="amen-highlight">
+            <picture>
+              <source type="image/webp" srcset="assets/restaurant-main-800.webp 800w, assets/restaurant-main-1200.webp 1200w, assets/restaurant-main.webp 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw">
+              <img src="assets/restaurant-main-800.jpg" srcset="assets/restaurant-main-800.jpg 800w, assets/restaurant-main-1200.jpg 1200w, assets/restaurant-main.jpg 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw" alt="Sky-level restaurant with skyline views at dusk" width="1600" height="882" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <p class="amen-highlight-eyebrow">Amenity Floor</p>
+              <h3>Sky Restaurant</h3>
+            </figcaption>
+          </figure>
         </div>
         <div class="amen-grid">
           <div class="amen reveal">
@@ -232,6 +288,11 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><rect x="3" y="10" width="13" height="7" rx="2"/><path d="M16 13h3l2 2v2h-2M6 17v2M14 17v2M16 8a4 4 0 0 0-8 0"/></svg>
             <h3>Parking &amp; EV Charging</h3>
             <p>Three basement levels with allocated bays, visitor parking and EV charging points.</p>
+          </div>
+          <div class="amen reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M6 3v7a3 3 0 0 0 6 0V3M9 10v11M17 3c-1.5 1.5-2 3-2 5s1 3 2 3 2-1 2-3-.5-3.5-2-5zM17 11v10"/></svg>
+            <h3>Sky Restaurant</h3>
+            <p>All-day dining on the amenity floor, with a private terrace over the Westlands skyline.</p>
           </div>
         </div>
       </div>

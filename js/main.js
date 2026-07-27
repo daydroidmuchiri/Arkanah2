@@ -99,6 +99,20 @@
     }
   }
 
+  /* ---------- Residence cards: photo / floor plan toggle ---------- */
+  $$(".res-toggle").forEach((toggle) => {
+    const figure = toggle.closest("figure");
+    const buttons = $$("button", toggle);
+    const images = $$("img[data-view-img]", figure);
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const view = btn.dataset.view;
+        buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+        images.forEach((img) => (img.hidden = img.dataset.viewImg !== view));
+      });
+    });
+  });
+
   /* ---------- Gallery: snap carousel + buttons ---------- */
   const track = $(".gallery-track");
   if (track) {
