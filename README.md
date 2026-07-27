@@ -106,9 +106,19 @@ npx serve docs
 
 ## Deployment
 
-**Live**: GitHub Pages, `main` branch, `/docs` folder (Settings → Pages) —
-`https://daydroidmuchiri.github.io/Arkanah2/`. Changed 2026-07-27 from
-root folder, which publicly served this brief and internal notes
-alongside the site; see brief.md for the full story. Any other static
-host works too (Cloudflare Pages, Netlify) — just point it at `docs/` as
-the publish directory, not the repo root.
+**Live**: GitHub Pages via GitHub Actions (`.github/workflows/deploy-pages.yml`,
+runs on every push touching `docs/**`) — `https://daydroidmuchiri.github.io/Arkanah2/`.
+Deploys only the `docs/` folder as a built artifact.
+
+This isn't just "Settings → Pages → main:/docs" — that was tried first
+2026-07-27 and didn't actually work: GitHub Pages' legacy Jekyll build
+serves the *whole repository* as static files regardless of the
+configured source folder, so `brief.md`, `README.md` and everything in
+`reference/`/`images/` stayed publicly fetchable even with source set to
+`/docs`. Switching Pages to Actions-based deployment (`build_type:
+workflow` + the upload-artifact workflow) actually fixes it, since only
+the uploaded `docs/` artifact is ever served — see brief.md for the full
+story and the verification steps.
+
+Any other static host works too (Cloudflare Pages, Netlify) — just point
+it at `docs/` as the publish directory, not the repo root.

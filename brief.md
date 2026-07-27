@@ -204,17 +204,35 @@ on deploy — see Open questions re: deploy-root exposure).
   this is a Muslim-oriented development — worth a client check on whether
   that image is on-brand before this goes live, or whether to swap in
   `assets/gym-and-wellness-upclose.jpg` or drop the shot. Not yet decided.
-- ~~Deploy-root exposure~~ — RESOLVED 2026-07-27: moved the actual site
-  into `docs/` (`docs/index.html`, `docs/css/`, `docs/js/`, `docs/assets/`,
-  `docs/fonts/`, `docs/robots.txt`, `docs/sitemap.xml`), renamed the old
-  internal-reference `docs/` to `reference/`, and changed the GitHub Pages
-  source (via `gh api`) from `main:/` to `main:/docs`. `brief.md`,
-  `README.md`, `review-report.md`, `reference/` and `images/` all now sit
-  outside the served folder, so none of it should be publicly fetchable
-  once Pages finishes rebuilding. Not re-verified live in a browser (no
-  browser tool available this session) — worth a manual check that
-  `daydroidmuchiri.github.io/Arkanah2/brief.md` now 404s and the site
-  itself still loads correctly.
+- ~~Deploy-root exposure~~ — RESOLVED 2026-07-27, in two steps (the first
+  wasn't actually sufficient on its own — see below):
+  1. Moved the actual site into `docs/` and changed the GitHub Pages
+     source (via `gh api`) from `main:/` to `main:/docs`. **This alone did
+     not fix the problem.** GitHub Pages' legacy build type (Jekyll) turned
+     out to serve the *entire repository checkout* as static files at
+     their own repo-relative paths, regardless of the configured source
+     folder — verified live: after switching source to `/docs`,
+     `daydroidmuchiri.github.io/Arkanah2/brief.md`,
+     `.../README.md`, `.../reference/nomad-twin-towers-price-list-....jpeg`
+     and even `.../docs/index.html` (its own new location) were *all*
+     still directly fetchable (curl'd with cache-busting query strings to
+     rule out CDN caching — genuinely still served, not stale).
+  2. Switched Pages to **Actions-based deployment** instead: set
+     `build_type: workflow` via the API and added
+     `.github/workflows/deploy-pages.yml`, which uploads only `docs/` as
+     the Pages artifact via `actions/upload-pages-artifact` +
+     `actions/deploy-pages`. This serves a built artifact rather than the
+     live git checkout, so nothing outside `docs/` is reachable through
+     the Pages domain at all — this is what actually fixed it.
+
+  Verified live after the workflow ran (`gh run watch`, succeeded in 26s):
+  site loads (200, correct title), all assets/css/js/robots.txt/sitemap.xml
+  load (200), and `brief.md`, `README.md`, `reference/*`, `images/*`,
+  `docs/index.html` (direct path) and even `.github/workflows/deploy-pages.yml`
+  itself all now 404. The workflow only auto-triggers on pushes that touch
+  `docs/**` — pushes that only touch this brief, README, or `reference/`
+  won't redeploy the site (correct — nothing public changed), but also
+  won't accidentally publish those files either.
 
 ## Pipeline status
 - Scaffold: n/a (hand-built, imported into `clients/Arkanah2/`)
@@ -288,6 +306,10 @@ on deploy — see Open questions re: deploy-root exposure).
   Also discovered from the bug screenshot's URL bar that **the site is
   already deployed** on GitHub Pages — see Deploy line above.
 - 2026-07-27 (later still): deploy-root exposure fixed per Daniel's
-  request — see the resolved Open questions entry above for the
-  `docs/`/`reference/` restructuring and the GitHub Pages source-folder
-  change.
+  request — see the resolved Open questions entry above. Took two attempts:
+  the `docs/`/`reference/` restructuring plus a Pages source-folder change
+  looked right but didn't actually work (legacy Jekyll builds serve the
+  whole repo regardless of source folder); switching to Actions-based
+  deployment (`build_type: workflow` + `.github/workflows/deploy-pages.yml`)
+  was the real fix. Verified live via curl with cache-busting query
+  strings — internal files 404, site itself works.
