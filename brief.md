@@ -1,10 +1,23 @@
 # Site Brief — Nomad Twin Towers (Arkanah2)
 Tier: custom (hand-built static one-pager, no template/Astro workspace) · Slug: Arkanah2 · Date: 2026-07-14
 
+**Repo layout (changed 2026-07-27):** the published site lives entirely
+under `docs/` (`docs/index.html`, `docs/css/`, `docs/js/`, `docs/assets/`,
+`docs/fonts/`, `docs/robots.txt`, `docs/sitemap.xml`) — GitHub Pages serves
+`main` branch, `/docs` folder. Below, bare mentions of `index.html`,
+`css/main.css`, `js/main.js`, `assets/*` etc. mean the copy under `docs/`
+unless stated otherwise. `reference/` holds internal-only material (client
+price list, bug screenshots, Stitch prompts) and is NOT served.
+`images/batch-2026-07-27/` (raw renders) also stays at the repo root, NOT
+served. This split exists because the site used to be deployed from the
+repo root, which publicly exposed this brief, the README and internal
+notes alongside the live site — see Missing items / Open questions history
+below for the full account.
+
 ## Business summary
 Nomad Twin Towers, developed by **Obsha Properties** ("Building Value.
 Creating Futures.") — confirmed 2026-07-27 via the client's official price
-list, `docs/nomad-twin-towers-price-list-2026-07-27.jpeg` — is a landmark
+list, `reference/nomad-twin-towers-price-list-2026-07-27.jpeg` — is a landmark
 **mixed-use** development off Waiyaki Way in Westlands, Nairobi, not a pure
 residential tower as earlier copy framed it:
 
@@ -39,7 +52,7 @@ unaffected), cross-checked with `node packages/pipeline/src/color-from-image.mjs
 the lighting accent throughout).
 Tone: quiet luxury, English only.
 Logo: **RESOLVED 2026-07-27** — real logo found in the price list (the "NT"
-monogram square). Cropped from `docs/nomad-twin-towers-price-list-2026-07-27.jpeg`
+monogram square). Cropped from `reference/nomad-twin-towers-price-list-2026-07-27.jpeg`
 (source coordinates: left 693, top 1, width 100, height 80 of the 1024×1536
 JPEG, padded to a 100×100 square with sampled background navy #011226) and
 regenerated as `assets/favicon-16.png`, `favicon-32.png` and
@@ -123,7 +136,7 @@ Floor plans: `plan-1br.svg` (60 sqm, label updated from 62), `plan-2br.svg`
 (100 sqm, label updated from 108). `plan-3br.svg` (penthouse) was deleted
 2026-07-27.
 
-Reference doc: `docs/nomad-twin-towers-price-list-2026-07-27.jpeg` — the
+Reference doc: `reference/nomad-twin-towers-price-list-2026-07-27.jpeg` — the
 client's official price sheet (moved here 2026-07-27 from the repo root,
 where it would otherwise have been publicly servable alongside `index.html`
 on deploy — see Open questions re: deploy-root exposure).
@@ -191,19 +204,17 @@ on deploy — see Open questions re: deploy-root exposure).
   this is a Muslim-oriented development — worth a client check on whether
   that image is on-brand before this goes live, or whether to swap in
   `assets/gym-and-wellness-upclose.jpg` or drop the shot. Not yet decided.
-- **Deploy-root exposure — CONFIRMED LIVE 2026-07-27**: the site is
-  already deployed on GitHub Pages (`daydroidmuchiri.github.io/Arkanah2`),
-  which serves the whole repo root by default. `brief.md`, `README.md`,
-  `review-report.md` and everything in `docs/` (the price list, the two
-  mobile-nav bug screenshots, the Stitch prompt doc) sit in that same
-  folder as `index.html` and are almost certainly publicly fetchable right
-  now — including this brief's judgment calls (the pool-photo/cocktail
-  question, currency-mismatch notes, etc.). Needs a fix before the real
-  domain goes live, ideally sooner: either move the public site into a
-  subfolder and configure Pages to serve only that, or add a
-  `.nojekyll`-style host-level ignore so `docs/`, `*.md` etc. aren't
-  served. Not fixed yet — flagging as the most time-sensitive open item
-  in this file.
+- ~~Deploy-root exposure~~ — RESOLVED 2026-07-27: moved the actual site
+  into `docs/` (`docs/index.html`, `docs/css/`, `docs/js/`, `docs/assets/`,
+  `docs/fonts/`, `docs/robots.txt`, `docs/sitemap.xml`), renamed the old
+  internal-reference `docs/` to `reference/`, and changed the GitHub Pages
+  source (via `gh api`) from `main:/` to `main:/docs`. `brief.md`,
+  `README.md`, `review-report.md`, `reference/` and `images/` all now sit
+  outside the served folder, so none of it should be publicly fetchable
+  once Pages finishes rebuilding. Not re-verified live in a browser (no
+  browser tool available this session) — worth a manual check that
+  `daydroidmuchiri.github.io/Arkanah2/brief.md` now 404s and the site
+  itself still loads correctly.
 
 ## Pipeline status
 - Scaffold: n/a (hand-built, imported into `clients/Arkanah2/`)
@@ -220,11 +231,9 @@ on deploy — see Open questions re: deploy-root exposure).
   checks + judgment pass); awaiting Muchiri's eyeball of the preview
 - Deploy: **live** on GitHub Pages at `daydroidmuchiri.github.io/Arkanah2`
   (confirmed 2026-07-27 from a bug-report screenshot's URL bar — this repo
-  entry was stale, previously said "not deployed"). This means the
-  deploy-root exposure issue below is a live, real issue right now, not a
-  future risk — `brief.md`, `README.md`, `review-report.md` and everything
-  in `docs/` (including the client's price list image) are almost
-  certainly publicly fetchable at that URL today. Worth fixing promptly.
+  entry was stale, previously said "not deployed"). Source folder changed
+  same day from `main:/` to `main:/docs` to fix the deploy-root exposure
+  issue — see Open questions history (now resolved).
 - 2026-07-26: name corrected to "Nomad Twin Towers" site-wide
 - 2026-07-27: second render batch placed (Gallery 4→16 images); brand mark
   and WhatsApp deep-link text fixed to "Nomad Twin Towers"
@@ -258,7 +267,7 @@ on deploy — see Open questions re: deploy-root exposure).
   (`assets/logo-mark.png`, transparent crop). Explored an in-card
   carousel for the Amenities highlights, found only Gym/Lounge have
   multiple angles, added those 3 photos to the Gallery instead.
-- 2026-07-27 (night): Daniel reported (via `docs/mobile-nav-bug-*` screenshots)
+- 2026-07-27 (night): Daniel reported (via `reference/mobile-nav-bug-*` screenshots)
   the mobile hamburger menu rendering broken — only one nav item
   ("Gallery") visible inside a thin bar, the rest bleeding through as
   faint ghosted text over the real page. Root cause: `.site-header`'s
@@ -277,5 +286,8 @@ on deploy — see Open questions re: deploy-root exposure).
   fixed` descendants) and confirmed `.site-header` had no other such
   property. Worth a visual confirm next time a browser tool is available.
   Also discovered from the bug screenshot's URL bar that **the site is
-  already deployed** on GitHub Pages — see Deploy line above and the
-  now-urgent deploy-root exposure item in Open questions.
+  already deployed** on GitHub Pages — see Deploy line above.
+- 2026-07-27 (later still): deploy-root exposure fixed per Daniel's
+  request — see the resolved Open questions entry above for the
+  `docs/`/`reference/` restructuring and the GitHub Pages source-folder
+  change.

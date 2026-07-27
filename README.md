@@ -32,32 +32,41 @@ still a fraction of the reference sites.
 
 ## Structure
 
+**`docs/` is the actual published site** — GitHub Pages is configured to
+serve `main` branch, `/docs` folder (changed 2026-07-27; was root, which
+publicly exposed this brief and internal notes — see brief.md). Everything
+else in the repo root is internal and not served.
+
 ```
-index.html          single page: hero → about → residences → amenities
-                    → gallery → location → invest → enquire
-css/main.css        design system + all styles
-js/main.js          nav, scroll reveals, counters, gallery, lightbox,
-                    map facade, enquiry form (all progressive enhancement)
-assets/*.jpg|webp   client renders, prepped to 800/1200/1600 px via
-                    packages/pipeline/src/prep-images.mjs (--widths/--webp)
-assets/*.svg|png    floor plans (1BR/2BR only — no penthouse), favicon
+docs/index.html      single page: hero → about → residences → amenities
+                     → gallery → location → invest → enquire
+docs/css/main.css    design system + all styles
+docs/js/main.js      nav, scroll reveals, counters, gallery, lightbox,
+                     map facade, enquiry form (all progressive enhancement)
+docs/assets/*.jpg|webp  client renders, prepped to 800/1200/1600 px via
+                     packages/pipeline/src/prep-images.mjs (--widths/--webp)
+docs/assets/*.svg|png   floor plans (1BR/2BR only — no penthouse), favicon
+docs/fonts/*.woff2   Fraunces (display) + Manrope (body), self-hosted
+docs/robots.txt      + sitemap.xml — nomadtwintowers.com, see brief.md
+
 images/batch-2026-07-27/*.png  source renders from the client, full size
-                    (12 of 20 used on the page; 8 near-duplicates kept
-                    in assets/ but unused — see brief.md)
-robots.txt          + sitemap.xml — nomadtwintowers.com, see brief.md
-fonts/*.woff2       Fraunces (display) + Manrope (body), self-hosted
-docs/               reference material (client price list, Stitch prompts) —
-                    not meant to be public; see brief.md re: deploy-root exposure
+                     (16 of 20 used on the page; 4 near-duplicates kept
+                     in docs/assets/ but unused — see brief.md). NOT
+                     served — stays at repo root, outside docs/.
+reference/           client price list, mobile-nav bug screenshots, Stitch
+                     prompts — internal only, NOT served (outside docs/)
+brief.md, README.md, review-report.md  internal project docs — NOT served
 ```
 
 ## Placeholder content to replace before launch
 
 - **Phone/WhatsApp** `+254 711 111 188` — REAL, from the client's price list
-  (`docs/nomad-twin-towers-price-list-2026-07-27.jpeg`). In `index.html` only
-  (`js/main.js` derives it from the floating WhatsApp button's href).
+  (`reference/nomad-twin-towers-price-list-2026-07-27.jpeg`). In
+  `docs/index.html` only (`docs/js/main.js` derives it from the floating
+  WhatsApp button's href).
 - **Email** `sales@nomadtwintowers.com` — still a PLACEHOLDER; only the
   domain half is confirmed, the mailbox itself was never given by the
-  client. In `index.html` only (`js/main.js` derives it from the contact
+  client. In `docs/index.html` only (`docs/js/main.js` derives it from the contact
   mailto link).
 - **Domain** `https://nomadtwintowers.com/` — confirmed 2026-07-27 from the
   client's price list (was previously a `.co.ke` placeholder). Still needs
@@ -71,31 +80,35 @@ docs/               reference material (client price list, Stitch prompts) —
   brief.md Missing items 3 and 14.
 - **Favicon & logo** — replaced 2026-07-27 with the real "NT" mark cropped
   from the client's price list. Favicon uses an opaque-background crop
-  (`assets/favicon-16/32.png`, `apple-touch-icon.png`); the header/footer
+  (`docs/assets/favicon-16/32.png`, `apple-touch-icon.png`); the header/footer
   nav brand mark uses a separate transparent-background crop
-  (`assets/logo-mark.png`, chroma-keyed since the header sits over the
+  (`docs/assets/logo-mark.png`, chroma-keyed since the header sits over the
   hero photo until scroll). The old in-house SVG monogram (`favicon.svg`
   and the inline `<svg>` brand marks) were both removed.
 - **Exterior, amenity and interior renders** are all in place (hero, about,
   amenities, residences, gallery — from `images/batch-2026-07-27/`). To add
   more later, prep with
-  `node packages/pipeline/src/prep-images.mjs <src> <dest> --widths=800,1200 --webp`
+  `node packages/pipeline/src/prep-images.mjs <src> docs/assets --widths=800,1200 --webp`
   and wire in with correct `width`/`height` attributes to preserve zero CLS.
-- **Map coordinates** — `js/main.js` (`data-load-map` handler) currently points
-  at central Westlands
+- **Map coordinates** — `docs/js/main.js` (`data-load-map` handler) currently
+  points at central Westlands
 - The enquiry form is backend-free by design (hands off to email/WhatsApp).
   If the client wants submissions stored, wire the form to Formspree/Basin or
   a small serverless endpoint.
 
 ## Development
 
-No build step. Open `index.html` directly, or serve locally:
+No build step. Open `docs/index.html` directly, or serve locally:
 
 ```
-npx serve .
+npx serve docs
 ```
 
 ## Deployment
 
-Any static host (GitHub Pages, Cloudflare Pages, Netlify). For GitHub Pages:
-Settings → Pages → deploy from `main` branch, root folder.
+**Live**: GitHub Pages, `main` branch, `/docs` folder (Settings → Pages) —
+`https://daydroidmuchiri.github.io/Arkanah2/`. Changed 2026-07-27 from
+root folder, which publicly served this brief and internal notes
+alongside the site; see brief.md for the full story. Any other static
+host works too (Cloudflare Pages, Netlify) — just point it at `docs/` as
+the publish directory, not the repo root.
