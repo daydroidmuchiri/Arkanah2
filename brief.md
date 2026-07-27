@@ -2,14 +2,33 @@
 Tier: custom (hand-built static one-pager, no template/Astro workspace) · Slug: Arkanah2 · Date: 2026-07-14
 
 ## Business summary
-Nomad Twin Towers (renders are branded "Nomad Twin Tower & Hotel") is a luxury
-residential development off Waiyaki Way in Westlands, Nairobi: 34 storeys,
-138 residences (1–2 bedroom, off-plan from KES 9.8M), a multi-level retail
-podium and a rooftop infinity pool. The site is a single-page marketing site
-aimed at off-plan buyers and investors. **No penthouse/3-bedroom unit exists**
-(confirmed by Daniel 2026-07-27) — the 138-residence total was previously
-described as a 1–3BR mix, so that count should be re-confirmed with the
-client now that only two unit types are advertised (see Missing item 13).
+Nomad Twin Towers, developed by **Obsha Properties** ("Building Value.
+Creating Futures.") — confirmed 2026-07-27 via the client's official price
+list, `docs/nomad-twin-towers-price-list-2026-07-27.jpeg` — is a landmark
+**mixed-use** development off Waiyaki Way in Westlands, Nairobi, not a pure
+residential tower as earlier copy framed it:
+
+- **Retail**: 334 shops across Ground–6th floor (fashion/beauty, electronics,
+  food court, fine dining, healthcare, a masjid, and a big event hall/hotel
+  restaurant on the 6th floor), plus a 1,701 sqm (18,309 sqft) supermarket
+  anchor in Basement 1
+- **Residential**: 252 apartment units — 72×1-Bedroom (60 sqm/646 sqft,
+  USD 1,450/sqm ≈ USD 87,000) and 180×2-Bedroom (100 sqm/1,076 sqft,
+  USD 1,800/sqm ≈ USD 180,000). **No penthouse/3-bedroom unit exists**
+  (confirmed by Daniel 2026-07-27, independently of the price list, which
+  also shows no 3BR line item)
+- **Hotel**: 60 rooms across the 19th–20th floors (avg. 30 sqm/323 sqft),
+  with a separate hotel lobby/lifts
+- Parking: Basement 2 (~52 bays) and Basement 3 (~53 bays)
+- **All prices in the official list are USD, per sqm/sqft** — the site
+  previously showed flat KES prices; now converted to match (see Missing
+  item 3)
+
+The site (this repo) is a single-page marketing site focused on selling the
+**residential units** — it does not attempt to replicate the full
+commercial/retail price list or a hotel-booking experience, per Daniel's
+2026-07-27 direction to reposition (not fully rebuild) the site around the
+mixed-use scope.
 
 ## Brand
 Colors: primary #12161e (night slate-blue), accent #cda060 (champagne gold),
@@ -20,11 +39,19 @@ unaffected), cross-checked with `node packages/pipeline/src/color-from-image.mjs
 the lighting accent throughout).
 Tone: quiet luxury, English only.
 Logo: none received — monogram "N" favicon/brand mark built in-house.
+Developer: **Obsha Properties** — credited in the footer 2026-07-27
+("Developed by Obsha Properties"). No logo/branding assets received for
+Obsha itself; text credit only.
 
 ## Contact & location
-Phone (tel): +254 700 000 000 (PLACEHOLDER)  ·  WhatsApp: 254700000000 (PLACEHOLDER)
-Email: sales@nomadtwintowers.co.ke (PLACEHOLDER)  ·  Map: none — click-to-load
-facade currently points at central Westlands  ·  Hours: n/a (sales gallery)
+Phone/WhatsApp: **+254 711 111 188** — REAL, from the client's price list,
+replaced the `+254 700 000 000` placeholder 2026-07-27 (tel link, WhatsApp
+float, contact row — js/main.js derives the WhatsApp number from the page).
+Email: `sales@nomadtwintowers.com` — still a PLACEHOLDER (no real email was
+given anywhere in the price list); only the domain half was corrected from
+`.co.ke` to `.com` to match the confirmed domain (see Missing item 8).
+Map: none — click-to-load facade currently points at central Westlands.
+Hours: n/a (sales gallery).
 WhatsApp greeting: "Hello Nomad Twin Towers, I'd like to enquire."
 
 ## Sitemap
@@ -32,17 +59,12 @@ One page: Hero / Vision / Residences / Amenities / Gallery / Location /
 Invest / Enquire (custom build — not the fixed Starter 5-page sitemap).
 
 ## Content & imagery
-Copy is drafted in `index.html` with plausible placeholder figures (prices,
-sizes, completion Q4 2027) pending client confirmation.
-
-**2026-07-27: the original six renders (`images/001–006.png`, prepped as
-hero-tower-sunset / podium-entrance-dusk / rooftop-pool-dusk / tower-dusk /
-tower-aerial-morning / retail-promenade) were removed entirely** — raw files
-deleted from `images/`, prepped files deleted from `assets/`, all references
-in `index.html` (hero, og:image, JSON-LD, Vision section, Gallery) swapped
-for renders from the second batch below. `images/001–006.png` no longer
-exist in this repo; see git history before 2026-07-27 if they're ever
-needed again.
+**2026-07-27: the original six renders (`images/001–006.png`) were removed
+entirely** — raw files deleted from `images/`, prepped files deleted from
+`assets/` (hero-tower-sunset, podium-entrance-dusk, rooftop-pool-dusk,
+tower-dusk, tower-aerial-morning, retail-promenade). All references in
+`index.html` swapped for the second batch. If those first-batch files are
+ever needed again, they're in git history before commit `e77692c`.
 
 The site now runs entirely on the second render batch, received 2026-07-27
 (`images/batch-2026-07-27/`, 20 files, prepped via `prep-images.mjs` at
@@ -56,7 +78,7 @@ The site now runs entirely on the second render batch, received 2026-07-27
 | gym-and-wellness.jpg | Gallery + Amenities highlight | Sky gym & wellness floor |
 | sky-lounge-terrace.jpg | Gallery + Amenities highlight | Residents' lounge terrace, dusk |
 | pool-closeup.jpg | Gallery + Amenities highlight | Rooftop pool, golden-hour lifestyle shot |
-| restaurant-main.jpg | Gallery + Amenities highlight | Sky restaurant |
+| restaurant-main.jpg | Gallery + Amenities highlight | Sky restaurant (see Missing item 12 re: naming) |
 | retail-02.jpg | Gallery | Retail podium boutique corridor |
 | 1-br-living-room.jpg | Gallery + Residences card (photo toggle) | One bedroom residence, living room |
 | 2-br-living-room.jpg | Gallery + Residences card (photo toggle) | Two bedroom residence, living room |
@@ -67,59 +89,78 @@ The site now runs entirely on the second render batch, received 2026-07-27
 Unused (prepped in `assets/` but not on the page — street-view-01.jpg,
 street-view-02.jpg, birds-eye-view.jpg, retail.jpg, gym-upclose.jpg,
 gym-and-wellness-upclose.jpg, sky-lounge.jpg): each duplicates the
-framing/subject of an image already placed, kept in reserve in case the
-client prefers one of these over the current pick.
+framing/subject of an image already placed, kept in reserve.
 
-Floor plans: `plan-1br.svg`, `plan-2br.svg`. `plan-3br.svg` (penthouse) was
-deleted 2026-07-27 — see Missing item 13.
+Floor plans: `plan-1br.svg` (60 sqm, label updated from 62), `plan-2br.svg`
+(100 sqm, label updated from 108). `plan-3br.svg` (penthouse) was deleted
+2026-07-27.
+
+Reference doc: `docs/nomad-twin-towers-price-list-2026-07-27.jpeg` — the
+client's official price sheet (moved here 2026-07-27 from the repo root,
+where it would otherwise have been publicly servable alongside `index.html`
+on deploy — see Open questions re: deploy-root exposure).
 
 ## Missing items
-1. Real sales phone/WhatsApp number (site shows +254 700 000 000 in index.html only — js/main.js now derives it from the page)
-2. Real sales email (site shows sales@nomadtwintowers.co.ke in index.html only — js/main.js derives it)
-3. Confirmed prices, unit sizes, floor count and completion date
-4. ~~Interior renders — lounge, gym, bedroom, lobby — for the gallery~~ — RESOLVED 2026-07-27: second batch received, 12 placed in Gallery (see Content & imagery table above).
-5. Exact plot location / Google Maps coordinates for the map facade
-6. ~~Confirm the development name~~ — RESOLVED 2026-07-26 (Daniel): "Nomad Twin Towers" is correct, matches the render watermark. Site updated throughout (title, meta, OG, JSON-LD, alt text, footer, js/main.js) 2026-07-26.
-7. Client logo, if one exists (site currently uses an in-house monogram)
-8. Production domain — canonical, og:url, JSON-LD url, robots.txt and
-   sitemap.xml currently use the placeholder `https://nomadtwintowers.co.ke/`
-9. Developer credibility content for a proposed "The Developer" section
-   (track record, NCA/county approvals, title status) — key trust signal
-   for off-plan buyers; needs client facts, do not invent
-10. Decision on a hotel/retail podium section (renders show it; open question below)
-11. Confirm drafted claims found in review (2026-07-15) that go beyond items 3–5:
+1. ~~Real sales phone/WhatsApp number~~ — RESOLVED 2026-07-27: `+254 711 111 188`, from the price list.
+2. Real sales email — still open. Domain half corrected to `.com` 2026-07-27, but `sales@` itself is still an unconfirmed placeholder; no email address appeared anywhere in the client's materials.
+3. ~~Confirmed prices, unit sizes, floor count and completion date~~ — PARTIALLY RESOLVED 2026-07-27: unit sizes and prices now match the official price list (USD, per sqm — see Business summary). Still open: (a) the price list's apartment table says "18" under "Total Floors" for both unit types, while the Project Overview footer of the same document says residential spans floors "7TH–18TH" (12 floors) — these two numbers in the client's own document don't obviously reconcile; worth asking the client to clarify rather than guessing. (b) Completion date (Q4 2027) is not stated anywhere in the price list — still a placeholder.
+4. ~~Interior renders — lounge, gym, bedroom, lobby — for the gallery~~ — RESOLVED 2026-07-27.
+5. Exact plot location / Google Maps coordinates for the map facade — still open.
+6. ~~Confirm the development name~~ — RESOLVED 2026-07-26.
+7. Client logo, if one exists — still open (in-house monogram in use). Note: Obsha Properties (the developer) also has no logo asset on file; footer currently credits them as plain text.
+8. ~~Production domain~~ — RESOLVED 2026-07-27: the client's own price list prints `www.nomadtwintowers.com`. Canonical/og:url/JSON-LD/robots.txt/sitemap.xml all switched from the `nomadtwintowers.co.ke` placeholder to `nomadtwintowers.com` 2026-07-27. **This supersedes the earlier NovaHost `.co.ke` domain-purchase research and the client cost message drafted around it (KSh 1,180 for a `.co.ke` domain) — that conversation was based on the wrong TLD.** Still needs one check: confirm with the client whether `nomadtwintowers.com` is already registered/owned, or still needs buying — a `.com` from a registrar like Namecheap/Cloudflare Registrar is a very different purchase flow (and price) than the `.co.ke` KENIC-registrar path discussed earlier.
+9. Developer credibility content — PARTIALLY RESOLVED 2026-07-27: developer name "Obsha Properties" confirmed and credited in the footer. Still needs real track record / NCA / county approvals / title status for a full trust section — do not invent.
+10. ~~Decision on a hotel/retail podium section~~ — clarified 2026-07-27 by Daniel: the site stays focused on residential sales copy; it is not being rebuilt into a full retail/hotel marketing site, even though the underlying development is confirmed mixed-use (see Business summary). Stats bar now reflects the scale (334 shops, 60 hotel rooms) without a dedicated section for either.
+11. Confirm drafted claims found in review (2026-07-15) that go beyond the above:
     payment plan (KES 500,000 refundable reservation, 20% deposit, quarterly
-    interest-free instalments, 10% on handover), amenity specifics (Technogym
+    interest-free instalments, 10% on handover — **note: this is still
+    denominated in KES while unit prices are now USD, a currency mismatch
+    introduced 2026-07-27 that needs the client's input on which currency
+    the payment plan should actually be in**), amenity specifics (Technogym
     brand, heated pool, solar-assisted common areas, biometric lobby access),
     rental/tenant-placement management offering, "Westlands strongest rental
-    market" claim, and the location drive times (3/4/5/10/35 min)
-12. New amenity added 2026-07-27 on the strength of `restaurant-main.jpg`
-    (second render batch): "Sky Restaurant" — "All-day dining on the
-    amenity floor, with a private terrace over the Westlands skyline."
-    Added as a 9th card in the Amenities icon grid plus a photo highlight
-    card, on the `experiment/amenity-and-unit-imagery` branch. This is a
-    drafted claim like the others above — needs client confirmation the
-    restaurant is real (not just a rendered space) before merging to main.
-13. ~~Third residence type (Penthouse)~~ — RESOLVED 2026-07-27 (Daniel): no
-    penthouse exists. Removed the Penthouse card, `plan-3br.svg`, and every
-    "1–3 bedroom" / "three bedroom" mention (meta description, og:description,
-    JSON-LD, hero lede, hero stats, Residences heading, "Largest Penthouse"
-    stat, enquiry form unit dropdown). Site now advertises 1BR/2BR only.
-    Open sub-item: the "138 Residences" stat and business-summary total
-    were sized against a 1–3BR mix — worth re-confirming with the client
-    now that the mix is 1–2BR only.
+    market" claim, and the location drive times (3/4/5/10/35 min).
+12. "Sky Restaurant" amenity (added 2026-07-27 on the strength of
+    `restaurant-main.jpg`) — the price list independently confirms a real
+    restaurant exists ("Alacat Hotel Restaurant," 6th floor, "Events &
+    Hotel Restaurant Floor"), which is reassuring, but it's not confirmed
+    whether `restaurant-main.jpg`'s skyline-view dining room is actually
+    that same 6th-floor space or a separate amenity-floor restaurant higher
+    up. Left the site copy generic ("Sky Restaurant") rather than asserting
+    the "Alacat" name until this is confirmed — renaming it is a one-line
+    change once confirmed.
+13. ~~Third residence type (Penthouse)~~ — RESOLVED 2026-07-27. Independently
+    confirmed by the price list, which also shows no 3BR/penthouse line item.
+14. **NEW 2026-07-27**: "34 Storeys" stat is not cross-verified against the
+    price list, which only itemises Basement 3–1, Ground–6th (retail),
+    7th–18th (residential) and 19th–20th (hotel) = 24 floors of programmed
+    space. The site's "Rooftop Infinity Pool · Level 34" copy implies
+    floors above 20 exist (amenity floors), which the price list doesn't
+    contradict but also doesn't confirm — it may simply not itemise
+    non-commercial amenity floors. Left "34" as-is (not directly
+    contradicted) but flagging so it gets a client confirmation pass rather
+    than being treated as fully verified.
 
 ## Open questions
 - Is this job billed as a custom tier? It bypasses the template pipeline
   (`/build` and the `pnpm --filter` preview/build steps don't apply; review
   gate 2 should use the automated checks that make sense plus a judgment
   pass, and deploy is any static host).
-- Should the hotel/retail offering (visible in renders) get its own section?
-- `assets/pool-closeup.jpg` (now in the Gallery as "Rooftop Pool · Golden
-  Hour") shows a resident holding what reads as a cocktail glass. Most other
-  renders across both batches depict Muslim dress/attire — worth a client
-  check on whether that image is on-brand before this goes live, or whether
-  to swap in `assets/gym-and-wellness-upclose.jpg` or drop the shot.
+- `assets/pool-closeup.jpg` (in the Gallery + Amenities highlight as
+  "Rooftop Pool · Golden Hour") shows a resident holding what reads as a
+  cocktail glass. The price list's 4th floor includes a **masjid**, which
+  reinforces (independently of the earlier render-attire observation) that
+  this is a Muslim-oriented development — worth a client check on whether
+  that image is on-brand before this goes live, or whether to swap in
+  `assets/gym-and-wellness-upclose.jpg` or drop the shot. Not yet decided.
+- **Deploy-root exposure**: `brief.md`, `README.md`, `review-report.md` and
+  `docs/` all currently sit in the same folder as `index.html`. The README
+  says "deploy from root folder" for any static host — taken literally,
+  that would make this brief (with its judgment calls, currency-mismatch
+  notes, etc.) and the price-list reference image publicly fetchable
+  alongside the live site. Worth deciding on a deploy approach (host-level
+  ignore rules, or restructuring so only the public site files are in the
+  served root) before the real domain goes live.
 
 ## Pipeline status
 - Scaffold: n/a (hand-built, imported into `clients/Arkanah2/`)
@@ -134,16 +175,22 @@ deleted 2026-07-27 — see Missing item 13.
   sitemap.xml, retired artwork SVGs deleted
 - Review (gate 2): run 2026-07-15 → `review-report.md` (adapted automated
   checks + judgment pass); awaiting Muchiri's eyeball of the preview
-- Deploy: not deployed; any static host (see README)
-- 2026-07-26: name corrected to "Nomad Twin Towers" site-wide (see git log)
-- 2026-07-27: second render batch placed — Gallery expanded from 4 to 16
-  images (interiors, lobby, gym, lounge, restaurant, retail podium); brand
-  mark and WhatsApp deep-link text (missed in the 07-26 rename pass) fixed
-  to "Nomad Twin Towers"
-- 2026-07-27 (later same day): amenity photo highlights + residence
-  photo/plan toggle added (`experiment/amenity-and-unit-imagery`, merged to
-  main). Then, per Daniel: the original six renders removed entirely (raw
-  + prepped), hero/Vision images swapped to the second batch, Gallery
-  trimmed to 11 second-batch images, and the Penthouse card/copy removed
-  site-wide (no penthouse exists) — site now runs on the 2026-07-27 batch
-  only and advertises 1BR/2BR
+- Deploy: not deployed; any static host (see README; see Open questions re: deploy-root exposure)
+- 2026-07-26: name corrected to "Nomad Twin Towers" site-wide
+- 2026-07-27: second render batch placed (Gallery 4→16 images); brand mark
+  and WhatsApp deep-link text fixed to "Nomad Twin Towers"
+- 2026-07-27 (later): amenity photo highlights + residence photo/plan
+  toggle added (`experiment/amenity-and-unit-imagery`, merged to main).
+  Original six renders removed entirely; Gallery trimmed to 11 images;
+  Penthouse removed site-wide.
+- 2026-07-27 (later still): client's official price list received as an
+  image in the repo root, moved to `docs/`. Full repositioning pass per
+  Daniel: site reframed as a mixed-use address (not pure residential);
+  real phone number (+254 711 111 188) live; domain corrected to
+  `nomadtwintowers.com`; email domain corrected to match (mailbox itself
+  still unconfirmed); developer credited ("Obsha Properties") in footer;
+  residence pricing converted to the official USD/sqm figures (1BR 60sqm
+  $87,000, 2BR 100sqm $180,000, both down from earlier placeholder KES
+  figures at larger placeholder sqm); stats bar expanded from 4 to 6
+  entries (Storeys, Residences 252, Retail Shops 334, Hotel Rooms 60,
+  Largest Residence 100sqm, Amenity Floors) to reflect true project scale.

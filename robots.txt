@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# Domain is a placeholder pending client confirmation (see brief.md)
-Sitemap: https://nomadtwintowers.co.ke/sitemap.xml
+# Domain updated 2026-07-27 to match client's official price list; still pending final ownership/registration confirmation (see brief.md)
+Sitemap: https://nomadtwintowers.com/sitemap.xml
