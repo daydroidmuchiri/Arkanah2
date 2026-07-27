@@ -43,11 +43,18 @@ monogram square). Cropped from `docs/nomad-twin-towers-price-list-2026-07-27.jpe
 (source coordinates: left 693, top 1, width 100, height 80 of the 1024×1536
 JPEG, padded to a 100×100 square with sampled background navy #011226) and
 regenerated as `assets/favicon-16.png`, `favicon-32.png` and
-`apple-touch-icon.png`. The old in-house "N" monogram (`favicon.svg`) was
-deleted — it no longer matches the real brand. Note: the header/footer
-still use a separate hand-drawn inline SVG "N" mark for the nav brand
-lockup (not the favicon file) — not yet updated to match the real logo;
-would need the same crop treatment or a proper vector trace if wanted.
+`apple-touch-icon.png` (opaque navy background — fine for a favicon/touch
+icon). The old in-house "N" monogram (`favicon.svg`) was deleted.
+
+The header/footer nav brand mark (previously a separate hand-drawn inline
+SVG "N") was also replaced 2026-07-27: same crop, but chroma-keyed to a
+transparent background (navy pixels within a distance threshold of the
+sampled background color become transparent, everything else opaque —
+works cleanly because the source is flat vector art, not a photo) and
+saved as `assets/logo-mark.png` (160×160, transparent). Used via `<img
+class="brand-mark">` in both the header and footer, replacing the old
+inline `<svg>` — needed transparency since the header is see-through
+until scroll (`.site-header.is-scrolled`) and sits over the hero photo.
 Developer: **Obsha Properties** — credited in the footer 2026-07-27
 ("Developed by Obsha Properties"). No separate logo/branding assets
 received for Obsha itself; text credit only.

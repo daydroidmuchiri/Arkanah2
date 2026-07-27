@@ -69,11 +69,13 @@ docs/               reference material (client price list, Stitch prompts) —
   completion date were removed from the live copy 2026-07-27** (unconfirmed
   by the price list) rather than left as guessed placeholders — see
   brief.md Missing items 3 and 14.
-- **Favicon** — replaced 2026-07-27 with the real "NT" logo cropped from
-  the client's price list (`assets/favicon-16/32.png`, `apple-touch-icon.png`).
-  The old in-house monogram (`favicon.svg`) was deleted. The header/footer
-  nav brand mark is still a separate hand-drawn inline SVG, not yet updated
-  to match.
+- **Favicon & logo** — replaced 2026-07-27 with the real "NT" mark cropped
+  from the client's price list. Favicon uses an opaque-background crop
+  (`assets/favicon-16/32.png`, `apple-touch-icon.png`); the header/footer
+  nav brand mark uses a separate transparent-background crop
+  (`assets/logo-mark.png`, chroma-keyed since the header sits over the
+  hero photo until scroll). The old in-house SVG monogram (`favicon.svg`
+  and the inline `<svg>` brand marks) were both removed.
 - **Exterior, amenity and interior renders** are all in place (hero, about,
   amenities, residences, gallery — from `images/batch-2026-07-27/`). To add
   more later, prep with

@@ -164,7 +164,8 @@ h3 { font-size: 1.35rem; }
   padding-block: 1.05rem;
 }
 .brand { display: inline-flex; align-items: center; gap: 0.7rem; }
-.brand svg { width: 34px; height: 34px; }
+.brand-mark { width: 34px; height: 34px; }
+.site-footer .brand-mark { width: 30px; height: 30px; }
 .brand-name {
   font-family: var(--font-display);
   font-size: 1.22rem;
