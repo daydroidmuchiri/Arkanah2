@@ -191,14 +191,19 @@ on deploy — see Open questions re: deploy-root exposure).
   this is a Muslim-oriented development — worth a client check on whether
   that image is on-brand before this goes live, or whether to swap in
   `assets/gym-and-wellness-upclose.jpg` or drop the shot. Not yet decided.
-- **Deploy-root exposure**: `brief.md`, `README.md`, `review-report.md` and
-  `docs/` all currently sit in the same folder as `index.html`. The README
-  says "deploy from root folder" for any static host — taken literally,
-  that would make this brief (with its judgment calls, currency-mismatch
-  notes, etc.) and the price-list reference image publicly fetchable
-  alongside the live site. Worth deciding on a deploy approach (host-level
-  ignore rules, or restructuring so only the public site files are in the
-  served root) before the real domain goes live.
+- **Deploy-root exposure — CONFIRMED LIVE 2026-07-27**: the site is
+  already deployed on GitHub Pages (`daydroidmuchiri.github.io/Arkanah2`),
+  which serves the whole repo root by default. `brief.md`, `README.md`,
+  `review-report.md` and everything in `docs/` (the price list, the two
+  mobile-nav bug screenshots, the Stitch prompt doc) sit in that same
+  folder as `index.html` and are almost certainly publicly fetchable right
+  now — including this brief's judgment calls (the pool-photo/cocktail
+  question, currency-mismatch notes, etc.). Needs a fix before the real
+  domain goes live, ideally sooner: either move the public site into a
+  subfolder and configure Pages to serve only that, or add a
+  `.nojekyll`-style host-level ignore so `docs/`, `*.md` etc. aren't
+  served. Not fixed yet — flagging as the most time-sensitive open item
+  in this file.
 
 ## Pipeline status
 - Scaffold: n/a (hand-built, imported into `clients/Arkanah2/`)
@@ -213,7 +218,13 @@ on deploy — see Open questions re: deploy-root exposure).
   sitemap.xml, retired artwork SVGs deleted
 - Review (gate 2): run 2026-07-15 → `review-report.md` (adapted automated
   checks + judgment pass); awaiting Muchiri's eyeball of the preview
-- Deploy: not deployed; any static host (see README; see Open questions re: deploy-root exposure)
+- Deploy: **live** on GitHub Pages at `daydroidmuchiri.github.io/Arkanah2`
+  (confirmed 2026-07-27 from a bug-report screenshot's URL bar — this repo
+  entry was stale, previously said "not deployed"). This means the
+  deploy-root exposure issue below is a live, real issue right now, not a
+  future risk — `brief.md`, `README.md`, `review-report.md` and everything
+  in `docs/` (including the client's price list image) are almost
+  certainly publicly fetchable at that URL today. Worth fixing promptly.
 - 2026-07-26: name corrected to "Nomad Twin Towers" site-wide
 - 2026-07-27: second render batch placed (Gallery 4→16 images); brand mark
   and WhatsApp deep-link text fixed to "Nomad Twin Towers"
@@ -243,3 +254,28 @@ on deploy — see Open questions re: deploy-root exposure).
   interior photos (floor-to-ceiling windows, stone worktops) rather than
   invented specifics (walk-in closets, balconies, aspect direction,
   laundry rooms, dedicated parking).
+- 2026-07-27 (evening): navbar/footer brand mark swapped to the real logo
+  (`assets/logo-mark.png`, transparent crop). Explored an in-card
+  carousel for the Amenities highlights, found only Gym/Lounge have
+  multiple angles, added those 3 photos to the Gallery instead.
+- 2026-07-27 (night): Daniel reported (via `docs/mobile-nav-bug-*` screenshots)
+  the mobile hamburger menu rendering broken — only one nav item
+  ("Gallery") visible inside a thin bar, the rest bleeding through as
+  faint ghosted text over the real page. Root cause: `.site-header`'s
+  `backdrop-filter` (added via `.is-scrolled` once the page scrolls)
+  establishes a new CSS containing block for fixed-position descendants,
+  so `.nav-links`'s `position: fixed; inset: 0` (meant to be a fullscreen
+  overlay) was sizing itself to the header's own small box instead of the
+  viewport whenever the menu was opened after scrolling. Fixed by adding
+  a `menu-open` class to `.site-header` on toggle-open (js/main.js) that
+  sets `backdrop-filter: none` while the mobile nav is open (css/main.css)
+  — the nav's own opaque background covers the header visually anyway, so
+  losing its blur during that moment is unnoticeable. Not visually
+  re-tested in a live browser (no browser tool available this session) —
+  reasoned from the CSS spec (backdrop-filter/filter/transform/perspective/
+  will-change on an ancestor create a containing block for `position:
+  fixed` descendants) and confirmed `.site-header` had no other such
+  property. Worth a visual confirm next time a browser tool is available.
+  Also discovered from the bug screenshot's URL bar that **the site is
+  already deployed** on GitHub Pages — see Deploy line above and the
+  now-urgent deploy-root exposure item in Open questions.

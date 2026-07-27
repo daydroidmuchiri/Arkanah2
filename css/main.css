@@ -155,6 +155,14 @@ h3 { font-size: 1.35rem; }
   backdrop-filter: blur(14px);
   border-bottom-color: var(--line-on-dark);
 }
+/* backdrop-filter establishes a containing block for fixed-position
+   descendants, which would otherwise size the fullscreen mobile nav
+   (.nav-links, position: fixed; inset: 0) to this header's own box
+   instead of the viewport once scrolled + opened — drop it while open. */
+.site-header.menu-open {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
 .nav-bar {
   width: var(--w);
   margin-inline: auto;

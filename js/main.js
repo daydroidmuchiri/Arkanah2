@@ -19,6 +19,7 @@
   const closeNav = (refocus = false) => {
     toggle.setAttribute("aria-expanded", "false");
     links.classList.remove("is-open");
+    header.classList.remove("menu-open");
     document.body.style.overflow = "";
     if (refocus) toggle.focus();
   };
@@ -26,6 +27,11 @@
     const open = toggle.getAttribute("aria-expanded") === "true";
     toggle.setAttribute("aria-expanded", String(!open));
     links.classList.toggle("is-open", !open);
+    /* .site-header's backdrop-filter (added once scrolled) creates a new
+       containing block for fixed-position descendants, so the fullscreen
+       nav's `position: fixed; inset: 0` would size itself to the header's
+       own small box instead of the viewport — drop the filter while open. */
+    header.classList.toggle("menu-open", !open);
     document.body.style.overflow = open ? "" : "hidden";
   });
   links.addEventListener("click", (e) => {
