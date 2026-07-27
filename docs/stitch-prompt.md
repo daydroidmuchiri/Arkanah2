@@ -1,8 +1,8 @@
 # Google Stitch prompts — Nomad Twin Towers multi-page animated site
 
-Upload the six renders from `images/*.jpg` as reference images before
-prompting. Paste the master prompt first, then use the per-page prompts to
-add screens one at a time (Stitch iterates best screen-by-screen).
+Upload renders from `images/batch-2026-07-27/*.png` as reference images
+before prompting. Paste the master prompt first, then use the per-page
+prompts to add screens one at a time (Stitch iterates best screen-by-screen).
 
 ---
 
@@ -56,13 +56,13 @@ infinite scrolling amenity ticker.
 ## Per-page follow-up prompts
 
 **Residences.** Add a "Residences" page: editorial intro on ivory
-background — eyebrow "The Residences", headline "Three ways to live
-above it all." Then three floor-plan cards on slate (#202634): One
-Bedroom 62 sqm from KES 9.8M, Two Bedroom 108 sqm from KES 16.5M,
-Penthouse 172+ sqm from KES 38M — each with floor-plan artwork, gold
-price in serif, four feature bullets with gold em-dash markers, and a
-"Request Floor Plans" outline button. Annotate: cards rise and fade in
-staggered; on hover they lift 6 px and their border warms to gold.
+background — eyebrow "The Residences", headline "Two ways to live
+above it all." Then two floor-plan cards on slate (#202634): One
+Bedroom 62 sqm from KES 9.8M, Two Bedroom 108 sqm from KES 16.5M —
+each with floor-plan artwork, gold price in serif, four feature
+bullets with gold em-dash markers, and a "Request Floor Plans" outline
+button. Annotate: cards rise and fade in staggered; on hover they lift
+6 px and their border warms to gold.
 
 **Amenities & Gallery.** Add an "Amenities & Gallery" page: ivory
 amenities grid — eight items (Rooftop Infinity Pool, Sky Gym & Spa,

@@ -36,8 +36,10 @@ js/main.js          nav, scroll reveals, counters, gallery, lightbox,
                     map facade, enquiry form (all progressive enhancement)
 assets/*.jpg|webp   client renders, prepped to 800/1200/1600 px via
                     packages/pipeline/src/prep-images.mjs (--widths/--webp)
-assets/*.svg|png    floor plans, favicon (SVG + PNG fallbacks)
-images/*.png        source renders from the client (001–006, full size)
+assets/*.svg|png    floor plans (1BR/2BR only — no penthouse), favicon
+images/batch-2026-07-27/*.png  source renders from the client, full size
+                    (12 of 20 used on the page; 8 near-duplicates kept
+                    in assets/ but unused — see brief.md)
 robots.txt          + sitemap.xml — placeholder domain, see brief.md
 fonts/*.woff2       Fraunces (display) + Manrope (body), self-hosted
 ```
@@ -52,12 +54,11 @@ fonts/*.woff2       Fraunces (display) + Manrope (body), self-hosted
   Open Graph tags, JSON-LD, `robots.txt` and `sitemap.xml`
 - **Prices, unit sizes, floor counts, completion date** — currently plausible
   placeholders in the hero, stats, and residence cards
-- **Exterior/lifestyle renders** are in place (hero, about, gallery — from
-  `images/001–006.png`). Interior shots (lounge, gym, bedroom, lobby) are
-  still missing; when the client sends them, prep with
+- **Exterior, amenity and interior renders** are all in place (hero, about,
+  amenities, residences, gallery — from `images/batch-2026-07-27/`). To add
+  more later, prep with
   `node packages/pipeline/src/prep-images.mjs <src> <dest> --widths=800,1200 --webp`
-  and add to the gallery with correct `width`/`height` attributes to preserve
-  zero CLS.
+  and wire in with correct `width`/`height` attributes to preserve zero CLS.
 - **Map coordinates** — `js/main.js` (`data-load-map` handler) currently points
   at central Westlands
 - The enquiry form is backend-free by design (hands off to email/WhatsApp).
