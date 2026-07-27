@@ -84,7 +84,7 @@ ever needed again, they're in git history before commit `e77692c`.
 
 The site now runs entirely on the second render batch, received 2026-07-27
 (`images/batch-2026-07-27/`, 20 files, prepped via `prep-images.mjs` at
-1600px JPEG/WebP, q80, --widths=800,1200). 13 of 20 are placed on the page:
+1600px JPEG/WebP, q80, --widths=800,1200). 16 of 20 are placed on the page:
 
 | Prepped filename | Used | Alt/subject |
 |---|---|---|
@@ -92,7 +92,10 @@ The site now runs entirely on the second render batch, received 2026-07-27
 | drop-off.jpg | Vision section | Arrival lobby / porte-cochère, night |
 | drama-shot.jpg | Gallery | Twin towers rising above the podium, dusk |
 | gym-and-wellness.jpg | Gallery + Amenities highlight | Sky gym & wellness floor |
+| gym-upclose.jpg | Gallery | Sky gym, close detail (added 2026-07-27) |
+| gym-and-wellness-upclose.jpg | Gallery | Wellness lounge near the sky gym (added 2026-07-27) |
 | sky-lounge-terrace.jpg | Gallery + Amenities highlight | Residents' lounge terrace, dusk |
+| sky-lounge.jpg | Gallery | Residents' lounge interior (added 2026-07-27) |
 | pool-closeup.jpg | Gallery + Amenities highlight | Rooftop pool, golden-hour lifestyle shot |
 | restaurant-main.jpg | Gallery + Amenities highlight | Sky restaurant (see Missing item 12 re: naming) |
 | retail-02.jpg | Gallery | Retail podium boutique corridor |
@@ -103,9 +106,18 @@ The site now runs entirely on the second render batch, received 2026-07-27
 | master-bathroom.jpg | Gallery | Master ensuite |
 
 Unused (prepped in `assets/` but not on the page — street-view-01.jpg,
-street-view-02.jpg, birds-eye-view.jpg, retail.jpg, gym-upclose.jpg,
-gym-and-wellness-upclose.jpg, sky-lounge.jpg): each duplicates the
+street-view-02.jpg, birds-eye-view.jpg, retail.jpg): each duplicates the
 framing/subject of an image already placed, kept in reserve.
+
+2026-07-27: considered an in-card mini-carousel for the Amenities highlight
+strip (multiple angles per card) instead of one static photo each. Checked
+the actual inventory: only Gym (3 photos) and Lounge (2 photos) have
+multiple angles — Pool and Restaurant have exactly one photo each. Building
+a carousel for 2 of 4 cards and leaving the other 2 static would read as
+inconsistent, so skipped it. Added the 3 extra Gym/Lounge photos to the
+main Gallery instead (which already is a proper multi-image carousel) —
+same "use the extra photography" goal without a new/inconsistent UI
+pattern.
 
 Floor plans: `plan-1br.svg` (60 sqm, label updated from 62), `plan-2br.svg`
 (100 sqm, label updated from 108). `plan-3br.svg` (penthouse) was deleted
