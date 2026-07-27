@@ -82,6 +82,13 @@ Floor plans remain in-house SVGs (`plan-1br/2br/3br.svg`).
     brand, heated pool, solar-assisted common areas, biometric lobby access),
     rental/tenant-placement management offering, "Westlands strongest rental
     market" claim, and the location drive times (3/4/5/10/35 min)
+12. New amenity added 2026-07-27 on the strength of `restaurant-main.jpg`
+    (second render batch): "Sky Restaurant" — "All-day dining on the
+    amenity floor, with a private terrace over the Westlands skyline."
+    Added as a 9th card in the Amenities icon grid plus a photo highlight
+    card, on the `experiment/amenity-and-unit-imagery` branch. This is a
+    drafted claim like the others above — needs client confirmation the
+    restaurant is real (not just a rendered space) before merging to main.
 
 ## Open questions
 - Is this job billed as a custom tier? It bypasses the template pipeline
