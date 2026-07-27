@@ -38,10 +38,19 @@ unaffected), cross-checked with `node packages/pipeline/src/color-from-image.mjs
 (dominant tones #90b0d0 sky, #505070 twilight, #505050 slate; warm gold is
 the lighting accent throughout).
 Tone: quiet luxury, English only.
-Logo: none received — monogram "N" favicon/brand mark built in-house.
+Logo: **RESOLVED 2026-07-27** — real logo found in the price list (the "NT"
+monogram square). Cropped from `docs/nomad-twin-towers-price-list-2026-07-27.jpeg`
+(source coordinates: left 693, top 1, width 100, height 80 of the 1024×1536
+JPEG, padded to a 100×100 square with sampled background navy #011226) and
+regenerated as `assets/favicon-16.png`, `favicon-32.png` and
+`apple-touch-icon.png`. The old in-house "N" monogram (`favicon.svg`) was
+deleted — it no longer matches the real brand. Note: the header/footer
+still use a separate hand-drawn inline SVG "N" mark for the nav brand
+lockup (not the favicon file) — not yet updated to match the real logo;
+would need the same crop treatment or a proper vector trace if wanted.
 Developer: **Obsha Properties** — credited in the footer 2026-07-27
-("Developed by Obsha Properties"). No logo/branding assets received for
-Obsha itself; text credit only.
+("Developed by Obsha Properties"). No separate logo/branding assets
+received for Obsha itself; text credit only.
 
 ## Contact & location
 Phone/WhatsApp: **+254 711 111 188** — REAL, from the client's price list,
@@ -111,15 +120,25 @@ on deploy — see Open questions re: deploy-root exposure).
 8. ~~Production domain~~ — RESOLVED 2026-07-27: the client's own price list prints `www.nomadtwintowers.com`. Canonical/og:url/JSON-LD/robots.txt/sitemap.xml all switched from the `nomadtwintowers.co.ke` placeholder to `nomadtwintowers.com` 2026-07-27. **This supersedes the earlier NovaHost `.co.ke` domain-purchase research and the client cost message drafted around it (KSh 1,180 for a `.co.ke` domain) — that conversation was based on the wrong TLD.** Still needs one check: confirm with the client whether `nomadtwintowers.com` is already registered/owned, or still needs buying — a `.com` from a registrar like Namecheap/Cloudflare Registrar is a very different purchase flow (and price) than the `.co.ke` KENIC-registrar path discussed earlier.
 9. Developer credibility content — PARTIALLY RESOLVED 2026-07-27: developer name "Obsha Properties" confirmed and credited in the footer. Still needs real track record / NCA / county approvals / title status for a full trust section — do not invent.
 10. ~~Decision on a hotel/retail podium section~~ — clarified 2026-07-27 by Daniel: the site stays focused on residential sales copy; it is not being rebuilt into a full retail/hotel marketing site, even though the underlying development is confirmed mixed-use (see Business summary). Stats bar now reflects the scale (334 shops, 60 hotel rooms) without a dedicated section for either.
-11. Confirm drafted claims found in review (2026-07-15) that go beyond the above:
-    payment plan (KES 500,000 refundable reservation, 20% deposit, quarterly
-    interest-free instalments, 10% on handover — **note: this is still
-    denominated in KES while unit prices are now USD, a currency mismatch
-    introduced 2026-07-27 that needs the client's input on which currency
-    the payment plan should actually be in**), amenity specifics (Technogym
-    brand, heated pool, solar-assisted common areas, biometric lobby access),
-    rental/tenant-placement management offering, "Westlands strongest rental
-    market" claim, and the location drive times (3/4/5/10/35 min).
+11. ~~Confirm drafted claims found in review (2026-07-15)~~ — RESOLVED
+    2026-07-27 by removal rather than confirmation, per Daniel's direction
+    that nothing not backed by the price list (or the actual photos) should
+    stay on the live page: removed the KES payment-plan figures (500,000
+    reservation, 20% deposit, quarterly instalments, 10% handover) and
+    replaced with generic non-numeric copy; removed the invented amenity
+    specifics (Technogym brand, "heated" pool, "34th floor" pool claim,
+    solar-assisted power, biometric access, app-controlled/fibre "Smart
+    Residences," EV charging points, private dining/co-working claims);
+    removed the rental/tenant-placement management claim; removed the
+    "Westlands strongest rental market" claim; removed the location drive
+    times (3/4/5/10/35 min), keeping the landmark names without invented
+    minute-precision. Two Amenities cards (Smart Residences, Full Backup
+    Power) were dropped entirely — no basis for either anywhere. "24-Hour
+    Concierge" was folded into a renamed "24/7 Security" card, matching the
+    price list's own wording. "Parking & EV Charging" became "Basement
+    Parking" — also fixed a real error in the old copy ("three basement
+    levels" — the price list has only two parking levels, B2+B3; B1 is the
+    supermarket).
 12. "Sky Restaurant" amenity (added 2026-07-27 on the strength of
     `restaurant-main.jpg`) — the price list independently confirms a real
     restaurant exists ("Alacat Hotel Restaurant," 6th floor, "Events &
@@ -131,15 +150,15 @@ on deploy — see Open questions re: deploy-root exposure).
     change once confirmed.
 13. ~~Third residence type (Penthouse)~~ — RESOLVED 2026-07-27. Independently
     confirmed by the price list, which also shows no 3BR/penthouse line item.
-14. **NEW 2026-07-27**: "34 Storeys" stat is not cross-verified against the
-    price list, which only itemises Basement 3–1, Ground–6th (retail),
-    7th–18th (residential) and 19th–20th (hotel) = 24 floors of programmed
-    space. The site's "Rooftop Infinity Pool · Level 34" copy implies
-    floors above 20 exist (amenity floors), which the price list doesn't
-    contradict but also doesn't confirm — it may simply not itemise
-    non-commercial amenity floors. Left "34" as-is (not directly
-    contradicted) but flagging so it gets a client confirmation pass rather
-    than being treated as fully verified.
+14. ~~"34 Storeys" stat~~ — RESOLVED 2026-07-27 by removal: not
+    cross-verifiable against the price list (which only itemises 24 floors
+    of programmed space — Basement 3–1, Ground–6th retail, 7th–18th
+    residential, 19th–20th hotel), so it and the "Rooftop Infinity Pool ·
+    Level 34" floor claim were both dropped from the live copy. Stats bar
+    replaced Storeys and the also-unconfirmed "Amenity Floors" with two
+    price-list-confirmed numbers instead: **105 Parking Bays** (52+53) and
+    **1,701 sqm Supermarket**. If the client confirms an actual storey
+    count later, it's an easy re-add.
 
 ## Open questions
 - Is this job billed as a custom tier? It bypasses the template pipeline
@@ -190,7 +209,18 @@ on deploy — see Open questions re: deploy-root exposure).
   `nomadtwintowers.com`; email domain corrected to match (mailbox itself
   still unconfirmed); developer credited ("Obsha Properties") in footer;
   residence pricing converted to the official USD/sqm figures (1BR 60sqm
-  $87,000, 2BR 100sqm $180,000, both down from earlier placeholder KES
-  figures at larger placeholder sqm); stats bar expanded from 4 to 6
-  entries (Storeys, Residences 252, Retail Shops 334, Hotel Rooms 60,
-  Largest Residence 100sqm, Amenity Floors) to reflect true project scale.
+  $87,000, 2BR 100sqm $180,000); stats bar built from confirmed price-list
+  numbers only (Residences 252, Retail Shops 334, Hotel Rooms 60, Largest
+  Residence 100sqm, Parking Bays 105, Supermarket 1,701sqm).
+- 2026-07-27 (final pass this day): favicon replaced with the real "NT"
+  logo cropped from the price list (old in-house "N" monogram SVG
+  deleted). Full editorial sweep per Daniel ("nothing not factually in the
+  price list should be on the live page"): removed every invented/
+  unconfirmed specific across the site — see Missing items 11 and 14 for
+  the full list (payment-plan figures, amenity brand/technical claims, two
+  entire Amenities cards, rental-market claim, drive times, storey count).
+  Marquee and stats bar rebuilt from confirmed facts only. Residence
+  feature bullets rewritten to state only what's visible in the actual
+  interior photos (floor-to-ceiling windows, stone worktops) rather than
+  invented specifics (walk-in closets, balconies, aspect direction,
+  laundry rooms, dedicated parking).

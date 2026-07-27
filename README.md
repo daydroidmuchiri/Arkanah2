@@ -65,8 +65,15 @@ docs/               reference material (client price list, Stitch prompts) —
   Canonical link, Open Graph tags, JSON-LD, `robots.txt` and `sitemap.xml`
   are all updated to match.
 - **Prices, unit sizes** — now match the client's official price list (USD
-  per sqm: 1BR 60sqm ≈$87,000, 2BR 100sqm ≈$180,000). **Floor count and
-  completion date are still placeholders** — see brief.md Missing item 3.
+  per sqm: 1BR 60sqm ≈$87,000, 2BR 100sqm ≈$180,000). **Storey count and
+  completion date were removed from the live copy 2026-07-27** (unconfirmed
+  by the price list) rather than left as guessed placeholders — see
+  brief.md Missing items 3 and 14.
+- **Favicon** — replaced 2026-07-27 with the real "NT" logo cropped from
+  the client's price list (`assets/favicon-16/32.png`, `apple-touch-icon.png`).
+  The old in-house monogram (`favicon.svg`) was deleted. The header/footer
+  nav brand mark is still a separate hand-drawn inline SVG, not yet updated
+  to match.
 - **Exterior, amenity and interior renders** are all in place (hero, about,
   amenities, residences, gallery — from `images/batch-2026-07-27/`). To add
   more later, prep with

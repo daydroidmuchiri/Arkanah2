@@ -402,7 +402,6 @@ h3 { font-size: 1.35rem; }
   background: linear-gradient(0deg, rgba(18, 22, 30, 0.88) 0%, rgba(18, 22, 30, 0.18) 48%, rgba(18, 22, 30, 0) 68%);
 }
 .amen-highlight figcaption { position: absolute; left: 1.3rem; right: 1.3rem; bottom: 1.2rem; z-index: 1; }
-.amen-highlight-eyebrow { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 0.3rem; }
 .amen-highlight h3 { color: var(--text-on-dark); font-size: 1.15rem; }
 .amen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line-on-light); border: 1px solid var(--line-on-light); }
 @media (max-width: 980px) { .amen-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -493,7 +492,6 @@ h3 { font-size: 1.35rem; }
   color: #47505e;
 }
 .loc-list strong { font-weight: 600; color: #232a37; }
-.loc-time { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #92763c; white-space: nowrap; }
 .map-facade {
   position: relative;
   aspect-ratio: 4 / 3;
