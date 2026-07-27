@@ -41,13 +41,32 @@ client renders via `prep-images.mjs` (1600 px JPEG, q80):
 | tower-aerial-morning.jpg | Gallery | Aerial over Westlands, morning (004) |
 | retail-promenade.jpg | Gallery | Street-level retail promenade (005) |
 
+Second render batch received 2026-07-27 (`images/batch-2026-07-27/`, 20 files) — 12 placed in the Gallery, 8 left unused in `assets/` as near-duplicates of shots already on the page:
+
+| Prepped filename | Used | Alt/subject |
+|---|---|---|
+| drama-shot.jpg | Gallery | Twin towers rising above the podium, dusk |
+| drop-off.jpg | Gallery | Arrival lobby / porte-cochère, night |
+| gym-and-wellness.jpg | Gallery | Sky gym & wellness floor |
+| sky-lounge-terrace.jpg | Gallery | Residents' lounge terrace, dusk |
+| pool-closeup.jpg | Gallery | Rooftop pool, golden-hour lifestyle shot |
+| restaurant-main.jpg | Gallery | Sky restaurant |
+| retail-02.jpg | Gallery | Retail podium boutique corridor |
+| 1-br-living-room.jpg | Gallery | One bedroom residence, living room |
+| 2-br-living-room.jpg | Gallery | Two bedroom residence, living room |
+| bedroom.jpg | Gallery | Master bedroom |
+| kitchen.jpg | Gallery | Kitchen |
+| master-bathroom.jpg | Gallery | Master ensuite |
+
+Unused (prepped in `assets/` but not on the page — front-view.jpg, street-view-01.jpg, street-view-02.jpg, birds-eye-view.jpg, retail.jpg, gym-upclose.jpg, gym-and-wellness-upclose.jpg, sky-lounge.jpg): each duplicates the framing/subject of an image already placed, kept in reserve in case the client prefers one of these over the current pick.
+
 Floor plans remain in-house SVGs (`plan-1br/2br/3br.svg`).
 
 ## Missing items
 1. Real sales phone/WhatsApp number (site shows +254 700 000 000 in index.html only — js/main.js now derives it from the page)
 2. Real sales email (site shows sales@nomadtwintowers.co.ke in index.html only — js/main.js derives it)
 3. Confirmed prices, unit sizes, floor count and completion date
-4. Interior renders — lounge, gym, bedroom, lobby — for the gallery
+4. ~~Interior renders — lounge, gym, bedroom, lobby — for the gallery~~ — RESOLVED 2026-07-27: second batch received, 12 placed in Gallery (see Content & imagery table above).
 5. Exact plot location / Google Maps coordinates for the map facade
 6. ~~Confirm the development name~~ — RESOLVED 2026-07-26 (Daniel): "Nomad Twin Towers" is correct, matches the render watermark. Site updated throughout (title, meta, OG, JSON-LD, alt text, footer, js/main.js) 2026-07-26.
 7. Client logo, if one exists (site currently uses an in-house monogram)
@@ -70,6 +89,11 @@ Floor plans remain in-house SVGs (`plan-1br/2br/3br.svg`).
   gate 2 should use the automated checks that make sense plus a judgment
   pass, and deploy is any static host).
 - Should the hotel/retail offering (visible in renders) get its own section?
+- `assets/pool-closeup.jpg` (now in the Gallery as "Rooftop Pool · Golden
+  Hour") shows a resident holding what reads as a cocktail glass. Most other
+  renders across both batches depict Muslim dress/attire — worth a client
+  check on whether that image is on-brand before this goes live, or whether
+  to swap in `assets/gym-and-wellness-upclose.jpg` or drop the shot.
 
 ## Pipeline status
 - Scaffold: n/a (hand-built, imported into `clients/Arkanah2/`)
@@ -85,3 +109,8 @@ Floor plans remain in-house SVGs (`plan-1br/2br/3br.svg`).
 - Review (gate 2): run 2026-07-15 → `review-report.md` (adapted automated
   checks + judgment pass); awaiting Muchiri's eyeball of the preview
 - Deploy: not deployed; any static host (see README)
+- 2026-07-26: name corrected to "Nomad Twin Towers" site-wide (see git log)
+- 2026-07-27: second render batch placed — Gallery expanded from 4 to 16
+  images (interiors, lobby, gym, lounge, restaurant, retail podium); brand
+  mark and WhatsApp deep-link text (missed in the 07-26 rename pass) fixed
+  to "Nomad Twin Towers"
