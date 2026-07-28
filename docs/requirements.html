@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Nomad Twin Towers — what we need from Obsha Properties</title>
+  <meta name="description" content="Content request for the Nomad Twin Towers website.">
+  <meta name="theme-color" content="#12161e">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+  <link rel="preload" href="fonts/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    @font-face { font-family: "Fraunces"; font-weight: 600; font-display: swap; src: url("fonts/fraunces-600.woff2") format("woff2"); }
+    @font-face { font-family: "Fraunces"; font-style: italic; font-weight: 500; font-display: swap; src: url("fonts/fraunces-italic-500.woff2") format("woff2"); }
+    @font-face { font-family: "Manrope"; font-weight: 400 700; font-display: swap; src: url("fonts/manrope-var.woff2") format("woff2"); }
+
+    :root {
+      --ink: #12161e; --ink-2: #171c26; --ink-3: #202634;
+      --gold: #cda060; --gold-soft: #e2bf8b;
+      --text: #e9e6de; --muted: #9aa1ab;
+      --line: rgba(205, 160, 96, 0.22);
+      --display: "Fraunces", Georgia, serif;
+      --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --w: min(46rem, 90vw);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--body); font-size: 1rem; line-height: 1.7; color: var(--text); background: var(--ink); -webkit-font-smoothing: antialiased; }
+    a { color: var(--gold-soft); text-decoration: none; border-bottom: 1px solid var(--line); }
+    a:hover { border-bottom-color: var(--gold); }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .wrap { width: var(--w); margin-inline: auto; }
+
+    h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.12; }
+    h1 { font-size: clamp(2rem, 5vw, 3.1rem); letter-spacing: -0.01em; }
+    h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); margin-top: 3.4rem; padding-top: 1.8rem; border-top: 1px solid var(--line); }
+    h3 { font-size: 1.05rem; color: var(--gold-soft); margin-top: 2rem; }
+    p, ul, ol, table { margin-top: 1rem; }
+    ul, ol { padding-left: 1.3rem; }
+    li { margin-top: 0.45rem; }
+    li::marker { color: var(--gold); }
+    strong { color: #fff; font-weight: 600; }
+    em { color: var(--gold-soft); }
+
+    .eyebrow { display: inline-flex; align-items: center; gap: 0.9rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); }
+    .eyebrow::before { content: ""; width: 2.2rem; height: 1px; background: var(--gold); opacity: 0.7; }
+
+    header.top { padding-block: clamp(3.5rem, 9vw, 6rem) clamp(2rem, 5vw, 3rem); }
+    header.top h1 { margin-top: 1.1rem; max-width: 18ch; }
+    header.top .lede { margin-top: 1.4rem; font-size: clamp(1rem, 1.8vw, 1.12rem); color: #c5c8cd; }
+
+    .callout { margin-top: 2rem; padding: 1.4rem 1.5rem; border: 1px solid var(--line); background: var(--ink-2); }
+    .callout p { margin-top: 0; }
+    .callout p + p { margin-top: 0.8rem; }
+    .callout--warn { border-color: rgba(205, 160, 96, 0.55); background: #241b09; }
+
+    .p { display: inline-block; min-width: 2.1rem; text-align: center; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.15rem 0.4rem; border: 1px solid currentColor; vertical-align: 0.1em; margin-right: 0.5rem; }
+    .p1 { color: #e8a08a; }
+    .p2 { color: var(--gold-soft); }
+    .p3 { color: var(--muted); }
+
+    .key { display: grid; gap: 0.7rem; margin-top: 1.4rem; padding: 1.3rem 1.4rem; border: 1px solid var(--line); }
+    .key div { display: flex; gap: 0.8rem; align-items: baseline; font-size: 0.92rem; color: #c5c8cd; }
+
+    .tablewrap { overflow-x: auto; margin-top: 1.4rem; border: 1px solid var(--line); }
+    table { border-collapse: collapse; width: 100%; min-width: 30rem; margin-top: 0; }
+    th, td { text-align: left; padding: 0.8rem 1rem; border-bottom: 1px solid var(--line); font-size: 0.9rem; vertical-align: top; }
+    th { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); background: var(--ink-2); }
+    tr:last-child td { border-bottom: 0; }
+    td.drop { color: #e8a08a; }
+    td.keep { color: #9fd0a8; }
+
+    .why { font-size: 0.92rem; color: var(--muted); font-style: italic; margin-top: 0.7rem; }
+
+    footer.end { margin-top: 4rem; padding-block: 2rem 4rem; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--muted); }
+    footer.end p + p { margin-top: 0.6rem; }
+
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="eyebrow">Nomad Twin Towers · Website</p>
+    <h1>What we need from Obsha Properties</h1>
+    <p class="lede">The site is built and live in preview. What's missing isn't design — it's four blocks of content only you can provide. This is the whole list, in priority order, with what happens to each section if it doesn't arrive.</p>
+
+    <div class="callout callout--warn">
+      <p><strong>Please read the preview with this in mind.</strong> Four sections of the preview site — <em>The Standard</em>, <em>Voices</em>, <em>Progress</em> and <em>The Dream</em> — are currently filled with <strong>invented placeholder text</strong> so you can see the layout working. The consultant names, registration numbers, testimonials, construction dates and founder story on that page are <strong>not real and were not supplied by you</strong>. They are there purely to show the shape of each section, and none of it will go live.</p>
+    </div>
+
+    <div class="key">
+      <div><span class="p p1">P1</span> The section cannot exist without this. If it doesn't arrive, we delete the section.</div>
+      <div><span class="p p2">P2</span> The section works without it, but is noticeably weaker.</div>
+      <div><span class="p p3">P3</span> Nice to have. We can launch and add it later.</div>
+    </div>
+  </header>
+
+  <main>
+
+    <h2>1. Build credibility</h2>
+    <p class="why">For "The Standard" section — the one that answers the question every off-plan buyer is actually asking.</p>
+    <p>This is the most valuable thing on the list. Competing developments lean on this harder than on anything else, and Nomad currently says nothing about it at all.</p>
+    <p>Everything here is a factual claim about regulatory status, so we will publish <strong>only</strong> what can be evidenced. Photos of certificates are perfect — we'll transcribe the details and won't publish the documents themselves.</p>
+
+    <h3>Cannot ship the section without these</h3>
+    <ol>
+      <li><span class="p p1">P1</span><strong>NCA registration of the main contractor</strong> — the registration number and registered company name.</li>
+      <li><span class="p p1">P1</span><strong>Nairobi County development approval</strong> — the reference number and date of issue.</li>
+      <li><span class="p p1">P1</span><strong>Land tenure</strong> — freehold or leasehold? If leasehold, the unexpired term. Who holds the mother title?</li>
+      <li><span class="p p1">P1</span><strong>What buyers actually receive at handover</strong> — sectional title, a share in a management company, or something else? This is the most common question from diaspora buyers and we currently cannot answer it.</li>
+    </ol>
+
+    <h3>Makes the section genuinely persuasive</h3>
+    <ol start="5">
+      <li><span class="p p2">P2</span><strong>Project team by name and firm</strong> — architect, structural engineer, quantity surveyor, main contractor. Where any of them has completed a building we can name, that's worth more than the credential itself.</li>
+      <li><span class="p p2">P2</span><strong>Design standards actually used</strong> — which building code the structure is designed to, and which fire standard it's certified against. Please don't guess: if the answer is "the Kenyan building code", say that. We would much rather publish something modest and true.</li>
+      <li><span class="p p2">P2</span><strong>Are deposits protected?</strong> Escrow, a project account, a bank guarantee, or nothing formal? If there's no protection scheme we simply won't mention it — but we need to know either way, because buyers will ask.</li>
+      <li><span class="p p2">P2</span><strong>Insurance</strong> — contractor's all-risk and professional indemnity in place?</li>
+      <li><span class="p p3">P3</span>Any third-party finance on the project. A named bank lending against it is independent validation, and worth saying.</li>
+    </ol>
+
+    <h2>2. Testimonials</h2>
+    <p class="why">For the "Voices" section. The site currently has no social proof of any kind.</p>
+    <p>We'd like four. The most persuasive testimonial on any competing site in this market is attributed simply to <em>"Kenyan Diaspora (U.S.A), Owner of Whole Floor"</em> — the role does more work than the words.</p>
+
+    <h3>For each person we need</h3>
+    <ul>
+      <li>Their name, or initials if they'd prefer. Initials plus a real role still works.</li>
+      <li><strong>Their role or their stake</strong> — this is the part that matters. "Bought a two bedroom, floor 14" or "Partner, [law firm]" beats any adjective.</li>
+      <li>Two to four sentences in their own words. Unpolished is better than polished.</li>
+      <li>Written permission to publish the quote and the attribution.</li>
+      <li>A photograph only if they're comfortable. The design works without one.</li>
+    </ul>
+
+    <h3>Who to ask, in order of usefulness</h3>
+    <ol>
+      <li><span class="p p1">P1</span>Anyone who has already reserved or bought — especially a diaspora buyer, and especially anyone who bought more than one unit.</li>
+      <li><span class="p p2">P2</span>The advocate handling the sale agreements, on the transaction process.</li>
+      <li><span class="p p2">P2</span>The architect or main contractor, on the build.</li>
+      <li><span class="p p3">P3</span>A property professional who has visited the site — an agent, a valuer, an agency principal.</li>
+    </ol>
+    <p><strong>If nobody will go on record yet, please just tell us.</strong> An honest empty section is better than a fabricated full one, and we'll drop it until there's something real.</p>
+
+    <h2>3. Construction progress</h2>
+    <p class="why">For the "Progress" section. Renders sell the dream; progress photos close the sale.</p>
+    <p>Right now the site shows only renders, so a sceptical buyer has no way to tell whether anything has been built at all.</p>
+    <ol>
+      <li><span class="p p1">P1</span><strong>Current stage of construction in plain terms</strong> — what is physically complete today, e.g. "basements and podium complete, structure at level 8".</li>
+      <li><span class="p p1">P1</span><strong>Six to ten dated site photographs</strong>, oldest to newest, ideally one every few months back to groundbreaking. <strong>Phone photos are completely fine</strong> — they are <em>more</em> convincing than professional ones. We need the month each was taken.</li>
+      <li><span class="p p1">P1</span><strong>Confirmed target handover date.</strong> The price list doesn't state one, and the site currently shows a guess that we would rather remove than publish.</li>
+      <li><span class="p p2">P2</span><strong>Is there a site camera</strong>, or could one be put up? A live or daily-updated view is the strongest version of this section.</li>
+      <li><span class="p p2">P2</span><strong>Will you commit to a monthly photo update?</strong> If yes, we'll design it in and say so on the page. If not, we'll word it as an occasional update rather than a promise the site can't keep.</li>
+      <li><span class="p p3">P3</span>The construction programme, so we can show honest stage-by-stage percentages rather than one overall number.</li>
+    </ol>
+
+    <h2>4. The developer's story</h2>
+    <p class="why">For "The Dream" section. The site currently credits "Obsha Properties" in the footer and nothing more.</p>
+    <ol>
+      <li><span class="p p2">P2</span><strong>Founder's name and title</strong>, and whether they're happy to be named and quoted on the site.</li>
+      <li><span class="p p2">P2</span><strong>When Obsha Properties was founded.</strong></li>
+      <li><span class="p p1">P1</span><strong>Previous completed developments</strong> — names, locations, years, unit counts. Even two or three is enough. This is track record, and it is the second-strongest trust signal after the approvals.</li>
+      <li><span class="p p2">P2</span><strong>Why this building</strong> — two or three sentences from the founder on what they set out to do differently with Nomad. We can draft this from a ten-minute phone call if writing it is a chore; we'd just need it approved.</li>
+      <li><span class="p p3">P3</span><strong>A photograph of the founder</strong>, if they're willing. If not, the section works without one — we will not substitute a stock portrait.</li>
+      <li><span class="p p2">P2</span><strong>An Obsha Properties logo</strong>, if one exists.</li>
+    </ol>
+
+    <h2>5. Photography and location</h2>
+    <ol>
+      <li><span class="p p2">P2</span><strong>A wide photograph of the Westlands skyline that includes the plot</strong>, for the locator band. A phone photo from a nearby rooftop is fine. We currently stand this in with an aerial render.</li>
+      <li><span class="p p1">P1</span><strong>The exact plot location</strong> — a pin, a plus code, or coordinates — so the map is accurate. Still outstanding from the original brief.</li>
+      <li><span class="p p2">P2</span><strong>Is the restaurant in the renders</strong> the 6th-floor "Alacat Hotel Restaurant" from your price list, or a separate amenity-floor space? We've kept the name generic until this is confirmed.</li>
+      <li><span class="p p2">P2</span><strong>A view on the rooftop pool image</strong> — it shows a resident holding what reads as a cocktail glass. Given the masjid on the 4th floor, is that image on-brand, or should we swap it?</li>
+    </ol>
+
+    <h2>6. Sales and commercial</h2>
+    <ol>
+      <li><span class="p p1">P1</span><strong>Do you want the "we'll call you back within one business day" promise on the site?</strong> The new enquiry bar makes it, and it's a real commitment from the sales team. If a day isn't realistic, tell us what is and we'll match the copy to reality. If you'd rather not commit, we'll remove the line.</li>
+      <li><span class="p p1">P1</span><strong>The real sales email address.</strong> <code>sales@nomadtwintowers.com</code> is still our guess — only the domain half is confirmed.</li>
+      <li><span class="p p1">P1</span><strong>Is <code>nomadtwintowers.com</code> already registered to you</strong>, or does it still need buying? A <code>.com</code> is a different purchase route from the <code>.co.ke</code> we costed earlier.</li>
+      <li><span class="p p1">P1</span><strong>A discrepancy in your own price list.</strong> The apartment table says <strong>18</strong> total floors, while the Project Overview on the same document says residential runs <strong>7th–18th</strong>, which is twelve floors. Which is right? We've removed the storey count from the site rather than guess.</li>
+      <li><span class="p p1">P1</span><strong>Payment plan terms</strong> — reservation fee, deposit percentage, instalment schedule, handover payment. We removed the previous figures because they couldn't be verified, so the Ownership section is currently non-numeric and noticeably vaguer than competitors'.</li>
+      <li><span class="p p3">P3</span><strong>Do you want the tier names?</strong> The preview shows "Signature" and "Signature Plus" sitting above "One Bedroom" and "Two Bedroom". It's purely a marketing device — happy to drop it, keep it, or use names of your choosing.</li>
+    </ol>
+
+    <h2>If nothing comes back</h2>
+    <p>So this isn't all-or-nothing, here's exactly what we ship for each new section if no content arrives.</p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Section</th><th>Without your content</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Enquiry bar</td><td class="keep">Ships as built — we drop the callback promise and keep the bar</td></tr>
+          <tr><td>Residence tiers</td><td class="keep">Ships as built, or reverts to plain unit names</td></tr>
+          <tr><td>Skyline locator</td><td class="keep">Ships with the aerial render instead of a photo; pin stays approximate</td></tr>
+          <tr><td>The Dream</td><td class="drop">Deleted</td></tr>
+          <tr><td>The Standard</td><td class="drop">Deleted — the biggest loss on this list</td></tr>
+          <tr><td>Voices</td><td class="drop">Deleted</td></tr>
+          <tr><td>Progress</td><td class="drop">Deleted</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Three of the seven survive. The other four are content we cannot write on your behalf — and would not want to.</p>
+
+  </main>
+
+  <footer class="end">
+    <p><a href="index.html">← Back to the preview site</a></p>
+    <p>This page and the preview it describes are working documents for Nomad Twin Towers, not published marketing material.</p>
+  </footer>
+
+</div>
+</body>
+</html>

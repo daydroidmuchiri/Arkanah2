@@ -1,5 +1,7 @@
+# PREVIEW BUILD — experiment/88-inspired-conversion.
+# This page carries invented placeholder content (fabricated NCA/county
+# approval references, fictional testimonials, an invented founder) and must
+# never be indexed, cached or surfaced in search. See PREVIEW-NOTES.md.
+# The production robots.txt lives on the main branch.
 User-agent: *
-Allow: /
-
-# Domain updated 2026-07-27 to match client's official price list; still pending final ownership/registration confirmation (see brief.md)
-Sitemap: https://nomadtwintowers.com/sitemap.xml
+Disallow: /
