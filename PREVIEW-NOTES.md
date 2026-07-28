@@ -13,6 +13,22 @@ client's own materials (brief.md, Missing item 11) — still holds. **Nothing on
 this branch may be merged to `main` until every item in the inventory below is
 either replaced with client-confirmed content or deleted.**
 
+## Where it's published
+
+- **Preview site** — <https://daydroidmuchiri.github.io/Arkanah2-preview/>
+- **Content request** — <https://daydroidmuchiri.github.io/Arkanah2-preview/requirements.html>
+  (also linked from the preview notice, so one URL reaches both)
+
+Served from a **separate repo**, `daydroidmuchiri/Arkanah2-preview`, because
+`Arkanah2` already spends its one GitHub Pages site on the live client site
+from `main`. That repo is a flat snapshot of this branch's `docs/` — it is not
+a source of truth and does not track this branch. **Re-push it manually after
+any change here**, or delete it once the real content lands:
+
+```
+gh repo delete daydroidmuchiri/Arkanah2-preview --yes
+```
+
 ## Safety
 
 - The Pages workflow (`.github/workflows/deploy-pages.yml`) triggers on
