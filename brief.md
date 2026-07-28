@@ -333,3 +333,10 @@ on deploy — see Open questions re: deploy-root exposure).
   just checking it parsed) — renders correctly, all pricing legible. The
   intermediate `.jpg` copy in `docs/assets/` was deleted once the PDF
   replaced it as the download target — only the PDF is referenced now.
+- 2026-07-28 (later): Cloudflare Web Analytics wired in — chosen over
+  GA4 per Daniel (free, no cookies/personal data, so no cookie-consent
+  banner needed; fits the budget-conscious scope and the site's already
+  careful stance on its audience). Daniel generated the site token
+  himself (token isn't a secret — Cloudflare Web Analytics tokens are
+  designed to sit in public page source, unlike an API key). Script tag
+  added right before `</body>` in `docs/index.html`.
