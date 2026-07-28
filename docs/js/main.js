@@ -181,14 +181,17 @@
     });
   }
 
+  /* ---------- Contact details, read once from the page ----------
+     index.html stays the single place to update when the real number/email
+     arrive (see brief.md). Hoisted out of the enquiry-form block because the
+     lead strip and docked bar hand off the same way. */
+  const waNumber = (($(".wa-float")?.getAttribute("href") || "").match(/wa\.me\/(\d+)/) || [])[1] || "";
+  const salesEmail = ($('.contact-rows a[href^="mailto:"]')?.getAttribute("href") || "mailto:").slice(7).split("?")[0];
+
   /* ---------- Enquiry form → WhatsApp / email handoff ---------- */
   const form = $("#enquiry-form");
   if (form) {
     const status = $(".form-status");
-    /* Contact details are read from the page so index.html is the single
-       place to update when the real number/email arrive (see brief.md). */
-    const waNumber = (($(".wa-float")?.getAttribute("href") || "").match(/wa\.me\/(\d+)/) || [])[1] || "";
-    const salesEmail = ($('.contact-rows a[href^="mailto:"]')?.getAttribute("href") || "mailto:").slice(7).split("?")[0];
     const buildMessage = () => {
       const d = new FormData(form);
       return [
@@ -224,6 +227,132 @@
       open(`https://wa.me/${waNumber}?text=${encodeURIComponent(buildMessage())}`, "_blank", "noopener");
       status.textContent = "Opening WhatsApp…";
     });
+  }
+
+  /* ============================================================
+     EXPERIMENT — 88 Nairobi-inspired conversion layer
+     Branch: experiment/88-inspired-conversion. Not on main.
+     ============================================================ */
+
+  /* ---------- Lead forms: strip + docked bar (rec 1) ----------
+     Same backend-free handoff as the main enquiry form: three fields, then
+     straight to WhatsApp. Nothing is stored on this site. */
+  $$("[data-lead-form]").forEach((lead) => {
+    const status = $(".lead-status", lead.parentElement);
+    lead.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let ok = true;
+      for (const el of lead.querySelectorAll("[required]")) {
+        const valid = el.checkValidity();
+        el.classList.toggle("is-invalid", !valid);
+        if (!valid) ok = false;
+      }
+      if (!ok) {
+        if (status) status.textContent = "Please complete the highlighted fields.";
+        return;
+      }
+      const d = new FormData(lead);
+      const msg = [
+        "Hello Nomad Twin Towers,",
+        "",
+        `My name is ${d.get("name")} and I'd like to register my interest.`,
+        "",
+        `Phone: ${d.get("phone")}`,
+        `Email: ${d.get("email")}`,
+      ].join("\n");
+      open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
+      if (status) status.textContent = "Opening WhatsApp — we'll be in touch.";
+      lead.reset();
+      lead.dispatchEvent(new CustomEvent("lead:sent"));
+    });
+  });
+
+  /* ---------- Docked lead bar visibility (rec 1b) ----------
+     Visible only in the middle of the page: after the hero is behind you, and
+     never while the real enquiry form is on screen. Dismissal lasts the tab
+     session, so it can't nag someone who has already said no. */
+  const dock = $("[data-dock]");
+  if (dock && !sessionStorage.getItem("dock-dismissed")) {
+    let pastHero = false;
+    let atForm = false;
+    /* Publish the bar's real height so the WhatsApp float can sit clear of it
+       — it changes with breakpoint and with how the preview notice wraps. */
+    const measure = () => {
+      document.documentElement.style.setProperty("--dock-h", `${dock.offsetHeight}px`);
+    };
+    const sync = () => {
+      dock.hidden = !pastHero || atForm;
+      if (!dock.hidden) measure();
+    };
+    addEventListener("resize", () => {
+      if (!dock.hidden) measure();
+    }, { passive: true });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        ([en]) => {
+          pastHero = !en.isIntersecting;
+          sync();
+        },
+        { threshold: 0.15 }
+      ).observe($(".hero"));
+      new IntersectionObserver(
+        ([en]) => {
+          atForm = en.isIntersecting;
+          sync();
+        },
+        { threshold: 0.1 }
+      ).observe($("#enquire"));
+    }
+    $("[data-dock-close]").addEventListener("click", () => {
+      dock.hidden = true;
+      sessionStorage.setItem("dock-dismissed", "1");
+    });
+    /* A lead that actually went through shouldn't keep being asked for. */
+    $("[data-lead-form]", dock).addEventListener("lead:sent", () => {
+      setTimeout(() => {
+        dock.hidden = true;
+        sessionStorage.setItem("dock-dismissed", "1");
+      }, 1200);
+    });
+  }
+
+  /* ---------- Progress bar fill (rec 5) ----------
+     Runs in step with the percentage count-up next to it. The inline width in
+     the markup keeps the bar correct when JS never arrives. */
+  const bar = $("[data-bar-fill]");
+  if (bar && !reducedMotion && "IntersectionObserver" in window) {
+    const target = `${bar.dataset.barFill}%`;
+    bar.style.width = "0";
+    bar.style.transition = "width 1.4s cubic-bezier(0.22, 1, 0.36, 1)";
+    const bio = new IntersectionObserver(
+      ([en]) => {
+        if (!en.isIntersecting) return;
+        bar.style.width = target;
+        bio.disconnect();
+      },
+      { threshold: 0.6 }
+    );
+    bio.observe(bar.closest(".progress-bar-wrap"));
+  }
+
+  /* ---------- Testimonial track (rec 4) ---------- */
+  const quotes = $(".quote-track");
+  if (quotes) {
+    const qPrev = $("[data-quote-prev]");
+    const qNext = $("[data-quote-next]");
+    const qStep = (dir) => {
+      const item = quotes.querySelector(".quote");
+      const gap = parseFloat(getComputedStyle(quotes).columnGap) || 16;
+      quotes.scrollBy({ left: dir * (item.offsetWidth + gap), behavior: reducedMotion ? "auto" : "smooth" });
+    };
+    qPrev.addEventListener("click", () => qStep(-1));
+    qNext.addEventListener("click", () => qStep(1));
+    const qSync = () => {
+      qPrev.disabled = quotes.scrollLeft < 10;
+      qNext.disabled = quotes.scrollLeft > quotes.scrollWidth - quotes.clientWidth - 10;
+    };
+    quotes.addEventListener("scroll", qSync, { passive: true });
+    qSync();
   }
 
   /* ---------- Footer year ---------- */

@@ -63,8 +63,9 @@
           <li><a href="#residences">Residences</a></li>
           <li><a href="#amenities">Amenities</a></li>
           <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#standards">Standards</a></li>
+          <li><a href="#progress">Progress</a></li>
           <li><a href="#location">Location</a></li>
-          <li><a href="#invest">Invest</a></li>
           <li><a class="nav-cta" href="#enquire">Enquire</a></li>
         </ul>
       </nav>
@@ -92,6 +93,28 @@
           <div><dt>Residences</dt><dd>1 – 2 Bedroom</dd></div>
           <div><dt>Developer</dt><dd>Obsha Properties</dd></div>
         </dl>
+      </div>
+    </section>
+
+    <!-- ============ LEAD STRIP (rec 1a) ============
+         Inline capture bar directly under the hero, mirroring 88 Nairobi's
+         "Register your interest" band. Same WhatsApp/email handoff as the
+         main form — nothing is stored.
+         FILLER: the "within one business day" callback promise is invented;
+         Obsha have never committed to a response time. -->
+    <section class="lead-strip" id="register" data-filler="callback-promise">
+      <div class="wrap lead-strip-inner">
+        <div class="lead-strip-copy">
+          <h2>Register your interest</h2>
+          <p>Leave your details and a member of the sales team will call you back within one business day.</p>
+        </div>
+        <form class="lead-form" data-lead-form novalidate>
+          <div class="field"><label for="l-name">Name</label><input id="l-name" name="name" type="text" autocomplete="name" placeholder="Full name" required></div>
+          <div class="field"><label for="l-email">Email</label><input id="l-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required></div>
+          <div class="field"><label for="l-phone">Phone</label><input id="l-phone" name="phone" type="tel" autocomplete="tel" placeholder="+254…" required></div>
+          <button class="btn btn--solid" type="submit">I'm Interested</button>
+        </form>
+        <p class="lead-status" role="status" aria-live="polite"></p>
       </div>
     </section>
 
@@ -132,6 +155,54 @@
       </div>
     </section>
 
+    <!-- ============ SKYLINE LOCATOR (rec 2) ============
+         88 Nairobi's strongest single device: the real city skyline with the
+         tower pinned in it, so "where is this" is answered without copy.
+         FILLER: `birds-eye-view.jpg` is an artist's render standing in for a
+         real photograph of the Westlands skyline, and the pin is positioned by
+         eye — the actual plot has never been confirmed (brief.md Missing 5). -->
+    <section class="skyline cv-auto" aria-label="Nomad Twin Towers in the Westlands skyline" data-filler="skyline-photo,pin-position">
+      <picture>
+        <source type="image/webp" srcset="assets/birds-eye-view-800.webp 800w, assets/birds-eye-view-1200.webp 1200w, assets/birds-eye-view.webp 1600w" sizes="100vw">
+        <img src="assets/birds-eye-view-1200.jpg" srcset="assets/birds-eye-view-800.jpg 800w, assets/birds-eye-view-1200.jpg 1200w, assets/birds-eye-view.jpg 1600w" sizes="100vw" alt="Aerial view of Westlands with Nomad Twin Towers marked" width="1600" height="1200" loading="lazy" decoding="async">
+      </picture>
+      <div class="skyline-pin reveal">
+        <img src="assets/logo-mark.png" alt="" width="30" height="30" decoding="async">
+        <span class="skyline-pin-stem" aria-hidden="true"></span>
+      </div>
+      <p class="skyline-label reveal">Westlands, Nairobi · <span class="serif-accent">off Waiyaki Way</span></p>
+    </section>
+
+    <!-- ============ THE DREAM (rec 7) ============
+         Founder narrative. 88 Nairobi attaches its whole story to a named
+         person; ours is currently an anonymous footer credit.
+         FILLER: "Ahmed Obsha", his title, the 2009 founding date, the four
+         previous developments and the entire quote are ALL INVENTED for this
+         preview. Nothing here came from the client. -->
+    <section class="section section--ink2 cv-auto" id="dream" data-filler="founder-name,founder-title,founder-quote,track-record">
+      <div class="wrap split">
+        <div class="split-copy">
+          <p class="eyebrow reveal">The Dream</p>
+          <h2 class="reveal" data-delay="1">One address, <span class="serif-accent">seventeen years in the making.</span></h2>
+          <p class="reveal" data-delay="2">Ahmed Obsha founded Obsha Properties in 2009 with a single conviction: that Nairobi deserved buildings finished to the standard its people already lived to. Four completed developments later, Nomad Twin Towers is the one he had been building toward — a mixed-use address where the retail, the residences and the hotel were drawn as one building rather than stacked as three.</p>
+          <blockquote class="pull-quote reveal" data-delay="2">
+            <p>We were not trying to build the tallest thing in Westlands. We were trying to build the one people still want to live in twenty years from now.</p>
+            <cite>Ahmed Obsha · Founder, Obsha Properties</cite>
+          </blockquote>
+          <a class="btn btn--ghost reveal" data-delay="3" href="#standards">How It's Built</a>
+        </div>
+        <div class="founder-card reveal" data-delay="1">
+          <div class="founder-portrait" aria-hidden="true"><span>AO</span></div>
+          <dl class="founder-facts">
+            <div><dt>Founded</dt><dd>2009</dd></div>
+            <div><dt>Completed Projects</dt><dd>4</dd></div>
+            <div><dt>Units Delivered</dt><dd>610</dd></div>
+            <div><dt>Based In</dt><dd>Nairobi</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ RESIDENCES ============ -->
     <section class="section cv-auto" id="residences">
       <div class="wrap">
@@ -140,8 +211,13 @@
           <h2 class="reveal" data-delay="1">Two ways to live <span class="serif-accent">above it all.</span></h2>
           <p class="lede reveal" data-delay="2">Each layout is planned for cross-ventilation, natural light and uninterrupted skyline views. All prices are in USD, off-plan, with flexible payment terms.</p>
         </div>
-        <div class="res-grid">
-          <article class="res-card reveal">
+        <!-- FILLER (rec 6): the tier names "Signature" and "Signature Plus"
+             are invented for this preview. The price list only ever calls
+             these "1 Bedroom" and "2 Bedroom" — the factual names are kept as
+             the card headings underneath. -->
+        <div class="res-grid" data-filler="tier-names">
+          <article class="res-card res-card--tier reveal" data-tier="signature">
+            <p class="res-tier"><span>Signature</span></p>
             <figure>
               <div class="res-toggle" role="tablist" aria-label="View as photo or floor plan">
                 <button type="button" role="tab" aria-pressed="true" data-view="photo">Photo</button>
@@ -161,7 +237,8 @@
               <a class="btn btn--ghost" href="#enquire">Request Floor Plans</a>
             </div>
           </article>
-          <article class="res-card reveal" data-delay="1">
+          <article class="res-card res-card--tier reveal" data-delay="1" data-tier="signature-plus">
+            <p class="res-tier"><span>Signature Plus</span></p>
             <figure>
               <div class="res-toggle" role="tablist" aria-label="View as photo or floor plan">
                 <button type="button" role="tab" aria-pressed="true" data-view="photo">Photo</button>
@@ -385,6 +462,164 @@
       </dialog>
     </section>
 
+    <!-- ============ STANDARDS (rec 3) ============
+         Our version of 88 Nairobi's "The Citadel" — the section that answers
+         the off-plan buyer's real question: will this get built, and built
+         properly. This is the single biggest content gap on the live site
+         (brief.md Missing item 9).
+         FILLER: EVERY figure, standard, registration number and party named
+         below is INVENTED. No NCA number, approval, consultant, contractor,
+         insurer or title status has ever been supplied by Obsha. This section
+         cannot ship in any form until it is replaced wholesale. -->
+    <section class="section section--light cv-auto" id="standards" data-filler="all-credentials,all-standards,all-parties">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow reveal">The Standard</p>
+          <h2 class="reveal" data-delay="1">Built to be inspected, <span class="serif-accent">not just admired.</span></h2>
+          <p class="lede reveal" data-delay="2">Every claim on this page is backed by a drawing, an approval or a certificate — and we'll show you all three before you sign anything.</p>
+        </div>
+        <div class="std-grid">
+          <article class="std reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M3 21h18M6 21V8l6-4 6 4v13M10 21v-5h4v5"/></svg>
+            <h3>Structure</h3>
+            <p>Reinforced concrete frame designed to Eurocode 8 seismic provisions for the Nairobi region, with an independent structural check before each pour.</p>
+            <ul>
+              <li><span>Structural Engineer</span><strong>Kanyi &amp; Partners Consulting</strong></li>
+              <li><span>Design Code</span><strong>Eurocode 2 / Eurocode 8</strong></li>
+              <li><span>Main Contractor</span><strong>Sandhurst Construction Ltd</strong></li>
+            </ul>
+          </article>
+          <article class="std reveal" data-delay="1">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
+            <h3>Safety &amp; Fire</h3>
+            <p>Two protected escape stairs, a sprinklered podium and residential core, addressable detection throughout, and a fire tank sized for full-building suppression.</p>
+            <ul>
+              <li><span>Fire Standard</span><strong>NFPA 101 / BS 9991</strong></li>
+              <li><span>Certification</span><strong>Nairobi County Fire Dept.</strong></li>
+              <li><span>Backup Power</span><strong>Dual generators, N+1</strong></li>
+            </ul>
+          </article>
+          <article class="std reveal" data-delay="2">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg>
+            <h3>Approvals &amp; Title</h3>
+            <p>Full county development approval in place, NCA-registered contractor, and a freehold mother title held by the project's own SPV — buyers receive a registered sectional title on completion.</p>
+            <ul>
+              <li><span>NCA Registration</span><strong>NCA/1/2019/04471</strong></li>
+              <li><span>County Approval</span><strong>NCC/DEV/2024/1188</strong></li>
+              <li><span>Tenure</span><strong>Freehold · sectional title</strong></li>
+            </ul>
+          </article>
+        </div>
+        <div class="std-note reveal">
+          <p><strong>Buyer protection.</strong> Deposits are held in a joint escrow account operated by the project advocates and released against certified construction milestones. Ask the sales team for the escrow agreement and the latest engineer's certificate.</p>
+          <a class="btn btn--ghost" href="#enquire">Request the Documents</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROGRESS (rec 5) ============
+         88 Nairobi puts "LIVE FEED" in its primary nav — a construction camera.
+         For off-plan, proof of progress outsells any render. This is the
+         honest-substitute version: a dated site log with a completion bar.
+         FILLER: every percentage, date, milestone and caption is INVENTED, and
+         the "site photos" are artist's renders standing in for real
+         photographs. The completion date is also still unconfirmed
+         (brief.md Missing item 3b). -->
+    <section class="section cv-auto" id="progress" data-filler="all-milestones,all-dates,progress-photos,completion-date">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow reveal">Progress</p>
+          <h2 class="reveal" data-delay="1">Watch it go up, <span class="serif-accent">floor by floor.</span></h2>
+          <p class="lede reveal" data-delay="2">Site photographs are published here at the end of every month, and every buyer receives the same update by email. Nothing is hidden between now and handover.</p>
+        </div>
+        <div class="progress-bar-wrap reveal">
+          <div class="progress-meta">
+            <span class="progress-pct"><span data-count="42">0</span><sup>%</sup></span>
+            <span class="progress-cap">Complete · updated July 2026</span>
+          </div>
+          <!-- inline width so the bar is correct with JS disabled; main.js
+               animates it from 0 in step with the percentage count-up -->
+          <div class="progress-bar"><span data-bar-fill="42" style="width:42%"></span></div>
+          <ol class="progress-scale" aria-hidden="true">
+            <li>Groundworks</li><li>Podium</li><li>Structure</li><li>Envelope</li><li>Fit-out</li><li>Handover</li>
+          </ol>
+        </div>
+        <div class="progress-log">
+          <article class="prog reveal">
+            <figure>
+              <picture>
+                <source type="image/webp" srcset="assets/street-view-01-800.webp 800w, assets/street-view-01-1200.webp 1200w" sizes="(max-width: 880px) 90vw, 360px">
+                <img src="assets/street-view-01-800.jpg" srcset="assets/street-view-01-800.jpg 800w, assets/street-view-01-1200.jpg 1200w" sizes="(max-width: 880px) 90vw, 360px" alt="Site view from street level" width="1600" height="1200" loading="lazy" decoding="async">
+              </picture>
+              <figcaption>July 2026</figcaption>
+            </figure>
+            <h3>Structure at level 11</h3>
+            <p>Slab poured to the eleventh floor. Residential core formwork now running one floor ahead of the slab cycle.</p>
+          </article>
+          <article class="prog reveal" data-delay="1">
+            <figure>
+              <picture>
+                <source type="image/webp" srcset="assets/retail-800.webp 800w, assets/retail-1200.webp 1200w" sizes="(max-width: 880px) 90vw, 360px">
+                <img src="assets/retail-800.jpg" srcset="assets/retail-800.jpg 800w, assets/retail-1200.jpg 1200w" sizes="(max-width: 880px) 90vw, 360px" alt="Retail podium under construction" width="1600" height="1202" loading="lazy" decoding="async">
+              </picture>
+              <figcaption>April 2026</figcaption>
+            </figure>
+            <h3>Podium topped out</h3>
+            <p>Retail podium structure complete to the sixth floor, including the supermarket slab and both basement parking levels.</p>
+          </article>
+          <article class="prog reveal" data-delay="2">
+            <figure>
+              <picture>
+                <source type="image/webp" srcset="assets/street-view-02-800.webp 800w, assets/street-view-02-1200.webp 1200w" sizes="(max-width: 880px) 90vw, 360px">
+                <img src="assets/street-view-02-800.jpg" srcset="assets/street-view-02-800.jpg 800w, assets/street-view-02-1200.jpg 1200w" sizes="(max-width: 880px) 90vw, 360px" alt="Excavation and substructure works" width="1600" height="1200" loading="lazy" decoding="async">
+              </picture>
+              <figcaption>October 2025</figcaption>
+            </figure>
+            <h3>Substructure complete</h3>
+            <p>Excavation, piling and raft foundation signed off by the structural engineer. Basement waterproofing tested and certified.</p>
+          </article>
+        </div>
+        <p class="progress-foot reveal">Targeting handover from <strong>Q4 2027</strong>. <a href="#enquire">Ask for the current programme →</a></p>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS (rec 4) ============
+         88 Nairobi's testimonials carry credentialed roles — a law-firm
+         partner, a portal CEO, and "Owner of Whole Floor". The role does more
+         work than the quote. We currently have no social proof at all.
+         FILLER: ALL FOUR PEOPLE, THEIR ROLES AND THEIR QUOTES ARE INVENTED.
+         These are fictional and must never go live in any form. -->
+    <section class="section section--ink2 cv-auto" id="voices" data-filler="all-testimonials-fictional">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow reveal">Voices</p>
+          <h2 class="reveal" data-delay="1">What buyers say <span class="serif-accent">once they've seen it.</span></h2>
+        </div>
+        <div class="quote-track reveal">
+          <figure class="quote">
+            <blockquote><p>I bought off-plan in Westlands once before and spent three years chasing the developer for updates. Here I get a photograph and an engineer's note every month without asking. That alone was worth the difference in price.</p></blockquote>
+            <figcaption><strong>Faiza Abdi</strong><span>Bought a two bedroom · Floor 14</span></figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote><p>We reviewed the sale agreement and the escrow arrangement for a client. It is the most straightforward off-plan structure we have seen in this market — the milestones are defined, and the release conditions are actually enforceable.</p></blockquote>
+            <figcaption><strong>Peter Njoroge</strong><span>Partner, Njoroge &amp; Wambui Advocates</span></figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote><p>I live in Manchester and I have not been on site once. My brother viewed it, the sales team walked me through the floor plans on a video call, and every payment has matched what I was quoted at reservation. No surprises.</p></blockquote>
+            <figcaption><strong>S.M.</strong><span>Kenyan diaspora, UK · Bought two units</span></figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote><p>What sold it for us was the podium. My wife can do the school run, get the shopping and be back upstairs without ever getting into the car. In Westlands traffic, that is the whole argument.</p></blockquote>
+            <figcaption><strong>Daniel &amp; Wanjiru Kariuki</strong><span>Bought a one bedroom · Floor 9</span></figcaption>
+          </figure>
+        </div>
+        <div class="quote-nav reveal">
+          <button class="gal-btn" data-quote-prev aria-label="Previous quote"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button class="gal-btn" data-quote-next aria-label="Next quote"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ LOCATION ============ -->
     <section class="section section--light cv-auto" id="location">
       <div class="wrap split">
@@ -492,7 +727,11 @@
           <a href="#about">Vision</a>
           <a href="#residences">Residences</a>
           <a href="#amenities">Amenities</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#standards">Standards</a>
+          <a href="#progress">Progress</a>
           <a href="#location">Location</a>
+          <a href="#invest">Invest</a>
           <a href="#enquire">Enquire</a>
         </nav>
       </div>
@@ -502,6 +741,33 @@
       </div>
     </div>
   </footer>
+
+  <!-- ============ STICKY LEAD BAR (rec 1b) ============
+       88 Nairobi pins its capture form to the bottom of the viewport for the
+       whole page. This version appears once the hero is scrolled past, hides
+       itself while the #enquire section is on screen (so it never competes
+       with the real form), and can be dismissed for the session.
+       FILLER: same invented "one business day" callback promise as the strip. -->
+  <div class="dock" data-dock hidden>
+    <!-- PREVIEW-ONLY: this notice does not exist on the main branch. It is here
+         so nobody mistakes an experiment full of invented figures for the real
+         site. See PREVIEW-NOTES.md. -->
+    <p class="dock-preview">Preview build — testimonials, credentials, progress figures and founder story on this page are <strong>placeholder content</strong>, not client-supplied facts.</p>
+    <div class="dock-bar">
+      <div class="wrap dock-inner">
+        <p class="dock-copy"><strong>Register your interest</strong><span>We'll call you back within one business day.</span></p>
+        <form class="lead-form" data-lead-form novalidate>
+          <div class="field"><label for="d-name">Name</label><input id="d-name" name="name" type="text" autocomplete="name" placeholder="Full name" required></div>
+          <div class="field"><label for="d-email">Email</label><input id="d-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required></div>
+          <div class="field"><label for="d-phone">Phone</label><input id="d-phone" name="phone" type="tel" autocomplete="tel" placeholder="+254…" required></div>
+          <button class="btn btn--solid" type="submit">I'm Interested</button>
+        </form>
+        <a class="btn btn--solid dock-mobile-cta" href="#enquire">Enquire</a>
+        <p class="lead-status" role="status" aria-live="polite"></p>
+        <button class="dock-close" type="button" data-dock-close aria-label="Hide the enquiry bar">×</button>
+      </div>
+    </div>
+  </div>
 
   <a class="wa-float" href="https://wa.me/254711111188?text=Hello%20Nomad%20Twin%20Towers%2C%20I%27d%20like%20to%20enquire." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.5 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.4-.3z"/></svg>
