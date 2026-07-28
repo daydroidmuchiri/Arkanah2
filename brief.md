@@ -314,14 +314,22 @@ on deploy — see Open questions re: deploy-root exposure).
   was the real fix. Verified live via curl with cache-busting query
   strings — internal files 404, site itself works.
 - 2026-07-28: "Request the Brochure" button (About/Vision section) now
-  downloads the client's price list directly (`download` attribute,
-  `docs/assets/nomad-twin-towers-brochure.jpg`) instead of scrolling to
-  `#enquire` — was a label/behavior mismatch before (said "brochure",
-  scrolled to a contact form). This is a **deliberate copy** of
-  `reference/nomad-twin-towers-price-list-2026-07-27.jpeg` placed inside
-  `docs/assets/` (the served folder) — intentional public exposure of this
-  file, unlike `reference/`'s general internal-only status. Contains the
-  same phone number and pricing already public elsewhere on the site, so
-  no new sensitive info exposed. Still a JPEG, not a PDF — fine for now,
-  a PDF conversion would be a small follow-up if the client wants a more
-  traditional "brochure" file format.
+  downloads the client's price list directly (`download` attribute)
+  instead of scrolling to `#enquire` — was a label/behavior mismatch
+  before (said "brochure", scrolled to a contact form). This is a
+  **deliberate copy** of `reference/nomad-twin-towers-price-list-2026-07-27.jpeg`
+  placed inside `docs/assets/` (the served folder) — intentional public
+  exposure of this file, unlike `reference/`'s general internal-only
+  status. Contains the same phone number and pricing already public
+  elsewhere on the site, so no new sensitive info exposed.
+- 2026-07-28 (later): converted to a proper single-page PDF per Daniel's
+  request — `docs/assets/nomad-twin-towers-brochure.pdf` (A4 portrait,
+  image fit-by-height and centered). No PDF library existed anywhere in
+  the monorepo, and a single embedded image doesn't need one: hand-built
+  a minimal valid PDF (`/tmp/make-brochure-pdf.js`, not committed — a
+  throwaway script) that wraps the JPEG bytes directly in a `DCTDecode`
+  XObject stream without re-encoding, so zero quality loss and no new
+  dependency. Verified by actually reading the generated PDF back (not
+  just checking it parsed) — renders correctly, all pricing legible. The
+  intermediate `.jpg` copy in `docs/assets/` was deleted once the PDF
+  replaced it as the download target — only the PDF is referenced now.
