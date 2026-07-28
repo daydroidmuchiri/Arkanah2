@@ -313,3 +313,15 @@ on deploy — see Open questions re: deploy-root exposure).
   deployment (`build_type: workflow` + `.github/workflows/deploy-pages.yml`)
   was the real fix. Verified live via curl with cache-busting query
   strings — internal files 404, site itself works.
+- 2026-07-28: "Request the Brochure" button (About/Vision section) now
+  downloads the client's price list directly (`download` attribute,
+  `docs/assets/nomad-twin-towers-brochure.jpg`) instead of scrolling to
+  `#enquire` — was a label/behavior mismatch before (said "brochure",
+  scrolled to a contact form). This is a **deliberate copy** of
+  `reference/nomad-twin-towers-price-list-2026-07-27.jpeg` placed inside
+  `docs/assets/` (the served folder) — intentional public exposure of this
+  file, unlike `reference/`'s general internal-only status. Contains the
+  same phone number and pricing already public elsewhere on the site, so
+  no new sensitive info exposed. Still a JPEG, not a PDF — fine for now,
+  a PDF conversion would be a small follow-up if the client wants a more
+  traditional "brochure" file format.
