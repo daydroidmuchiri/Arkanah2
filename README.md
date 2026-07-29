@@ -64,15 +64,21 @@ brief.md, README.md, review-report.md  internal project docs — NOT served
   (`reference/nomad-twin-towers-price-list-2026-07-27.jpeg`). In
   `docs/index.html` only (`docs/js/main.js` derives it from the floating
   WhatsApp button's href).
-- **Email** `sales@nomadtwintowers.com` — still a PLACEHOLDER; only the
-  domain half is confirmed, the mailbox itself was never given by the
-  client. In `docs/index.html` only (`docs/js/main.js` derives it from the contact
-  mailto link).
+- **Email** `sales@nomadtwintowers.com` — no longer a placeholder to swap out.
+  The client never supplied an address, so rather than guess a mailbox we're
+  creating the one already on the page: **Cloudflare Email Routing** (free
+  with the domain) forwards `sales@nomadtwintowers.com` to a Gmail account.
+  **The site needs no change** — the address it already displays becomes real
+  once routing is switched on in the Cloudflare dashboard. It lives in
+  `docs/index.html` only (`docs/js/main.js` derives the form's mailto handoff
+  from that contact link), so if it ever does change, one line covers it.
 - **Domain** `https://nomadtwintowers.com/` — confirmed 2026-07-27 from the
-  client's price list (was previously a `.co.ke` placeholder). Still needs
-  one check: whether the client already owns it or it needs registering.
-  Canonical link, Open Graph tags, JSON-LD, `robots.txt` and `sitemap.xml`
-  are all updated to match.
+  client's price list (was previously a `.co.ke` placeholder). Registrar
+  decided 2026-07-29: **Cloudflare Registrar** — at-cost pricing, WHOIS
+  privacy included, and the free Email Routing above. Still open: whether the
+  client already owns the domain or it needs registering. Canonical link, Open
+  Graph tags, JSON-LD, `robots.txt` and `sitemap.xml` all already point at it,
+  so they start resolving the moment DNS is live and the Pages CNAME is set.
 - **Prices, unit sizes** — now match the client's official price list (USD
   per sqm: 1BR 60sqm ≈$87,000, 2BR 100sqm ≈$180,000). **Storey count and
   completion date were removed from the live copy 2026-07-27** (unconfirmed

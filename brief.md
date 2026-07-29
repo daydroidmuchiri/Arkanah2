@@ -76,9 +76,13 @@ received for Obsha itself; text credit only.
 Phone/WhatsApp: **+254 711 111 188** — REAL, from the client's price list,
 replaced the `+254 700 000 000` placeholder 2026-07-27 (tel link, WhatsApp
 float, contact row — js/main.js derives the WhatsApp number from the page).
-Email: `sales@nomadtwintowers.com` — still a PLACEHOLDER (no real email was
-given anywhere in the price list); only the domain half was corrected from
-`.co.ke` to `.com` to match the confirmed domain (see Missing item 8).
+Email: `sales@nomadtwintowers.com` — CONFIRMED as the address the site will
+use, 2026-07-29. It was never given in the price list, but Daniel confirmed
+the plan: register the domain through Cloudflare Registrar and use Cloudflare
+Email Routing (free, included) to forward `sales@nomadtwintowers.com` to a
+Gmail account. So the address on the page stays exactly as-is and becomes real
+once routing is configured — **no code change needed**. The mailbox itself is
+still to be set up (see Missing item 2).
 Map: none — click-to-load facade currently points at central Westlands.
 Hours: n/a (sales gallery).
 WhatsApp greeting: "Hello Nomad Twin Towers, I'd like to enquire."
@@ -143,13 +147,14 @@ on deploy — see Open questions re: deploy-root exposure).
 
 ## Missing items
 1. ~~Real sales phone/WhatsApp number~~ — RESOLVED 2026-07-27: `+254 711 111 188`, from the price list.
-2. Real sales email — still open. Domain half corrected to `.com` 2026-07-27, but `sales@` itself is still an unconfirmed placeholder; no email address appeared anywhere in the client's materials.
+2. ~~Real sales email~~ — RESOLVED IN PRINCIPLE 2026-07-29. No email address ever appeared in the client's materials, so rather than guess a mailbox we're creating the one already on the page: the domain is being registered through **Cloudflare Registrar**, and **Cloudflare Email Routing** (free, included with the domain) will forward `sales@nomadtwintowers.com` to a Gmail account. The site needs no change — the address it already displays becomes real the moment routing is switched on. This also avoids showing a raw Gmail address next to USD 180,000 apartments, which is the kind of detail a cautious diaspora buyer notices.
+   Still to do, none of it in this repo: (a) register the domain (see item 8); (b) add the routing rule in the Cloudflare dashboard and verify the destination Gmail; (c) if replies should also come *from* `sales@nomadtwintowers.com` rather than the Gmail, add it in Gmail under Settings → Accounts → "Send mail as" — Google emails a confirmation code to that address, which Email Routing forwards through. Usually works without external SMTP, but confirm it before promising the client a fully branded mailbox.
 3. ~~Confirmed prices, unit sizes, floor count and completion date~~ — PARTIALLY RESOLVED 2026-07-27: unit sizes and prices now match the official price list (USD, per sqm — see Business summary). Still open: (a) the price list's apartment table says "18" under "Total Floors" for both unit types, while the Project Overview footer of the same document says residential spans floors "7TH–18TH" (12 floors) — these two numbers in the client's own document don't obviously reconcile; worth asking the client to clarify rather than guessing. (b) Completion date (Q4 2027) is not stated anywhere in the price list — still a placeholder.
 4. ~~Interior renders — lounge, gym, bedroom, lobby — for the gallery~~ — RESOLVED 2026-07-27.
 5. Exact plot location / Google Maps coordinates for the map facade — still open.
 6. ~~Confirm the development name~~ — RESOLVED 2026-07-26.
 7. Client logo, if one exists — still open (in-house monogram in use). Note: Obsha Properties (the developer) also has no logo asset on file; footer currently credits them as plain text.
-8. ~~Production domain~~ — RESOLVED 2026-07-27: the client's own price list prints `www.nomadtwintowers.com`. Canonical/og:url/JSON-LD/robots.txt/sitemap.xml all switched from the `nomadtwintowers.co.ke` placeholder to `nomadtwintowers.com` 2026-07-27. **This supersedes the earlier NovaHost `.co.ke` domain-purchase research and the client cost message drafted around it (KSh 1,180 for a `.co.ke` domain) — that conversation was based on the wrong TLD.** Still needs one check: confirm with the client whether `nomadtwintowers.com` is already registered/owned, or still needs buying — a `.com` from a registrar like Namecheap/Cloudflare Registrar is a very different purchase flow (and price) than the `.co.ke` KENIC-registrar path discussed earlier.
+8. ~~Production domain~~ — RESOLVED 2026-07-27: the client's own price list prints `www.nomadtwintowers.com`. Canonical/og:url/JSON-LD/robots.txt/sitemap.xml all switched from the `nomadtwintowers.co.ke` placeholder to `nomadtwintowers.com` 2026-07-27. **This supersedes the earlier NovaHost `.co.ke` domain-purchase research and the client cost message drafted around it (KSh 1,180 for a `.co.ke` domain) — that conversation was based on the wrong TLD.** Registrar decided 2026-07-29: **Cloudflare Registrar**, confirmed by Daniel. Cloudflare sells at cost with no renewal markup and includes WHOIS privacy (a `.com` is roughly USD 10–11/yr), and crucially it comes with free Email Routing, which is what makes `sales@nomadtwintowers.com` work without a mail server (see Missing item 2). Still open: whether the domain is already registered to the client or still needs buying — and once its DNS is on Cloudflare, pointing it at GitHub Pages via CNAME moves the site off `daydroidmuchiri.github.io/Arkanah2/` and makes the canonical/og:url/JSON-LD URLs resolve for the first time.
 9. Developer credibility content — PARTIALLY RESOLVED 2026-07-27: developer name "Obsha Properties" confirmed and credited in the footer. Still needs real track record / NCA / county approvals / title status for a full trust section — do not invent.
 10. ~~Decision on a hotel/retail podium section~~ — clarified 2026-07-27 by Daniel: the site stays focused on residential sales copy; it is not being rebuilt into a full retail/hotel marketing site, even though the underlying development is confirmed mixed-use (see Business summary). Stats bar now reflects the scale (334 shops, 60 hotel rooms) without a dedicated section for either.
 11. ~~Confirm drafted claims found in review (2026-07-15)~~ — RESOLVED
