@@ -451,3 +451,55 @@ on deploy — see Open questions re: deploy-root exposure).
   Also outstanding and off-code: Google Search Console verification + sitemap
   submission, and a Google Business Profile — the highest-value local SEO
   actions available for a Nairobi development, neither doable from the repo.
+- 2026-07-29: **DMARC added** (monitoring-only), closing the last gap in the
+  email setup: `_dmarc.nomadtwintowers.com TXT "v=DMARC1; p=none;
+  rua=mailto:dmarc@nomadtwintowers.com; fo=1"`. Verified resolving on both
+  1.1.1.1 and 8.8.8.8. **Note the rua address is on-domain deliberately** —
+  RFC 7489 external-destination verification means a `rua=mailto:` on a
+  different domain (e.g. the Gmail directly) requires that domain to publish
+  `nomadtwintowers.com._report._dmarc.<their-domain>`, which we obviously
+  cannot add to gmail.com, so reports would silently never arrive. Instead a
+  second Email Routing rule forwards `dmarc@nomadtwintowers.com` →
+  `makoriian11@gmail.com`, keeping XML aggregate reports out of `sales@`.
+  Tighten `p=none` → `quarantine` → `reject` only after reading a few weeks
+  of reports and confirming nothing legitimate fails.
+- 2026-07-29: **Google Search Console set up.** Domain property (DNS
+  verification, covers all subdomains + both schemes), verified via a
+  `google-site-verification` TXT record that Google's Cloudflare integration
+  added itself. **Do not delete that TXT record — removing it un-verifies the
+  property.** Sitemap submitted as the full URL
+  `https://nomadtwintowers.com/sitemap.xml` (a Domain property has no prefix
+  to fill in, so the bare `sitemap.xml` path is rejected — that tripped us up
+  once). Sitemap showed "Couldn't fetch" with an empty "Last read", which is
+  the pre-first-crawl default rather than a real error; confirmed nothing was
+  blocking by checking for `cf-mitigated` headers, challenges, `X-Robots-Tag`
+  and robots.txt, then by URL Inspection → Test Live URL returning "URL is
+  available to Google". Indexing requested for the homepage.
+- 2026-07-29: **Copy repitched for Eastleigh** (Daniel's call, chosen over
+  leaving the voice alone). The old copy sold *escape* — "quiet luxury",
+  "serene", "never intrusive" — which was a Westlands retreat pitch that made
+  no sense for East Africa's densest trading district. Reframed around
+  proximity and opportunity, which is what the building actually is: 334 shops
+  and a supermarket under 252 homes is purpose-built for Eastleigh.
+  - `<h1>` "Rise above the city, live within it." → "Luxury 1 & 2 bedroom
+    apartments in Eastleigh, Nairobi." The old line was demoted to the hero
+    lede, so the poetry survives but the most weighted element on the page now
+    carries the phrase buyers actually search. Hidden keyword text was
+    rejected outright — cloaking risk and dishonest.
+  - Vision H2 "Quiet luxury, engineered for living." → "Built for the way
+    Eastleigh works.", and the second paragraph rewritten from the
+    "serene / never intrusive" framing to the trading-day rhythm, BBS Mall and
+    CBD proximity, and the retail-plus-residence ownership angle ("Take a
+    residence, take a shop — or hold both").
+  - First paragraph now uses the real numbers from the price list (334 shops,
+    1,701 sqm supermarket, 252 residences) instead of vague "boutique retail".
+  - Location and Amenities sections were left alone — "The centre of
+    everything" and "everything but work" both land harder in a trading
+    district than they did in Westlands.
+  - **Deliberately did NOT add a rental-yield or market-strength claim to the
+    Invest section**, even though the repitch invited one. There is precedent:
+    the earlier "Westlands strongest rental market" claim was removed for being
+    unsubstantiated. No Eastleigh equivalent gets added without a source.
+  **Note this diverges from the documented Brand tone ("quiet luxury")** at the
+  top of this brief — that line now describes the finish level and the renders,
+  not the sales pitch. Worth a client conversation at handover.
