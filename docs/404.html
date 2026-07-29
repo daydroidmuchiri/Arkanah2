@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — Nomad Twin Towers</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#12161e">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="preload" href="/fonts/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <style>
+    /* Single-purpose page: centre the message without pulling in the
+       scroll-reveal JS, which would leave the copy hidden if it never ran. */
+    .nf-wrap {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 2rem 1.25rem;
+      background: #12161e;
+      color: #f4f0e7;
+    }
+    .nf-code {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(4rem, 18vw, 9rem);
+      line-height: 1;
+      color: #cda060;
+      margin-bottom: 1rem;
+    }
+    .nf-wrap h1 { font-size: clamp(1.4rem, 4vw, 2.1rem); margin-bottom: 0.85rem; }
+    .nf-wrap p { max-width: 46ch; margin: 0 auto 2rem; opacity: 0.75; line-height: 1.6; }
+    .nf-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+  </style>
+</head>
+<body>
+  <main class="nf-wrap">
+    <div>
+      <p class="nf-code">404</p>
+      <h1>This page doesn't exist.</h1>
+      <p>The link may be out of date, or the address mistyped. Everything about the residences, amenities and availability lives on the main page.</p>
+      <div class="nf-actions">
+        <a class="btn btn--solid" href="/">Back to Nomad Twin Towers</a>
+        <a class="btn btn--ghost" href="/#enquire">Enquire</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

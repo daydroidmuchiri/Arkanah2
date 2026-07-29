@@ -18,8 +18,9 @@ below for the full account.
 Nomad Twin Towers, developed by **Obsha Properties** ("Building Value.
 Creating Futures.") — confirmed 2026-07-27 via the client's official price
 list, `reference/nomad-twin-towers-price-list-2026-07-27.jpeg` — is a landmark
-**mixed-use** development off Waiyaki Way in Westlands, Nairobi, not a pure
-residential tower as earlier copy framed it:
+**mixed-use** development in Eastleigh, Nairobi (Kamukunji / California ward
+— corrected 2026-07-29 from the client's map pin, see the log below), not a
+pure residential tower as earlier copy framed it:
 
 - **Retail**: 334 shops across Ground–6th floor (fashion/beauty, electronics,
   food court, fine dining, healthcare, a masjid, and a big event hall/hotel
@@ -83,7 +84,8 @@ Email Routing (free, included) to forward `sales@nomadtwintowers.com` to a
 Gmail account. So the address on the page stays exactly as-is and becomes real
 once routing is configured — **no code change needed**. The mailbox itself is
 still to be set up (see Missing item 2).
-Map: none — click-to-load facade currently points at central Westlands.
+Map: click-to-load facade points at -1.280676, 36.848874 (client pin,
+2026-07-29).
 Hours: n/a (sales gallery).
 WhatsApp greeting: "Hello Nomad Twin Towers, I'd like to enquire."
 
@@ -345,3 +347,107 @@ on deploy — see Open questions re: deploy-root exposure).
   himself (token isn't a secret — Cloudflare Web Analytics tokens are
   designed to sit in public page source, unlike an API key). Script tag
   added right before `</body>` in `docs/index.html`.
+- 2026-07-29: **domain registered.** `nomadtwintowers.com` bought through
+  Cloudflare Registrar via the Registrar API — $10.46/yr at cost (≈ KSh 1,354),
+  expires 2027-07-29, auto-renew ON, WHOIS redaction ON, registrar lock ON.
+  Registrant: Ian Angwenyi Makori / Jenzi, makoriian11@gmail.com,
+  +254.740865680, Kiambu Road, Nairobi, 00100, KE — registered under the
+  agency deliberately, to be handed to the client after launch (mind ICANN's
+  60-day post-registration transfer lock). Pre-flight checks confirmed the
+  client did *not* already own it: NXDOMAIN at 1.1.1.1 and `registrable: true`
+  at the registry. Four attempts failed with `billing_auth_failed` before
+  succeeding — the PayPal balance was short, not a config problem. Zone
+  `87e39d03e4774c19f9979debe6293a84` was created automatically on Cloudflare
+  DNS (ns: garrett/lilyana). ICANN verification email confirmed clicked.
+- 2026-07-29: **location corrected — the site was in the wrong part of
+  Nairobi.** Daniel supplied the client's map pin
+  (https://maps.app.goo.gl/HqJET5VyJW5jVqmq8), which resolves to
+  **-1.280676, 36.848874 — Timboroa Street, California ward, Kamukunji,
+  Nairobi 00610**, i.e. the Eastleigh business district. Every previous
+  version of the site said Westlands, ~5.5 km away in a straight line.
+  Checked the source of that claim before overwriting: brief.md attributed
+  "off Waiyaki Way in Westlands" to the client's official price list, but the
+  price list (`reference/nomad-twin-towers-price-list-2026-07-27.jpeg`) names
+  **no** neighbourhood — it only says "PREMIUM LOCATION". So Westlands was an
+  unsourced assumption from the earliest copy that later got mis-recorded as
+  client-confirmed. Daniel confirmed the development is genuinely in
+  Kamukunji, so the geography was rewritten end to end: `<title>`, meta
+  description, og:title/og:description, JSON-LD (`description`,
+  `addressLocality`, plus new `addressRegion`/`postalCode` and a `geo` block
+  with the exact pin), hero alt text + eyebrow + lede, About copy, the
+  Amenities pool line, the whole Location section, the map facade caption,
+  the footer Sales Gallery line, and the OSM bbox/marker/title in
+  `docs/js/main.js`. Verified zero remaining matches for
+  Westlands/Waiyaki/Sarit/Westgate/GTC under `docs/`.
+  New Location landmarks, distances measured straight-line from the pin via
+  Nominatim (NOT driving distances — worth restating as "x minutes' drive"
+  if the client prefers): BBS Mall / Business Bay Square 0.26 km, Eastleigh
+  centre 0.70 km, Gikomba Market 1.04 km, Nairobi CBD 3.09 km, JKIA 9.76 km.
+  Also nearby: Pumwani Maternity Hospital 0.37 km, Eastleigh High School
+  0.50 km, Moi Air Base 1.70 km, Jogoo Rd 1.47 km. The `.loc-list` CSS already
+  used `justify-content: space-between` but the markup never supplied a second
+  element, so the distances now fill a slot the design was already built for.
+  **Open**: the exact street address is still unconfirmed. The pin sits on
+  Timboroa Street; BBS Mall is on General Waruingi Street 260 m away. The site
+  deliberately claims only "Eastleigh, Nairobi" rather than guess a street —
+  JSON-LD has no `streetAddress` for the same reason. Also unresolved: whether
+  the premium/"quiet luxury" positioning written for Westlands still fits
+  Eastleigh's market, and whether the footer "Sales Gallery" is even at the
+  development address. Both are client questions.
+- 2026-07-29: **hosting moved to Cloudflare Pages.** Project
+  `nomad-twin-towers` (`nomad-twin-towers.pages.dev`), custom domains
+  `nomadtwintowers.com` + `www`, both proxied CNAMEs to the .pages.dev host,
+  Cloudflare-managed TLS. `.github/workflows/deploy-pages.yml` rewritten from
+  the GitHub Pages actions to `cloudflare/wrangler-action` running
+  `pages deploy docs`. Still uploads only `docs/`, so the deploy-root
+  guarantee from 2026-07-27 is preserved. **Needs two GitHub repo secrets
+  before CI works**: `CLOUDFLARE_API_TOKEN` (Cloudflare Pages: Edit) and
+  `CLOUDFLARE_ACCOUNT_ID` (d8123d036b6a9d6e79e5e72abf6ff65a). The old GitHub
+  Pages deployment should be switched off in repo Settings → Pages once
+  Cloudflare is confirmed live, so the site isn't served from two origins.
+- 2026-07-29: **Email Routing configured** for `sales@nomadtwintowers.com` →
+  `makoriian11@gmail.com`. Zone routing enabled (status `ready`), MX ×3
+  (route1/2/3.mx.cloudflare.net), SPF and DKIM records created automatically.
+  The forwarding **rule itself is not yet created** — Cloudflare rejects rule
+  creation with `2054: Destination address is not verified` until the
+  destination clicks its verification email. Create the rule once verified.
+  Known limitation carried forward: Email Routing is inbound-only; replies
+  from Gmail go out as the Gmail address, not `sales@`. Options for real
+  send-as are Cloudflare Email Sending (SMTP relay + Gmail "Send mail as",
+  needs Workers Paid at $5/mo, 3,000 sends included) or a mailbox provider
+  (Google Workspace ~$7/user/mo, Zoho free tier). Deferred to the client.
+- 2026-07-29: **Email Routing completed.** Destination `makoriian11@gmail.com`
+  verified, rule live and enabled: `sales@nomadtwintowers.com` → that Gmail.
+  (The rule was created by the first API call, which then errored on an
+  unrelated cache-purge step — a retry reported `2014: Duplicated Zone rule`,
+  which was the duplicate, not a failure. Verified by listing the rules.)
+  The second, unnamed disabled rule in the list is Cloudflare's catch-all
+  placeholder set to `drop` — normal, leave it.
+- 2026-07-29: **SEO pass.** No design/layout changes; head + data files only.
+  - Meta description rewritten and cut 185 → 150 chars (was truncating in
+    results) and led with the actual search phrase: "Luxury 1 & 2 bedroom
+    apartments for sale in Eastleigh, Nairobi".
+  - Added `robots` meta with `max-image-preview:large, max-snippet:-1` — lets
+    Google show the render full-width, which matters for property searches.
+  - Added `og:site_name`, `og:locale` (en_KE), `og:image:alt`, and a full
+    Twitter/X card set. WhatsApp is the main sharing channel for this market
+    and these tags improve how the link unfurls.
+  - JSON-LD expanded from a single ApartmentComplex node to a 3-node `@graph`:
+    ApartmentComplex (now with telephone, email, `numberOfAccommodationUnits`
+    252, 7 `amenityFeature` entries, and two `containsPlace` Apartment nodes
+    carrying floorSize + Offer at USD 87,000 / 180,000, availability PreOrder),
+    Organization (Obsha Properties, slogan from the price list), and WebSite.
+    **Every figure traces to the client's price list** — nothing invented.
+  - robots.txt / sitemap.xml: dropped the stale "pending registration" comments
+    (the domain is registered now), bumped lastmod to 2026-07-29, added an
+    image sitemap entry for the hero render.
+  - Added `docs/404.html` (see hosting entry) — carries `noindex`.
+  **Verified live on the apex after deploy**, not just locally.
+  **Deliberately NOT done — needs a human call:** the `<h1>` is "Rise above the
+  city, live within it.", which contains no product or location keyword. The
+  title/description/JSON-LD carry the keywords instead. Rewriting the H1 would
+  help search but costs the brand voice; adding hidden keyword text was
+  rejected outright (cloaking risk, and dishonest). Flagged to Daniel.
+  Also outstanding and off-code: Google Search Console verification + sitemap
+  submission, and a Google Business Profile — the highest-value local SEO
+  actions available for a Nairobi development, neither doable from the repo.

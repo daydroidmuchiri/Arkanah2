@@ -2,7 +2,7 @@
 
 A fast, polished one-page marketing site for the residential units of Nomad
 Twin Towers — a mixed-use development (retail podium + residences + hotel)
-in Westlands, Nairobi, developed by Obsha Properties. This site focuses on
+in Eastleigh, Nairobi, developed by Obsha Properties. This site focuses on
 selling the apartments; it doesn't attempt to replicate the full commercial
 price list or a hotel-booking experience. Built as a modern take on sites
 like Montbleu Westlands and Grosvenor Residences — but engineered to be
@@ -32,10 +32,10 @@ still a fraction of the reference sites.
 
 ## Structure
 
-**`docs/` is the actual published site** — GitHub Pages is configured to
-serve `main` branch, `/docs` folder (changed 2026-07-27; was root, which
-publicly exposed this brief and internal notes — see brief.md). Everything
-else in the repo root is internal and not served.
+**`docs/` is the actual published site** — only this folder is uploaded to
+Cloudflare Pages (changed 2026-07-29; previously GitHub Pages, and before
+that the repo root, which publicly exposed this brief and internal notes —
+see brief.md). Everything else in the repo root is internal and not served.
 
 ```
 docs/index.html      single page: hero → about → residences → amenities
@@ -47,6 +47,8 @@ docs/assets/*.jpg|webp  client renders, prepped to 800/1200/1600 px via
                      packages/pipeline/src/prep-images.mjs (--widths/--webp)
 docs/assets/*.svg|png   floor plans (1BR/2BR only — no penthouse), favicon
 docs/fonts/*.woff2   Fraunces (display) + Manrope (body), self-hosted
+docs/404.html        not-found page (Cloudflare Pages serves it with a real
+                     404; without it, unknown paths soft-404 as 200 + index)
 docs/robots.txt      + sitemap.xml — nomadtwintowers.com, see brief.md
 
 images/batch-2026-07-27/*.png  source renders from the client, full size
@@ -64,21 +66,23 @@ brief.md, README.md, review-report.md  internal project docs — NOT served
   (`reference/nomad-twin-towers-price-list-2026-07-27.jpeg`). In
   `docs/index.html` only (`docs/js/main.js` derives it from the floating
   WhatsApp button's href).
-- **Email** `sales@nomadtwintowers.com` — no longer a placeholder to swap out.
-  The client never supplied an address, so rather than guess a mailbox we're
-  creating the one already on the page: **Cloudflare Email Routing** (free
-  with the domain) forwards `sales@nomadtwintowers.com` to a Gmail account.
-  **The site needs no change** — the address it already displays becomes real
-  once routing is switched on in the Cloudflare dashboard. It lives in
+- **Email** `sales@nomadtwintowers.com` — **live 2026-07-29** via Cloudflare
+  Email Routing (free with the domain), forwarding to `makoriian11@gmail.com`.
+  MX/SPF/DKIM records are created and the zone is `ready`. It lives in
   `docs/index.html` only (`docs/js/main.js` derives the form's mailto handoff
   from that contact link), so if it ever does change, one line covers it.
-- **Domain** `https://nomadtwintowers.com/` — confirmed 2026-07-27 from the
-  client's price list (was previously a `.co.ke` placeholder). Registrar
-  decided 2026-07-29: **Cloudflare Registrar** — at-cost pricing, WHOIS
-  privacy included, and the free Email Routing above. Still open: whether the
-  client already owns the domain or it needs registering. Canonical link, Open
-  Graph tags, JSON-LD, `robots.txt` and `sitemap.xml` all already point at it,
-  so they start resolving the moment DNS is live and the Pages CNAME is set.
+  **Inbound only.** Email Routing cannot *send* from the domain — replies from
+  Gmail go out as the Gmail address, not `sales@`. Closing that needs either
+  Cloudflare Email Sending (SMTP relay + Gmail "Send mail as", requires the
+  $5/mo Workers Paid plan) or a real mailbox provider (Google Workspace, Zoho).
+  Deferred to the client at handover; the site needs no change either way.
+- **Domain** `https://nomadtwintowers.com/` — **registered 2026-07-29** at
+  Cloudflare Registrar, $10.46/yr at cost, expires 2027-07-29, auto-renew ON,
+  WHOIS redaction ON. Registrant is Ian Angwenyi Makori / Jenzi (the agency),
+  to be transferred to the client after launch — note ICANN's 60-day post-
+  registration transfer lock. Zone `87e39d03e4774c19f9979debe6293a84` on
+  Cloudflare DNS. Canonical link, Open Graph tags, JSON-LD, `robots.txt` and
+  `sitemap.xml` all already point at it.
 - **Prices, unit sizes** — now match the client's official price list (USD
   per sqm: 1BR 60sqm ≈$87,000, 2BR 100sqm ≈$180,000). **Storey count and
   completion date were removed from the live copy 2026-07-27** (unconfirmed
@@ -96,8 +100,9 @@ brief.md, README.md, review-report.md  internal project docs — NOT served
   more later, prep with
   `node packages/pipeline/src/prep-images.mjs <src> docs/assets --widths=800,1200 --webp`
   and wire in with correct `width`/`height` attributes to preserve zero CLS.
-- **Map coordinates** — `docs/js/main.js` (`data-load-map` handler) currently
-  points at central Westlands
+- **Map coordinates** — `docs/js/main.js` (`data-load-map` handler) points at
+  `-1.280676, 36.848874`, the client-supplied pin (2026-07-29). Same
+  coordinates are in the JSON-LD `geo` block in `docs/index.html`.
 - The enquiry form is backend-free by design (hands off to email/WhatsApp).
   If the client wants submissions stored, wire the form to Formspree/Basin or
   a small serverless endpoint.
@@ -112,19 +117,25 @@ npx serve docs
 
 ## Deployment
 
-**Live**: GitHub Pages via GitHub Actions (`.github/workflows/deploy-pages.yml`,
-runs on every push touching `docs/**`) — `https://daydroidmuchiri.github.io/Arkanah2/`.
-Deploys only the `docs/` folder as a built artifact.
+**Live**: Cloudflare Pages, project `nomad-twin-towers`
+(`nomad-twin-towers.pages.dev`), custom domains `nomadtwintowers.com` and
+`www.nomadtwintowers.com`, both proxied CNAMEs to the `.pages.dev` host with
+Cloudflare-managed TLS. Deployed by `.github/workflows/deploy-pages.yml` via
+`cloudflare/wrangler-action` on every push touching `docs/**`.
 
-This isn't just "Settings → Pages → main:/docs" — that was tried first
-2026-07-27 and didn't actually work: GitHub Pages' legacy Jekyll build
-serves the *whole repository* as static files regardless of the
-configured source folder, so `brief.md`, `README.md` and everything in
-`reference/`/`images/` stayed publicly fetchable even with source set to
-`/docs`. Switching Pages to Actions-based deployment (`build_type:
-workflow` + the upload-artifact workflow) actually fixes it, since only
-the uploaded `docs/` artifact is ever served — see brief.md for the full
-story and the verification steps.
+Requires two GitHub repository secrets: `CLOUDFLARE_API_TOKEN` (needs the
+*Cloudflare Pages: Edit* permission) and `CLOUDFLARE_ACCOUNT_ID`
+(`d8123d036b6a9d6e79e5e72abf6ff65a`).
 
-Any other static host works too (Cloudflare Pages, Netlify) — just point
-it at `docs/` as the publish directory, not the repo root.
+Only `docs/` is uploaded, so `brief.md`, `reference/` and `images/` are never
+served. That deploy-root guarantee matters: with plain GitHub Pages
+(`Settings → Pages → main:/docs`, tried 2026-07-27) the legacy Jekyll build
+served the *whole repository* regardless of the configured source folder, and
+internal files stayed publicly fetchable. The Actions-based GitHub Pages
+workflow fixed it, and the Cloudflare Pages workflow preserves it the same
+way — by uploading one folder rather than the repo. See brief.md.
+
+The old GitHub Pages deployment at `https://daydroidmuchiri.github.io/Arkanah2/`
+should be turned off in repo Settings → Pages once Cloudflare is verified live,
+to avoid a duplicate copy of the site (the canonical tag points at
+nomadtwintowers.com, which mitigates but does not remove the issue).

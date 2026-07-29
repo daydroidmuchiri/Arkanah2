@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Domain updated 2026-07-27 to match client's official price list; still pending final ownership/registration confirmation (see brief.md) -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://nomadtwintowers.com/</loc>
-    <lastmod>2026-07-27</lastmod>
+    <lastmod>2026-07-29</lastmod>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/front-view.jpg</image:loc>
+      <image:title>Nomad Twin Towers, Eastleigh, Nairobi</image:title>
+    </image:image>
   </url>
 </urlset>

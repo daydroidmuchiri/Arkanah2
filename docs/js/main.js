@@ -173,8 +173,8 @@
       const facade = mapBtn.closest(".map-facade");
       const iframe = document.createElement("iframe");
       iframe.src =
-        "https://www.openstreetmap.org/export/embed.html?bbox=36.795%2C-1.272%2C36.815%2C-1.258&layer=mapnik&marker=-1.265%2C36.805";
-      iframe.title = "Map of Westlands, Nairobi";
+        "https://www.openstreetmap.org/export/embed.html?bbox=36.8389%2C-1.2882%2C36.8589%2C-1.2732&layer=mapnik&marker=-1.280676%2C36.848874";
+      iframe.title = "Map of Nomad Twin Towers, Eastleigh, Nairobi";
       iframe.loading = "lazy";
       facade.innerHTML = "";
       facade.appendChild(iframe);

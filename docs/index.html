@@ -3,24 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nomad Twin Towers — Luxury Apartments in Westlands, Nairobi</title>
-  <meta name="description" content="Nomad Twin Towers: a landmark mixed-use address in Westlands, Nairobi — boutique retail, a supermarket, luxury 1 &amp; 2 bedroom apartments and hotel suites. Apartments from USD 87,000.">
+  <title>Nomad Twin Towers — Luxury Apartments in Eastleigh, Nairobi</title>
+  <meta name="description" content="Luxury 1 &amp; 2 bedroom apartments for sale in Eastleigh, Nairobi. A mixed-use address with retail, a supermarket and hotel suites. From USD 87,000.">
   <meta name="theme-color" content="#12161e">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-  <!-- Domain updated 2026-07-27 to match the client's official price list (nomadtwintowers.com) — still pending final ownership/registration confirmation, see brief.md Missing items -->
+  <!-- Domain registered 2026-07-29 at Cloudflare Registrar (expires 2027-07-29, auto-renew on) — see brief.md -->
   <link rel="canonical" href="https://nomadtwintowers.com/">
+
+  <!-- max-image-preview:large lets Google show the render full-width in results,
+       which matters a lot for property searches -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 
   <!-- Open Graph (og:image must stay an absolute URL or WhatsApp/social previews break) -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nomad Twin Towers">
+  <meta property="og:locale" content="en_KE">
   <meta property="og:url" content="https://nomadtwintowers.com/">
-  <meta property="og:title" content="Nomad Twin Towers — Westlands, Nairobi">
-  <meta property="og:description" content="A landmark mixed-use address: boutique retail, a supermarket, luxury 1 &amp; 2 bedroom apartments and hotel suites above the Westlands skyline. Apartments from USD 87,000.">
+  <meta property="og:title" content="Nomad Twin Towers — Eastleigh, Nairobi">
+  <meta property="og:description" content="A landmark mixed-use address: boutique retail, a supermarket, luxury 1 &amp; 2 bedroom apartments and hotel suites above the Eastleigh skyline. Apartments from USD 87,000.">
   <meta property="og:image" content="https://nomadtwintowers.com/assets/front-view.jpg">
   <meta property="og:image:width" content="1600">
   <meta property="og:image:height" content="1200">
+  <meta property="og:image:alt" content="Nomad Twin Towers rising above the Eastleigh skyline at sunset">
+
+  <!-- Twitter/X card — also improves how the link unfurls in some chat apps -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nomad Twin Towers — Eastleigh, Nairobi">
+  <meta name="twitter:description" content="Luxury 1 &amp; 2 bedroom apartments for sale in Eastleigh, Nairobi. Retail, supermarket and hotel suites under one address. From USD 87,000.">
+  <meta name="twitter:image" content="https://nomadtwintowers.com/assets/front-view.jpg">
+  <meta name="twitter:image:alt" content="Nomad Twin Towers rising above the Eastleigh skyline at sunset">
 
   <!-- Performance: self-hosted fonts, preloaded; single CSS file; deferred JS -->
   <link rel="preload" href="fonts/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
@@ -30,19 +44,101 @@
   <script src="js/main.js" defer></script>
 
   <!-- Structured data for search -->
+  <!-- Structured data. Every figure here comes from the client's official price
+       list (reference/nomad-twin-towers-price-list-2026-07-27.jpeg) — do not add
+       specs that aren't on it. Coordinates are the client's map pin. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ApartmentComplex",
-    "name": "Nomad Twin Towers",
-    "description": "A mixed-use development in Westlands, Nairobi, with retail, luxury 1 and 2 bedroom apartments, and hotel suites.",
-    "url": "https://nomadtwintowers.com/",
-    "image": "https://nomadtwintowers.com/assets/front-view.jpg",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Westlands, Nairobi",
-      "addressCountry": "KE"
-    }
+    "@graph": [
+      {
+        "@type": "ApartmentComplex",
+        "@id": "https://nomadtwintowers.com/#development",
+        "name": "Nomad Twin Towers",
+        "description": "A mixed-use development in Eastleigh, Nairobi, with retail, luxury 1 and 2 bedroom apartments, and hotel suites.",
+        "url": "https://nomadtwintowers.com/",
+        "image": "https://nomadtwintowers.com/assets/front-view.jpg",
+        "telephone": "+254711111188",
+        "email": "sales@nomadtwintowers.com",
+        "numberOfAccommodationUnits": {
+          "@type": "QuantitativeValue",
+          "value": 252
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Eastleigh, Nairobi",
+          "addressRegion": "Nairobi",
+          "postalCode": "00610",
+          "addressCountry": "KE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -1.280676,
+          "longitude": 36.848874
+        },
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "Rooftop Infinity Pool", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Sky Gym & Spa", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Residents' Lounge", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Sky Restaurant", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Supermarket", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Basement Parking", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "24/7 Security", "value": true }
+        ],
+        "containsPlace": [
+          {
+            "@type": "Apartment",
+            "name": "One Bedroom Apartment",
+            "numberOfRooms": 1,
+            "numberOfBedrooms": 1,
+            "floorSize": { "@type": "QuantitativeValue", "value": 60, "unitCode": "MTK" },
+            "offers": {
+              "@type": "Offer",
+              "price": 87000,
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/PreOrder",
+              "url": "https://nomadtwintowers.com/#residences"
+            }
+          },
+          {
+            "@type": "Apartment",
+            "name": "Two Bedroom Apartment",
+            "numberOfRooms": 2,
+            "numberOfBedrooms": 2,
+            "floorSize": { "@type": "QuantitativeValue", "value": 100, "unitCode": "MTK" },
+            "offers": {
+              "@type": "Offer",
+              "price": 180000,
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/PreOrder",
+              "url": "https://nomadtwintowers.com/#residences"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://nomadtwintowers.com/#developer",
+        "name": "Obsha Properties",
+        "slogan": "Building Value. Creating Futures.",
+        "url": "https://nomadtwintowers.com/",
+        "telephone": "+254711111188",
+        "email": "sales@nomadtwintowers.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nairobi",
+          "addressCountry": "KE"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://nomadtwintowers.com/#website",
+        "url": "https://nomadtwintowers.com/",
+        "name": "Nomad Twin Towers",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://nomadtwintowers.com/#developer" }
+      }
+    ]
   }
   </script>
 </head>
@@ -77,12 +173,12 @@
     <section class="hero">
       <picture>
         <source type="image/webp" srcset="assets/front-view-800.webp 800w, assets/front-view-1200.webp 1200w, assets/front-view.webp 1600w" sizes="100vw">
-        <img class="hero-art" src="assets/front-view.jpg" srcset="assets/front-view-800.jpg 800w, assets/front-view-1200.jpg 1200w, assets/front-view.jpg 1600w" sizes="100vw" alt="Nomad Twin Towers rising above the Westlands skyline at sunset" width="1600" height="1200" fetchpriority="high">
+        <img class="hero-art" src="assets/front-view.jpg" srcset="assets/front-view-800.jpg 800w, assets/front-view-1200.jpg 1200w, assets/front-view.jpg 1600w" sizes="100vw" alt="Nomad Twin Towers rising above the Eastleigh skyline at sunset" width="1600" height="1200" fetchpriority="high">
       </picture>
       <div class="hero-inner">
-        <p class="eyebrow reveal">Westlands · Nairobi</p>
+        <p class="eyebrow reveal">Eastleigh · Nairobi</p>
         <h1 class="reveal" data-delay="1">Rise above the city, <span class="serif-accent">live within it.</span></h1>
-        <p class="lede reveal" data-delay="2">A landmark mixed-use address in the heart of Westlands — boutique retail, a supermarket, luxury one and two bedroom residences and hotel suites, all under one address.</p>
+        <p class="lede reveal" data-delay="2">A landmark mixed-use address in the heart of Eastleigh — boutique retail, a supermarket, luxury one and two bedroom residences and hotel suites, all under one address.</p>
         <div class="hero-ctas reveal" data-delay="3">
           <a class="btn btn--solid" href="#residences">Explore Residences</a>
           <a class="btn btn--ghost" href="#enquire">Book a Private Viewing</a>
@@ -116,7 +212,7 @@
           <div class="split-copy">
             <p class="eyebrow reveal">The Vision</p>
             <h2 class="reveal" data-delay="1">Quiet luxury, <span class="serif-accent">engineered for living.</span></h2>
-            <p class="reveal" data-delay="2">Nomad Twin Towers is a landmark mixed-use address moments from the Westlands business district — a boutique retail podium and supermarket at street level, luxury residences above, and hotel suites crowning the towers. Every residence is designed for natural light, with floor-to-ceiling glazing throughout.</p>
+            <p class="reveal" data-delay="2">Nomad Twin Towers is a landmark mixed-use address in the heart of Eastleigh's business district — a boutique retail podium and supermarket at street level, luxury residences above, and hotel suites crowning the towers. Every residence is designed for natural light, with floor-to-ceiling glazing throughout.</p>
             <p class="reveal" data-delay="2">Designed around the rhythms of modern Nairobi, the towers pair serene private homes with shared amenity space and a retail podium below — so the city, and everything it offers, is always close, and never intrusive.</p>
             <a class="btn btn--ghost reveal" data-delay="3" href="assets/nomad-twin-towers-brochure.pdf" download="Nomad-Twin-Towers-Brochure.pdf">Request the Brochure</a>
           </div>
@@ -234,7 +330,7 @@
           <div class="amen reveal">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M2 15c2 1.2 4 1.2 6 0s4-1.2 6 0 4 1.2 6 0M2 19c2 1.2 4 1.2 6 0s4-1.2 6 0 4 1.2 6 0M7 12V6a3 3 0 0 1 6 0M13 12V8"/></svg>
             <h3>Rooftop Infinity Pool</h3>
-            <p>An infinity pool with a glass edge over the Westlands skyline.</p>
+            <p>An infinity pool with a glass edge over the Eastleigh skyline.</p>
           </div>
           <div class="amen reveal" data-delay="1">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M4 9v6M20 9v6M7 7v10M17 7v10M7 12h10"/></svg>
@@ -391,20 +487,20 @@
         <div class="split-copy">
           <p class="eyebrow reveal">Location</p>
           <h2 class="reveal" data-delay="1">The centre of <span class="serif-accent">everything.</span></h2>
-          <p class="reveal" data-delay="2">Set on a quiet avenue off Waiyaki Way, Nomad Twin Towers places Westlands at your door — with the rest of Nairobi close by via the Expressway.</p>
+          <p class="reveal" data-delay="2">Set in the heart of Eastleigh, minutes from Business Bay Square and a short drive from the Nairobi CBD — Nomad Twin Towers places the city's most enterprising commercial district at your door.</p>
           <ul class="loc-list reveal" data-delay="2">
-            <li><strong>GTC &amp; Westlands CBD</strong></li>
-            <li><strong>Sarit Centre</strong></li>
-            <li><strong>Westgate Mall</strong></li>
-            <li><strong>Nairobi CBD</strong></li>
-            <li><strong>JKIA via Expressway</strong></li>
+            <li><strong>Business Bay Square (BBS Mall)</strong><span>300 m</span></li>
+            <li><strong>Eastleigh Business District</strong><span>700 m</span></li>
+            <li><strong>Gikomba Market</strong><span>1 km</span></li>
+            <li><strong>Nairobi CBD</strong><span>3 km</span></li>
+            <li><strong>JKIA</strong><span>10 km</span></li>
           </ul>
         </div>
         <div class="map-facade reveal" data-delay="1">
           <div class="map-grid" aria-hidden="true"></div>
           <div class="map-pin">
             <svg viewBox="0 0 24 24" fill="none" stroke="#92763c" stroke-width="1.5" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6" fill="#92763c"/></svg>
-            <p style="max-width:22ch;font-size:.9rem;color:#5c6572">Westlands, Nairobi — interactive map loads on request to keep the page fast.</p>
+            <p style="max-width:22ch;font-size:.9rem;color:#5c6572">Eastleigh, Nairobi — interactive map loads on request to keep the page fast.</p>
             <button class="btn btn--ghost" data-load-map>Load Interactive Map</button>
           </div>
         </div>
@@ -438,7 +534,7 @@
           <div class="contact-rows reveal" data-delay="2">
             <a href="tel:+254711111188"><span class="lbl">Call / WhatsApp</span><span class="val">+254 711 111 188</span></a>
             <a href="mailto:sales@nomadtwintowers.com"><span class="lbl">Email</span><span class="val">sales@nomadtwintowers.com</span></a>
-            <a href="#location"><span class="lbl">Sales Gallery</span><span class="val">Off Waiyaki Way, Westlands</span></a>
+            <a href="#location"><span class="lbl">Sales Gallery</span><span class="val">Eastleigh, Nairobi</span></a>
           </div>
         </div>
         <form class="form reveal" data-delay="1" id="enquiry-form" novalidate>
