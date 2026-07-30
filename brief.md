@@ -552,9 +552,10 @@ on deploy — see Open questions re: deploy-root exposure).
     and both figures are the kind a buyer can check on Google Maps in one tap.
     Note this is a deliberate departure from Missing item 11, which stripped
     the invented drive times for exactly this reason.
-  - **Parklands was not added.** The client's message said "2km from westlands
-    and parklands" but the instruction narrowed to Westlands only, so Parklands
-    stays off the list pending a decision.
+  - **Parklands added at 2 km too**, on Daniel's follow-up instruction, listed
+    immediately before Westlands since it is the genuinely closer of the two
+    (4.01 km against 5.45 km) even though both now display the same figure.
+    The full client message is delivered as given.
   - **Still open**: whether a written price list backs the new figures, since
     they contradict
     `reference/nomad-twin-towers-price-list-2026-07-27.jpeg`.
