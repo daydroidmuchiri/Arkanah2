@@ -26,9 +26,12 @@ pure residential tower as earlier copy framed it:
   food court, fine dining, healthcare, a masjid, and a big event hall/hotel
   restaurant on the 6th floor), plus a 1,701 sqm (18,309 sqft) supermarket
   anchor in Basement 1
-- **Residential**: 252 apartment units — 72×1-Bedroom (60 sqm/646 sqft,
-  USD 1,450/sqm ≈ USD 87,000) and 180×2-Bedroom (100 sqm/1,076 sqft,
-  USD 1,800/sqm ≈ USD 180,000). **No penthouse/3-bedroom unit exists**
+- **Residential**: 252 apartment units — 72×1-Bedroom (60 sqm/646 sqft) and
+  180×2-Bedroom (100 sqm/1,076 sqft). **Priced from USD 48,000 and USD 70,000
+  respectively — client revision 2026-07-30, superseding the USD 87,000 /
+  USD 180,000 figures this brief previously derived from the price list's
+  per-sqm rates (see the log entry for that date).** Retail units from
+  USD 25,000. **No penthouse/3-bedroom unit exists**
   (confirmed by Daniel 2026-07-27, independently of the price list, which
   also shows no 3BR line item)
 - **Hotel**: 60 rooms across the 19th–20th floors (avg. 30 sqm/323 sqft),
@@ -59,6 +62,14 @@ JPEG, padded to a 100×100 square with sampled background navy #011226) and
 regenerated as `assets/favicon-16.png`, `favicon-32.png` and
 `apple-touch-icon.png` (opaque navy background — fine for a favicon/touch
 icon). The old in-house "N" monogram (`favicon.svg`) was deleted.
+
+**Superseded 2026-07-30 — the pad-to-square step above silently did not
+happen.** The shipped files measured 16×36, 32×52 and 180×200, none of them
+square, which is why Google showed its default globe in search results
+instead of the monogram. Rebuilt from `assets/logo-mark.png` (the transparent
+160×160 below) as square `favicon-48/96/192.png`, a real `docs/favicon.ico`
+(16/32/48) and a 180×180 `apple-touch-icon.png`; `favicon-16.png` and
+`favicon-32.png` were deleted. See the log entry for that date.
 
 The header/footer nav brand mark (previously a separate hand-drawn inline
 SVG "N") was also replaced 2026-07-27: same crop, but chroma-keyed to a
@@ -503,3 +514,44 @@ on deploy — see Open questions re: deploy-root exposure).
   **Note this diverges from the documented Brand tone ("quiet luxury")** at the
   top of this brief — that line now describes the finish level and the renders,
   not the sales pitch. Worth a client conversation at handover.
+
+- 2026-07-30: **prices revised down by the client, and two distance claims
+  refused.** Feedback arrived by WhatsApp from +254 740 865680 at 09:28–09:30:
+  "1 bedroom is from 48k", "2 bedroom from 70k", "shops from 25k", "the site is
+  100 m from bbs mall", "2km from westlands and parklands", "Remove gikomba".
+  - **Currency was not stated**, and the gap between readings was too wide to
+    assume — 48k USD is a sale price, 48k KES/month would make this a rental
+    site. Confirmed with Daniel as **USD, off-plan sale**. What settled it:
+    the *old* totals were never client figures at all, they were this brief's
+    own derivation (60 sqm × USD 1,450/sqm, 100 sqm × USD 1,800/sqm). The new
+    numbers are the first ones the client has written as totals. They are also
+    internally coherent where the old pair was not — the old 2BR worked out
+    dearer per sqm than the 1BR (1,800 vs 1,450), which is backwards; the new
+    pair reads 800/sqm for the 1BR against 700/sqm for the 2BR, the normal
+    shape. The old rates also implied ~KSh 187k–232k/sqm, Westlands pricing
+    carried over into Eastleigh.
+  - Applied to all eight price occurrences in `docs/index.html` (meta
+    description, og:description, twitter:description, both JSON-LD `Offer`
+    prices, hero stat, both residence cards) and to `seo-local-listings.md`,
+    which would otherwise have pushed the old prices out to the portals.
+  - **Shop pricing added** to the Ownership section lede — one sentence, no new
+    section, keeping Missing item 10's decision that the page stays residential
+    and is not rebuilt into a retail marketing site. The page already invited
+    it ("Take a residence, take a shop — or hold both") without ever quoting a
+    number.
+  - **Gikomba Market removed** from the location list as instructed.
+  - **The two distance claims were NOT published.** Measured from the client's
+    own map pin (-1.280676, 36.848874): Westlands is **5.45 km** and Parklands
+    **4.01 km** straight-line, so by road both are further still — "2km" is off
+    by 2–3×, and it is checkable on Google Maps in seconds. BBS Mall measures
+    **0.32 km**, so the page's existing "300 m" is right and the claimed
+    "100 m" is ~3× short. Daniel's call was to keep the accurate figures and
+    add nothing. This follows the same rule as Missing item 11, which stripped
+    the invented drive times.
+  - **Still open**: the 100 m claim may mean the map pin itself is wrong rather
+    than the distance — if the site really does sit 100 m from BBS Mall, the
+    pin is misplaced by ~200 m, which would also make the JSON-LD `geo` block
+    and any future Business Profile pin wrong. Worth one question to the
+    client. Also unresolved: whether a written price list backs the new
+    figures, since they contradict
+    `reference/nomad-twin-towers-price-list-2026-07-27.jpeg`.

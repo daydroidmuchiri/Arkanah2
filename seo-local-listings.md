@@ -91,16 +91,18 @@ For the **Obsha Properties** profile. Fill the address from §6 once confirmed.
 > development, Nomad Twin Towers, is a mixed-use address on the Eastleigh
 > skyline: 252 one- and two-bedroom residences above a retail podium, a
 > 1,701 sqm supermarket, hotel suites and a rooftop infinity pool. Residences
-> are priced from USD 87,000. Enquiries and private viewings by appointment.
+> are priced from USD 48,000 and retail units from USD 25,000. Enquiries and
+> private viewings by appointment.
 
 - **Hours**: get from client. Eastleigh trades Sat; many businesses close
   Fri midday for prayers. Ask rather than assume — wrong hours generate
   "permanently closed" user edits.
 - **Attributes**: `Appointment required`, `Wheelchair accessible entrance`
   (only if true), `Onsite services`
-- **Products**: add two, straight from the price list —
-  `One Bedroom Apartment — 60 sqm — from USD 87,000` and
-  `Two Bedroom Apartment — 100 sqm — from USD 180,000`
+- **Products**: add three —
+  `One Bedroom Apartment — 60 sqm — from USD 48,000`,
+  `Two Bedroom Apartment — 100 sqm — from USD 70,000` and
+  `Retail Unit — from USD 25,000`
 - **Website**: `https://nomadtwintowers.com/` (until Obsha has a live site of
   its own — see §6)
 
@@ -166,8 +168,9 @@ carry the same NAP from §2 and link to `https://nomadtwintowers.com/`.
 Portals invite embellishment. This list is the boundary — it mirrors the
 removals already made to the live site (`brief.md`, Missing item 11).
 
-**Confirmed, safe to use**: 252 residences · 1BR 60 sqm from USD 87,000 · 2BR
-100 sqm from USD 180,000 · 334 shops · 60 hotel rooms · 105 parking bays
+**Confirmed, safe to use**: 252 residences · 1BR 60 sqm from USD 48,000 · 2BR
+100 sqm from USD 70,000 · retail units from USD 25,000 · 334 shops · 60 hotel
+rooms · 105 parking bays
 (52+53) · 1,701 sqm supermarket · masjid on the 4th floor · programmed floors
 B3–B1 parking/supermarket, Ground–6th retail, 7th–18th residential, 19th–20th
 hotel · rooftop infinity pool · sky gym & spa · residents' lounge · restaurant
