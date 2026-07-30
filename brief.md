@@ -114,7 +114,7 @@ ever needed again, they're in git history before commit `e77692c`.
 
 The site now runs entirely on the second render batch, received 2026-07-27
 (`images/batch-2026-07-27/`, 20 files, prepped via `prep-images.mjs` at
-1600px JPEG/WebP, q80, --widths=800,1200). 16 of 20 are placed on the page:
+1600px JPEG/WebP, q80, --widths=800,1200). 17 of 20 are placed on the page:
 
 | Prepped filename | Used | Alt/subject |
 |---|---|---|
@@ -129,6 +129,7 @@ The site now runs entirely on the second render batch, received 2026-07-27
 | pool-closeup.jpg | Gallery + Amenities highlight | Rooftop pool, golden-hour lifestyle shot |
 | restaurant-main.jpg | Gallery + Amenities highlight | Sky restaurant (see Missing item 12 re: naming) |
 | retail-02.jpg | Gallery | Retail podium boutique corridor |
+| retail.jpg | Residences card (Shops) | Retail concourse, two levels of shopfronts (placed 2026-07-30) |
 | 1-br-living-room.jpg | Gallery + Residences card (photo toggle) | One bedroom residence, living room |
 | 2-br-living-room.jpg | Gallery + Residences card (photo toggle) | Two bedroom residence, living room |
 | bedroom.jpg | Gallery | Master bedroom |
@@ -136,8 +137,9 @@ The site now runs entirely on the second render batch, received 2026-07-27
 | master-bathroom.jpg | Gallery | Master ensuite |
 
 Unused (prepped in `assets/` but not on the page — street-view-01.jpg,
-street-view-02.jpg, birds-eye-view.jpg, retail.jpg): each duplicates the
+street-view-02.jpg, birds-eye-view.jpg): each duplicates the
 framing/subject of an image already placed, kept in reserve.
+(`retail.jpg` left this list 2026-07-30 — now the Shops card image.)
 
 2026-07-27: considered an in-card mini-carousel for the Amenities highlight
 strip (multiple angles per card) instead of one static photo each. Checked
@@ -559,3 +561,42 @@ on deploy — see Open questions re: deploy-root exposure).
   - **Still open**: whether a written price list backs the new figures, since
     they contradict
     `reference/nomad-twin-towers-price-list-2026-07-27.jpeg`.
+
+- 2026-07-30 (later): **Shops card added to the Residences section**, on the
+  client's hand-marked screenshot
+  (`reference/client-markup-shops-card-2026-07-30.jpeg`) — a third card drawn
+  beside the two residence cards, labelled "Shops / USD 25,000" with a button
+  box beneath it. This supersedes the one-sentence treatment added earlier the
+  same day in the Ownership lede, which was a stopgap for having no card; that
+  sentence has been reverted to its original wording, since with three cards
+  each showing a price, repeating them in the lede was a third mention and an
+  invitation to divergence.
+  - **`.res-grid` went from two columns to three** (`main.css`), max-width
+    52rem → 70rem so each card lands at ~352px, close to the previous ~380px.
+    A new 980px tier holds the old two-up layout and the 780px tier the old
+    one-up, so nothing below desktop changes. At 780–980px the third card sits
+    alone on a second row, which is the normal shape for a three-item two-column
+    grid and was judged acceptable rather than jumping straight to one column
+    and wasting tablet width.
+  - **No photo/plan toggle on this card** — no floor-plan asset exists for
+    retail. Safe because `main.js` iterates `$$(".res-toggle")`, so a card
+    without one is simply skipped; verified rather than assumed.
+  - **Image**: `retail.jpg`, until now prepped-but-unused. A two-level
+    shopfront concourse, and the shoppers read as modestly dressed, which fits
+    this development better than `retail-02.jpg` (kept unique to the Gallery).
+  - **Card copy is price-list-confirmed only**: "334 shops in the retail
+    podium", "Anchored by a 1,701 sqm supermarket", "105 basement parking
+    bays". The size slot reads `GROUND – 6TH` rather than a floor area, because
+    **no shop unit size is confirmed anywhere** — do not fill it in without
+    one. CTA is "Request Shop Details" rather than "Request Floor Plans",
+    since there are no retail plans to send.
+  - Also corrected while here: the residence-card `sizes` attribute was
+    `(max-width: 980px) 92vw, 380px`, which over-declared in the 780–980px band
+    where the grid is two-up (~46vw, not 92vw) — it was fetching a larger
+    candidate than needed even before this change. Now
+    `(max-width: 780px) 92vw, (max-width: 980px) 46vw, 352px` on all three
+    cards.
+  - **Not done**: the JSON-LD still lists only the two `Apartment` nodes under
+    `containsPlace`. A retail unit is not an `Accommodation`, so forcing one in
+    there would be semantically wrong; adding a separate correctly-typed node
+    is possible but was left as a decision rather than guessed at.
