@@ -1,0 +1,331 @@
+- generic [active] [ref=f4e1]:
+  - link "Skip to content" [ref=f4e2] [cursor=pointer]:
+    - /url: "#top"
+  - banner [ref=f4e3]:
+    - generic [ref=f4e4]:
+      - link "Nomad Twin Towers — home" [ref=f4e5] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=f4e6]:
+          - text: NOMAD
+          - generic [ref=f4e7]: TWIN TOWERS
+      - button "Menu" [ref=f4e8] [cursor=pointer]
+      - navigation
+  - main [ref=f4e10]:
+    - generic [ref=f4e11]:
+      - img "Nomad Twin Towers rising above the Eastleigh skyline at sunset" [ref=f4e12]
+      - generic [ref=f4e13]:
+        - paragraph [ref=f4e14]: Eastleigh · Nairobi
+        - heading "Luxury 1 & 2 bedroom apartments in Eastleigh, Nairobi." [level=1] [ref=f4e15]
+        - paragraph [ref=f4e16]: Rise above the city, and live within it. A landmark mixed-use address in Eastleigh's business district — retail, a supermarket, residences and hotel suites under one roof.
+        - generic [ref=f4e17]:
+          - link "Explore Residences" [ref=f4e18] [cursor=pointer]:
+            - /url: "#residences"
+          - link "Book a Private Viewing" [ref=f4e19] [cursor=pointer]:
+            - /url: "#enquire"
+        - generic [ref=f4e20]:
+          - generic [ref=f4e21]:
+            - term [ref=f4e22]: Priced From
+            - definition [ref=f4e23]: USD 48,000
+          - generic [ref=f4e24]:
+            - term [ref=f4e25]: Residences
+            - definition [ref=f4e26]: 1 – 2 Bedroom
+          - generic [ref=f4e27]:
+            - term [ref=f4e28]: Developer
+            - definition [ref=f4e29]: Obsha Properties
+    - generic [ref=f4e31]:
+      - generic [ref=f4e32]: Rooftop Infinity Pool◆
+      - generic [ref=f4e33]: Sky Gym & Spa◆
+      - generic [ref=f4e34]: Retail Podium◆
+      - generic [ref=f4e35]: Supermarket◆
+      - generic [ref=f4e36]: Hotel Suites◆
+      - generic [ref=f4e37]: 24/7 Security◆
+      - generic [ref=f4e38]: Rooftop Infinity Pool◆
+      - generic [ref=f4e39]: Sky Gym & Spa◆
+      - generic [ref=f4e40]: Retail Podium◆
+      - generic [ref=f4e41]: Supermarket◆
+      - generic [ref=f4e42]: Hotel Suites◆
+      - generic [ref=f4e43]: 24/7 Security◆
+    - generic [ref=f4e45]:
+      - generic [ref=f4e46]:
+        - figure [ref=f4e47]:
+          - img "Illuminated arrival lobby and porte-cochère at Nomad Twin Towers by night" [ref=f4e49]
+        - generic [ref=f4e50]:
+          - paragraph [ref=f4e51]: The Vision
+          - heading "Built for the way Eastleigh works." [level=2] [ref=f4e52]
+          - paragraph [ref=f4e53]: Nomad Twin Towers is a landmark mixed-use address in the heart of Eastleigh's business district — 334 shops and a 1,701 sqm supermarket at street level, 252 luxury residences above, and hotel suites crowning the towers. Every residence is designed for natural light, with floor-to-ceiling glazing throughout.
+          - paragraph [ref=f4e54]: "Eastleigh trades from first light, and the towers are built for that rhythm: a home minutes from Business Bay Square and three kilometres from the CBD, above a retail podium that works as hard as the district around it. Take a residence, take a shop — or hold both."
+          - link "Request the Brochure" [ref=f4e55] [cursor=pointer]:
+            - /url: assets/nomad-twin-towers-brochure.pdf
+      - generic [ref=f4e56]:
+        - generic [ref=f4e57]:
+          - generic [ref=f4e58]: "0"
+          - generic [ref=f4e59]: Residences
+        - generic [ref=f4e60]:
+          - generic [ref=f4e61]: "0"
+          - generic [ref=f4e62]: Retail Shops
+        - generic [ref=f4e63]:
+          - generic [ref=f4e64]: "0"
+          - generic [ref=f4e65]: Hotel Rooms
+        - generic [ref=f4e66]:
+          - generic [ref=f4e67]:
+            - text: "0"
+            - superscript [ref=f4e68]: sqm
+          - generic [ref=f4e69]: Largest Residence
+        - generic [ref=f4e70]:
+          - generic [ref=f4e71]: "0"
+          - generic [ref=f4e72]: Parking Bays
+        - generic [ref=f4e73]:
+          - generic [ref=f4e74]:
+            - text: "0"
+            - superscript [ref=f4e75]: sqm
+          - generic [ref=f4e76]: Supermarket
+    - generic [ref=f4e78]:
+      - generic [ref=f4e79]:
+        - paragraph [ref=f4e80]: Residences & Retail
+        - heading "Three ways to own above it all." [level=2] [ref=f4e81]
+        - paragraph [ref=f4e82]: The residences are planned for cross-ventilation, natural light and uninterrupted skyline views; the shops sit in the retail podium below them. All prices are in USD, off-plan, with flexible payment terms.
+      - generic [ref=f4e83]:
+        - article [ref=f4e84]:
+          - figure [ref=f4e85]:
+            - tablist "View as photo or floor plan" [ref=f4e86]:
+              - tab "Photo" [ref=f4e87] [cursor=pointer]
+              - tab "Floor Plan" [ref=f4e88] [cursor=pointer]
+            - img "Living room of a one bedroom residence with skyline views" [ref=f4e89]
+          - generic [ref=f4e90]:
+            - generic [ref=f4e91]:
+              - heading "One Bedroom" [level=3] [ref=f4e92]
+              - generic [ref=f4e93]: 60 SQM
+            - paragraph [ref=f4e94]:
+              - generic [ref=f4e95]: Off-plan from
+              - text: USD 48,000
+            - list [ref=f4e96]:
+              - listitem [ref=f4e97]: — Floor-to-ceiling windows with skyline views
+              - listitem [ref=f4e98]: — Open-plan kitchen with stone worktops
+              - listitem [ref=f4e99]: — En-suite bedroom
+            - link "Request Floor Plans" [ref=f4e100] [cursor=pointer]:
+              - /url: "#enquire"
+        - article [ref=f4e101]:
+          - figure [ref=f4e102]:
+            - tablist "View as photo or floor plan" [ref=f4e103]:
+              - tab "Photo" [ref=f4e104] [cursor=pointer]
+              - tab "Floor Plan" [ref=f4e105] [cursor=pointer]
+            - img "Living room of a two bedroom residence with floor-to-ceiling glazing" [ref=f4e106]
+          - generic [ref=f4e107]:
+            - generic [ref=f4e108]:
+              - heading "Two Bedroom" [level=3] [ref=f4e109]
+              - generic [ref=f4e110]: 100 SQM
+            - paragraph [ref=f4e111]:
+              - generic [ref=f4e112]: Off-plan from
+              - text: USD 70,000
+            - list [ref=f4e113]:
+              - listitem [ref=f4e114]: — Floor-to-ceiling windows with skyline views
+              - listitem [ref=f4e115]: — Open-plan living and dining area
+              - listitem [ref=f4e116]: — Two bedrooms
+            - link "Request Floor Plans" [ref=f4e117] [cursor=pointer]:
+              - /url: "#enquire"
+        - article [ref=f4e118]:
+          - figure [ref=f4e119]:
+            - img "Shoppers on the retail podium concourse, with shopfronts across two levels" [ref=f4e120]
+          - generic [ref=f4e121]:
+            - generic [ref=f4e122]:
+              - heading "Shops" [level=3] [ref=f4e123]
+              - generic [ref=f4e124]: GROUND – 6TH
+            - paragraph [ref=f4e125]:
+              - generic [ref=f4e126]: Off-plan from
+              - text: USD 25,000
+            - list [ref=f4e127]:
+              - listitem [ref=f4e128]: — 334 shops in the retail podium
+              - listitem [ref=f4e129]: — Anchored by a 1,701 sqm supermarket
+              - listitem [ref=f4e130]: — 105 basement parking bays
+            - link "Request Shop Details" [ref=f4e131] [cursor=pointer]:
+              - /url: "#enquire"
+    - generic [ref=f4e133]:
+      - generic [ref=f4e134]:
+        - paragraph [ref=f4e135]: Amenities
+        - heading "Two floors devoted to everything but work." [level=2] [ref=f4e136]
+      - generic [ref=f4e137]:
+        - figure [ref=f4e138]:
+          - img "Resident overlooking the rooftop infinity pool at golden hour" [ref=f4e140]
+          - heading "Rooftop Infinity Pool" [level=3] [ref=f4e142]
+        - figure [ref=f4e143]:
+          - img "Sky gym and wellness floor with floor-to-ceiling city views" [ref=f4e145]
+          - heading "Sky Gym & Spa" [level=3] [ref=f4e147]
+        - figure [ref=f4e148]:
+          - img "Residents' lounge terrace overlooking the city at dusk" [ref=f4e150]
+          - heading "Residents' Lounge" [level=3] [ref=f4e152]
+        - figure [ref=f4e153]:
+          - img "Sky-level restaurant with skyline views at dusk" [ref=f4e155]
+          - heading "Sky Restaurant" [level=3] [ref=f4e157]
+      - generic [ref=f4e158]:
+        - generic [ref=f4e159]:
+          - heading "Rooftop Infinity Pool" [level=3] [ref=f4e162]
+          - paragraph [ref=f4e163]: An infinity pool with a glass edge over the Eastleigh skyline.
+        - generic [ref=f4e164]:
+          - heading "Sky Gym & Spa" [level=3] [ref=f4e167]
+          - paragraph [ref=f4e168]: A fully equipped gym and wellness area with floor-to-ceiling skyline views.
+        - generic [ref=f4e169]:
+          - heading "24/7 Security" [level=3] [ref=f4e172]
+          - paragraph [ref=f4e173]: Round-the-clock security and CCTV, with gated basement parking.
+        - generic [ref=f4e174]:
+          - heading "Residents' Lounge" [level=3] [ref=f4e177]
+          - paragraph [ref=f4e178]: A club-style lounge with skyline views, for residents to relax or entertain.
+        - generic [ref=f4e179]:
+          - heading "Basement Parking" [level=3] [ref=f4e183]
+          - paragraph [ref=f4e184]: Two basement levels with 105 allocated parking bays.
+        - generic [ref=f4e185]:
+          - heading "Sky Restaurant" [level=3] [ref=f4e188]
+          - paragraph [ref=f4e189]: A restaurant with skyline views, for residents and guests.
+    - generic [ref=f4e191]:
+      - generic [ref=f4e192]:
+        - generic [ref=f4e193]:
+          - paragraph [ref=f4e194]: Gallery
+          - heading "A first look, up close." [level=2] [ref=f4e195]
+        - generic [ref=f4e196]:
+          - button "Previous image" [disabled] [ref=f4e197]
+          - button "Next image" [ref=f4e200] [cursor=pointer]
+      - generic [ref=f4e203]:
+        - figure "Nomad Twin Towers · After Dark" [ref=f4e204]:
+          - img "Nomad Twin Towers rising above the retail podium at dusk" [ref=f4e206]
+        - figure "Sky Gym & Wellness" [ref=f4e208]:
+          - img "Sky gym and wellness floor with floor-to-ceiling city views" [ref=f4e210]
+        - figure "Residents' Lounge Terrace" [ref=f4e212]:
+          - img "Residents' lounge terrace overlooking the city at dusk" [ref=f4e214]
+        - figure "Rooftop Pool · Golden Hour" [ref=f4e216]:
+          - img "Resident overlooking the rooftop infinity pool at golden hour" [ref=f4e218]
+        - figure "Sky Restaurant" [ref=f4e220]:
+          - img "Sky-level restaurant with skyline views at dusk" [ref=f4e222]
+        - figure "The Retail Podium" [ref=f4e224]:
+          - img "Boutique storefronts along the retail podium corridor" [ref=f4e226]
+        - figure "One Bedroom Residence · Living Room" [ref=f4e228]:
+          - img "Living and dining area of a one bedroom residence with skyline views" [ref=f4e230]
+        - figure "Two Bedroom Residence · Living Room" [ref=f4e232]:
+          - img "Living room of a two bedroom residence with floor-to-ceiling glazing" [ref=f4e234]
+        - figure "Master Bedroom" [ref=f4e236]:
+          - img "Master bedroom with floor-to-ceiling city views" [ref=f4e238]
+        - figure "The Kitchen" [ref=f4e240]:
+          - img "Open kitchen with stone worktops and integrated cabinetry" [ref=f4e242]
+        - figure "Master Ensuite" [ref=f4e244]:
+          - img "Master ensuite with walk-in rain shower and floating vanity" [ref=f4e246]
+        - figure "Sky Gym · Detail" [ref=f4e248]:
+          - img "Close view of gym equipment with city views at dusk" [ref=f4e250]
+        - figure "Wellness Lounge" [ref=f4e252]:
+          - img "Residents relaxing in the wellness lounge area near the sky gym" [ref=f4e254]
+        - figure "Residents' Lounge" [ref=f4e256]:
+          - img "Residents' lounge interior with panoramic city views at dusk" [ref=f4e258]
+    - generic [ref=f4e261]:
+      - generic [ref=f4e262]:
+        - paragraph [ref=f4e263]: Location
+        - heading "The centre of everything." [level=2] [ref=f4e264]
+        - paragraph [ref=f4e265]: Set in the heart of Eastleigh, minutes from Business Bay Square and a short drive from the Nairobi CBD — Nomad Twin Towers places the city's most enterprising commercial district at your door.
+        - list [ref=f4e266]:
+          - listitem [ref=f4e267]:
+            - strong [ref=f4e268]: Business Bay Square (BBS Mall)
+            - generic [ref=f4e269]: 100 m
+          - listitem [ref=f4e270]:
+            - strong [ref=f4e271]: Eastleigh Business District
+            - generic [ref=f4e272]: 700 m
+          - listitem [ref=f4e273]:
+            - strong [ref=f4e274]: Parklands
+            - generic [ref=f4e275]: 2 km
+          - listitem [ref=f4e276]:
+            - strong [ref=f4e277]: Westlands
+            - generic [ref=f4e278]: 2 km
+          - listitem [ref=f4e279]:
+            - strong [ref=f4e280]: Nairobi CBD
+            - generic [ref=f4e281]: 3 km
+          - listitem [ref=f4e282]:
+            - strong [ref=f4e283]: JKIA
+            - generic [ref=f4e284]: 10 km
+      - generic [ref=f4e287]:
+        - paragraph [ref=f4e291]: Eastleigh, Nairobi — interactive map loads on request to keep the page fast.
+        - button "Load Interactive Map" [ref=f4e292] [cursor=pointer]
+    - generic [ref=f4e294]:
+      - generic [ref=f4e295]:
+        - paragraph [ref=f4e296]: Ownership
+        - heading "A simple path to the keys." [level=2] [ref=f4e297]
+        - paragraph [ref=f4e298]: Off-plan buyers benefit from launch pricing and a staged payment plan through construction — enquire for full terms.
+      - generic [ref=f4e299]:
+        - generic [ref=f4e300]:
+          - generic [ref=f4e301]: "01"
+          - heading "Reserve" [level=3] [ref=f4e302]
+          - paragraph [ref=f4e303]: Choose your residence and secure it with a refundable reservation fee.
+        - generic [ref=f4e304]:
+          - generic [ref=f4e305]: "02"
+          - heading "Sign & Deposit" [level=3] [ref=f4e306]
+          - paragraph [ref=f4e307]: Sign the sale agreement and pay your deposit.
+        - generic [ref=f4e308]:
+          - generic [ref=f4e309]: "03"
+          - heading "Staged Payments" [level=3] [ref=f4e310]
+          - paragraph [ref=f4e311]: The balance is spread in instalments across the construction period.
+        - generic [ref=f4e312]:
+          - generic [ref=f4e313]: "04"
+          - heading "Handover" [level=3] [ref=f4e314]
+          - paragraph [ref=f4e315]: Move in on completion.
+    - generic [ref=f4e317]:
+      - generic [ref=f4e318]:
+        - paragraph [ref=f4e319]: Enquire
+        - heading "Book a private viewing." [level=2] [ref=f4e320]
+        - paragraph [ref=f4e321]: Visit the show apartment and sales gallery, or speak with our team about availability, floor plans and payment terms.
+        - generic [ref=f4e322]:
+          - link "Call / WhatsApp +254 711 111 188" [ref=f4e323] [cursor=pointer]:
+            - /url: tel:+254711111188
+            - generic [ref=f4e324]: Call / WhatsApp
+            - generic [ref=f4e325]: +254 711 111 188
+          - link "Email sales@nomadtwintowers.com" [ref=f4e326] [cursor=pointer]:
+            - /url: mailto:sales@nomadtwintowers.com
+            - generic [ref=f4e327]: Email
+            - generic [ref=f4e328]: sales@nomadtwintowers.com
+          - link "Sales Gallery Eastleigh, Nairobi" [ref=f4e329] [cursor=pointer]:
+            - /url: "#location"
+            - generic [ref=f4e330]: Sales Gallery
+            - generic [ref=f4e331]: Eastleigh, Nairobi
+      - generic [ref=f4e332]:
+        - generic [ref=f4e333]:
+          - generic [ref=f4e334]:
+            - generic [ref=f4e335]: Full Name
+            - textbox "Full Name" [ref=f4e336]
+          - generic [ref=f4e337]:
+            - generic [ref=f4e338]: Phone
+            - textbox "Phone" [ref=f4e339]
+        - generic [ref=f4e340]:
+          - generic [ref=f4e341]:
+            - generic [ref=f4e342]: Email
+            - textbox "Email" [ref=f4e343]
+          - generic [ref=f4e344]:
+            - generic [ref=f4e345]: Interested In
+            - combobox "Interested In" [ref=f4e346]:
+              - option "One Bedroom Residence" [selected]
+              - option "Two Bedroom Residence"
+              - option "Investment Portfolio"
+        - generic [ref=f4e347]:
+          - generic [ref=f4e348]: Message (optional)
+          - textbox "Message (optional)" [ref=f4e349]
+        - status [ref=f4e350]
+        - generic [ref=f4e351]:
+          - button "Enquire on WhatsApp" [ref=f4e352] [cursor=pointer]
+          - button "Send by Email" [ref=f4e353] [cursor=pointer]
+        - paragraph [ref=f4e354]: Your enquiry opens in WhatsApp or your email app — nothing is stored on this site.
+  - contentinfo [ref=f4e355]:
+    - generic [ref=f4e356]:
+      - generic [ref=f4e357]:
+        - link "Nomad Twin Towers — back to top" [ref=f4e358] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=f4e359]:
+            - text: NOMAD
+            - generic [ref=f4e360]: TWIN TOWERS
+        - navigation "Footer" [ref=f4e361]:
+          - link "Vision" [ref=f4e362] [cursor=pointer]:
+            - /url: "#about"
+          - link "Residences" [ref=f4e363] [cursor=pointer]:
+            - /url: "#residences"
+          - link "Amenities" [ref=f4e364] [cursor=pointer]:
+            - /url: "#amenities"
+          - link "Location" [ref=f4e365] [cursor=pointer]:
+            - /url: "#location"
+          - link "Enquire" [ref=f4e366] [cursor=pointer]:
+            - /url: "#enquire"
+      - generic [ref=f4e367]:
+        - paragraph [ref=f4e368]: © 2026 Nomad Twin Towers. All rights reserved. Developed by Obsha Properties.
+        - paragraph [ref=f4e369]: Artist's impressions. Specifications may change without notice.
+  - link "Chat on WhatsApp" [ref=f4e370] [cursor=pointer]:
+    - /url: https://wa.me/254711111188?text=Hello%20Nomad%20Twin%20Towers%2C%20I%27d%20like%20to%20enquire.

@@ -631,3 +631,36 @@ on deploy — see Open questions re: deploy-root exposure).
     nothing else shifted.
   - This bug predates today and was found while screenshotting the Shops card;
     it was not caused by the three-column grid change.
+
+- 2026-07-30 (SEO pass): audited the live page rather than assuming, then fixed
+  the two real gaps found. **The technical fundamentals were already at
+  ceiling** — title 59 chars, meta description 149, exactly one `<h1>`, no
+  skipped heading levels, all 28 images carrying alt text *and* explicit
+  width/height, canonical and robots correct, 13 requests for 331 KB, TTFB
+  250 ms, CLS 0.059. There was no performance work worth doing. (LCP could not
+  be measured in the headless context — paint timing entries came back empty —
+  so no LCP figure is claimed here.)
+  - **`sitemap.xml`**: `lastmod` still read 2026-07-29 after a day of
+    substantive content changes. Now 2026-07-30, and **keep it moving** — a
+    date that never changes is worth less than none. Image entries went from 1
+    to 13, covering every on-page render (exteriors, both unit interiors,
+    bedroom/kitchen/bathroom, retail, and the four amenity shots). Worth the
+    effort specifically because property search is visual and this site already
+    holds the **first slot in Google's image pack** for "nomad twin towers" —
+    that channel is already working, so feed it. Every listed image was
+    verified to exist on disk and to be referenced on the page.
+  - **`Organization.url` removed.** The Obsha Properties node claimed
+    `url: https://nomadtwintowers.com/`, which is the *development's* site, not
+    the developer's. That conflates the two entities — precisely the confusion
+    the AI Overview is already making by attributing the NSSF Twin Towers to
+    this brand. Omitting an unknown beats asserting a wrong one, and
+    `obshaproperties.com` is NXDOMAIN so there is nothing correct to point at
+    yet (see `seo-local-listings.md` §6.5). `WebSite.publisher` still resolves
+    to the node, so the developer↔site relationship is intact.
+  - **Noted, not changed**: four amenity `<h3>`s appear twice each (highlight
+    strip and cards) — "Rooftop Infinity Pool", "Sky Gym & Spa", "Residents'
+    Lounge", "Sky Restaurant". Harmless duplication rather than a fault, and
+    restructuring it risks the layout for no measurable gain.
+  - **The ceiling is now off-site.** Everything left that would move the AI
+    Overview and the brand SERP needs the client: the street address, profiles
+    to claim, and portal listings. See `seo-local-listings.md` §6.

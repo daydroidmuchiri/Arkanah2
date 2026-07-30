@@ -1,12 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Single-page site, so one <url>. The image entries matter more than usual
+     here: property searches are visual, and this site already holds the first
+     slot in Google's image pack for "nomad twin towers". Only images actually
+     placed on the page are listed. Keep <lastmod> in step with real content
+     changes — a date that never moves is worth less than no date at all. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://nomadtwintowers.com/</loc>
-    <lastmod>2026-07-29</lastmod>
+    <lastmod>2026-07-30</lastmod>
     <image:image>
       <image:loc>https://nomadtwintowers.com/assets/front-view.jpg</image:loc>
       <image:title>Nomad Twin Towers, Eastleigh, Nairobi</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/drama-shot.jpg</image:loc>
+      <image:title>Nomad Twin Towers rising above the retail podium at dusk</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/drop-off.jpg</image:loc>
+      <image:title>Arrival lobby and porte-cochere at Nomad Twin Towers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/1-br-living-room.jpg</image:loc>
+      <image:title>One bedroom apartment living room, Nomad Twin Towers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/2-br-living-room.jpg</image:loc>
+      <image:title>Two bedroom apartment living room, Nomad Twin Towers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/bedroom.jpg</image:loc>
+      <image:title>Master bedroom with city views, Nomad Twin Towers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/kitchen.jpg</image:loc>
+      <image:title>Open kitchen with stone worktops, Nomad Twin Towers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/master-bathroom.jpg</image:loc>
+      <image:title>Master ensuite bathroom, Nomad Twin Towers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/retail.jpg</image:loc>
+      <image:title>Retail podium shopfronts, Nomad Twin Towers Eastleigh</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/pool-closeup.jpg</image:loc>
+      <image:title>Rooftop infinity pool, Nomad Twin Towers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/gym-and-wellness.jpg</image:loc>
+      <image:title>Sky gym and wellness floor, Nomad Twin Towers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/sky-lounge-terrace.jpg</image:loc>
+      <image:title>Residents lounge terrace, Nomad Twin Towers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/restaurant-main.jpg</image:loc>
+      <image:title>Sky restaurant with skyline views, Nomad Twin Towers</image:title>
     </image:image>
   </url>
 </urlset>
