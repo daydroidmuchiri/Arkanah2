@@ -179,6 +179,9 @@ h3 { font-size: 1.35rem; }
   font-size: 1.22rem;
   letter-spacing: 0.14em;
   color: var(--text-on-dark);
+  /* "TWIN TOWERS" broke onto two lines and collided with the nav in the band
+     just above the old 820px hamburger breakpoint — see that media query. */
+  white-space: nowrap;
 }
 .brand-name small {
   display: block;
@@ -217,7 +220,13 @@ h3 { font-size: 1.35rem; }
 .nav-toggle[aria-expanded="true"] span { opacity: 0; }
 .nav-toggle[aria-expanded="true"]::after { transform: translateY(-6px) rotate(-45deg); }
 
-@media (max-width: 820px) {
+/* Raised from 820px to 1040px on 2026-07-30. Seven nav items plus the ENQUIRE
+   button need ~874px of intrinsic width beside the brand (measured: brand 146px,
+   links 682px at a 23px gap, and the gap is clamp(1.2rem, 2.6vw, 2.4rem) so it
+   widens further on bigger viewports). Against --w of min(1180px, 92vw) that
+   works out at roughly 1000px, so the old 820px left a ~180px band where the
+   desktop nav rendered badly cramped. 1040px leaves margin. */
+@media (max-width: 1040px) {
   .nav-toggle { display: block; }
   .nav-links {
     position: fixed;

@@ -600,3 +600,34 @@ on deploy — see Open questions re: deploy-root exposure).
     `containsPlace`. A retail unit is not an `Accommodation`, so forcing one in
     there would be semantically wrong; adding a separate correctly-typed node
     is possible but was left as a decision rather than guessed at.
+
+- 2026-07-30 (later still): **retail added to structured data, and the navbar
+  breakpoint fixed.** Both on Daniel's instruction.
+  - **JSON-LD**: the Shops card was live with a price that appeared nowhere in
+    the graph. Added a `ShoppingCenter` node (`#retail`) — 334 units Ground–6th,
+    the 1,701 sqm Basement 1 supermarket, 105 parking bays — carrying the
+    USD 25,000 unit price as `makesOffer` with `availability: PreOrder` and
+    `seller` pointing at `#developer`. It is wired in both directions:
+    `containedInPlace` → `#development`, and an `@id` reference appended to the
+    development's `containsPlace` beside the two `Apartment` nodes.
+    `ShoppingCenter` was chosen over stuffing retail into `containsPlace` as an
+    `Accommodation` (semantically wrong — a shop is not lodging) and over a bare
+    `Product` node (which invites Google to read it as a merchant listing).
+    Valid because `ShoppingCenter` → `LocalBusiness` → both `Organization` and
+    `Place`, so it satisfies `containsPlace`'s Place range *and* allows
+    `makesOffer`, which a plain `Place` does not. All four `@id` references in
+    the graph verified to resolve.
+  - **Navbar**: the hamburger only appeared at ≤820px, but the desktop nav needs
+    about **1000px** — measured in-browser, not guessed: brand 146px + links
+    682px at a 23px gap, and that gap is `clamp(1.2rem, 2.6vw, 2.4rem)` so it
+    grows on wider viewports, against `--w: min(1180px, 92vw)`. That left a
+    ~180px band (820–1000px) where the full desktop nav rendered on top of
+    itself — "TWIN TOWERS" and "THE VISION" both wrapping and colliding.
+    Breakpoint raised to **1040px** for margin, and `.brand-name` given
+    `white-space: nowrap` so the brand can never wrap regardless. Verified at
+    1042px (desktop nav, 75px clearance, no wrap, no overlap) and at 900px
+    (clean hamburger). The 820px media query contained *only* nav rules, and
+    `main.js` has no breakpoint coupling — both checked before moving it, so
+    nothing else shifted.
+  - This bug predates today and was found while screenshotting the Shops card;
+    it was not caused by the three-column grid change.

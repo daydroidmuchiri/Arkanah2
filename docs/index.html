@@ -119,8 +119,41 @@
               "availability": "https://schema.org/PreOrder",
               "url": "https://nomadtwintowers.com/#residences"
             }
-          }
+          },
+          { "@id": "https://nomadtwintowers.com/#retail" }
         ]
+      },
+      {
+        "@type": "ShoppingCenter",
+        "@id": "https://nomadtwintowers.com/#retail",
+        "name": "Nomad Twin Towers Retail Podium",
+        "description": "334 retail units from Ground to 6th floor, anchored by a 1,701 sqm supermarket in Basement 1, with 105 basement parking bays.",
+        "url": "https://nomadtwintowers.com/#residences",
+        "image": "https://nomadtwintowers.com/assets/retail.jpg",
+        "telephone": "+254711111188",
+        "email": "sales@nomadtwintowers.com",
+        "containedInPlace": { "@id": "https://nomadtwintowers.com/#development" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Eastleigh, Nairobi",
+          "addressRegion": "Nairobi",
+          "postalCode": "00610",
+          "addressCountry": "KE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -1.280676,
+          "longitude": 36.848874
+        },
+        "makesOffer": {
+          "@type": "Offer",
+          "name": "Retail Unit",
+          "price": 25000,
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/PreOrder",
+          "url": "https://nomadtwintowers.com/#residences",
+          "seller": { "@id": "https://nomadtwintowers.com/#developer" }
+        }
       },
       {
         "@type": "Organization",
