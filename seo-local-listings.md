@@ -210,10 +210,22 @@ Note the price list contradicts itself on residential floors — "18" total vs
    contents are unverified. Ask the client which is theirs; merge or delete
    the other. **Duplicate profiles get merged or suspended, so claim before
    creating.** Also ask whether a GBP already exists.
-5. **`obshaproperties.com` is indexed by Google but does not resolve**
-   (NXDOMAIN at 1.1.1.1, 2026-07-30). A dead company domain is itself a trust
-   signal problem. Find out whether it lapsed and should be renewed, or was
-   abandoned. It changes what `Organization.url` should point at (§7).
+5. **`obshaproperties.com` is not registered — act on this.** Checked
+   2026-07-30 after Daniel reported the site was "down". It is not down; the
+   domain does not exist. NXDOMAIN at both 1.1.1.1 and 8.8.8.8, **no NS
+   records, no SOA**, and RDAP at Verisign — the registry of record for
+   `.com` — returns **404**, which means unregistered and available to buy.
+   A site that is merely down still resolves in DNS and fails at the HTTP
+   layer; this fails a step earlier.
+
+   Two consequences, one of them time-sensitive:
+   - **Anyone can register it**, including someone impersonating the developer
+     to intercept buyer enquiries on a project selling USD 48,000+ units. For
+     roughly USD 10/yr at Cloudflare Registrar — the same place
+     `nomadtwintowers.com` sits — that risk closes. Worth raising with the
+     client today rather than at handover.
+   - It is why `Organization.url` was removed rather than repointed (§7).
+     Once the domain is live again, put it back.
 6. **Obsha logo asset** — still none on file; `logo-mark.png` is our in-house
    monogram.
 7. **Social profiles**: do Instagram / TikTok / LinkedIn exist? Instagram and
@@ -230,11 +242,14 @@ Instagram, LinkedIn, and each portal listing. `sameAs` is the explicit
 machine-readable statement "these all denote the same entity", and it is the
 strongest on-site lever available against the NSSF Twin Towers confusion.
 
-Also flagged, needing a decision rather than a silent edit: the `Organization`
-node for Obsha Properties carries `"url": "https://nomadtwintowers.com/"` —
-the development's URL, not the developer's. That is a slightly wrong entity
-claim. Resolve per §6.5: repoint it at a revived `obshaproperties.com`, or
-drop the property.
+**Done 2026-07-30**: the `Organization` node for Obsha Properties carried
+`"url": "https://nomadtwintowers.com/"` — the development's URL, not the
+developer's — which conflated exactly the two entities Google is already
+confusing. The property was **removed** rather than repointed, because per
+§6.5 there is currently no correct URL to point at. Omitting an unknown beats
+asserting a wrong one. `WebSite.publisher` still resolves to the node, so the
+developer↔site relationship survives. **Put `url` back the day
+`obshaproperties.com` resolves.**
 
 Finally, **the favicon fix shipped 2026-07-30** (`f59f9b3`) but Google
 re-crawls icons on its own schedule — the default globe in results is expected
