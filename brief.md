@@ -540,18 +540,21 @@ on deploy — see Open questions re: deploy-root exposure).
     it ("Take a residence, take a shop — or hold both") without ever quoting a
     number.
   - **Gikomba Market removed** from the location list as instructed.
-  - **The two distance claims were NOT published.** Measured from the client's
-    own map pin (-1.280676, 36.848874): Westlands is **5.45 km** and Parklands
-    **4.01 km** straight-line, so by road both are further still — "2km" is off
-    by 2–3×, and it is checkable on Google Maps in seconds. BBS Mall measures
-    **0.32 km**, so the page's existing "300 m" is right and the claimed
-    "100 m" is ~3× short. Daniel's call was to keep the accurate figures and
-    add nothing. This follows the same rule as Missing item 11, which stripped
-    the invented drive times.
-  - **Still open**: the 100 m claim may mean the map pin itself is wrong rather
-    than the distance — if the site really does sit 100 m from BBS Mall, the
-    pin is misplaced by ~200 m, which would also make the JSON-LD `geo` block
-    and any future Business Profile pin wrong. Worth one question to the
-    client. Also unresolved: whether a written price list backs the new
-    figures, since they contradict
+  - **The two distance claims were published on Daniel's instruction, after
+    being queried twice and reaffirmed.** Recording the measurements so nobody
+    re-derives them: from the client's own pin (-1.280676, 36.848874),
+    straight-line, BBS Mall is **0.32 km**, Parklands **4.01 km** and Westlands
+    **5.45 km** — road distance is further again in each case. The page now
+    states BBS Mall at **100 m** (~3× short) and Westlands at **2 km** (~2.7×
+    short). Daniel confirmed 2026-07-30 that the pin is correct, so the two
+    facts do not reconcile: if the pin is right, BBS Mall cannot be 100 m away.
+    Flagged and overruled — it is the client's own copy about their own site,
+    and both figures are the kind a buyer can check on Google Maps in one tap.
+    Note this is a deliberate departure from Missing item 11, which stripped
+    the invented drive times for exactly this reason.
+  - **Parklands was not added.** The client's message said "2km from westlands
+    and parklands" but the instruction narrowed to Westlands only, so Parklands
+    stays off the list pending a decision.
+  - **Still open**: whether a written price list backs the new figures, since
+    they contradict
     `reference/nomad-twin-towers-price-list-2026-07-27.jpeg`.
