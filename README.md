@@ -139,3 +139,49 @@ The old GitHub Pages deployment at `https://daydroidmuchiri.github.io/Arkanah2/`
 should be turned off in repo Settings → Pages once Cloudflare is verified live,
 to avoid a duplicate copy of the site (the canonical tag points at
 nomadtwintowers.com, which mitigates but does not remove the issue).
+
+## Analytics
+
+Two sources, and **you need both** — read them together, not separately.
+
+**Source of truth for visitor counts: the zone's edge analytics.** Cloudflare
+dashboard → the `nomadtwintowers.com` zone → Analytics & Logs → Traffic. Free
+plan gives *Requests*, *Bandwidth*, *Unique Visitors*, and requests by country.
+Measured at Cloudflare's edge from the HTTP requests themselves, so **nothing
+can block it** — no script, no cookie, no consent surface. It is also
+retroactive and needed no setup; data has been accumulating since the domain
+went live 2026-07-29. Caveat: it counts crawlers, bots and threat traffic
+alongside real people, so it **overcounts** humans.
+
+**Secondary, for engagement and performance: Cloudflare Web Analytics.** The JS
+beacon at the bottom of `docs/index.html` (site token `04edb6ea…`). Gives page
+load times, Core Web Vitals, referrers and time-on-page — things edge logs
+cannot see. But it is a third-party script from
+`static.cloudflareinsights.com`, so it is blocked for a meaningful share of
+visitors by ad blockers, Brave shields and Edge/Safari tracking prevention.
+Realistically **undercounts** by roughly 20–40% depending on audience. Blocked
+loads show in the browser console as `ERR_BLOCKED_BY_CLIENT` or "Tracking
+Prevention blocked a Script resource" — that is expected, not a site fault.
+
+So: edge Unique Visitors is the ceiling, beacon visits are the floor, and the
+real number sits between. Quote the edge figure to the client for reach, and
+the beacon for behaviour.
+
+**Things that were considered and rejected** (decided 2026-07-30, so nobody
+re-treads this):
+
+- *Switching the beacon to Cloudflare's automatic edge injection* does **not**
+  make it unblockable. Both modes load the same script from
+  `static.cloudflareinsights.com`; automatic only changes where the beacon
+  *posts* (first-party `/cdn-cgi/rum` instead of `cloudflareinsights.com`). It
+  would recover only visitors whose blocker stops the POST but allows the
+  script. Cloudflare Web Analytics has **no** server-side mode — per their
+  docs, it "only displays client-side analytics."
+- *Server-side pageviews and per-URL breakdown* require the **Pro plan
+  ($20/mo)**. Low value here regardless: the site is a single page, so a
+  per-path breakdown tells you nothing the total doesn't.
+- *A Pages Function logging hits to D1* would give true unblockable
+  first-party per-visit data on the free tier, but puts serverless code in
+  front of what is currently pure static hosting, and needs something built to
+  read it. Not worth it for a one-page brochure site. Revisit only if the
+  client asks for numbers the two sources above cannot answer.
