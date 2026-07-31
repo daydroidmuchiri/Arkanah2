@@ -754,3 +754,26 @@ on deploy — see Open questions re: deploy-root exposure).
   test completed. **Check by hand in a normal browser before deciding whether
   there is anything to fix.** Note the track is also `scroll-snap-type: x
   mandatory`, and a scroll shorter than half an item snaps back to 0.
+
+- 2026-07-31: **`docs/_headers` added — returning visitors were running stale
+  JS/CSS for up to four hours.** Cloudflare Pages' defaults serve `index.html`
+  at `max-age=0` but every other asset at `max-age=14400`. New HTML plus
+  four-hour-old code is not a theoretical mismatch: it is exactly what shipped
+  after the lightbox rewrite, where the markup carried the new `data-full`
+  hooks but the cached `main.js` knew nothing about them, so the Amenities
+  images did not open at all. Daniel challenged the "verified live" claim and
+  was right to — the check had confirmed the *server* was serving new JS via
+  curl, not that the *browser* was executing it. Several "hasn't propagated
+  yet" moments earlier the same day were the same cause, misread as edge lag.
+  - `/css/*` and `/js/*` now `max-age=0, must-revalidate`. Filenames are stable
+    because there is no build step to content-hash them, so revalidating every
+    load is the only safe policy for code; it costs a 304 when nothing changed.
+  - Images and fonts keep the 14400 default deliberately — their contents never
+    change under a given filename, and new renders arrive under new names.
+  - `_headers` is consumed by Pages and never served, so it does not appear on
+    the site.
+  - **Verification lesson worth keeping**: `curl` against the origin proves what
+    is deployed, not what a returning browser runs. For anything touching JS or
+    CSS behaviour, load the page in a browser and assert on a marker only the
+    new code produces — here, `tabIndex`/`role` being set on the 24 lightbox
+    triggers.

@@ -1,0 +1,23 @@
+# Cloudflare Pages header rules. Pages consumes this file and does not serve it.
+#
+# Why this exists (2026-07-31): Pages' default is max-age=14400 on every asset,
+# while index.html is max-age=0. That combination broke the site for returning
+# visitors — new HTML would run up to four hours of stale JS/CSS. It was caught
+# after the lightbox rewrite shipped: the markup had the new data-full hooks but
+# the cached main.js knew nothing about them, so the Amenities images simply did
+# not open. Several "the deploy hasn't propagated" moments the same day were
+# this, not edge lag.
+#
+# Filenames here are stable (no content hashing — there is no build step), so
+# the only safe policy for code is to revalidate every load. That costs a 304
+# when nothing changed and removes the stale-code window entirely.
+#
+# Images, fonts and other assets deliberately keep the Pages default: their
+# contents never change under a given filename, and a new render ships under a
+# new name.
+
+/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/js/*
+  Cache-Control: public, max-age=0, must-revalidate
