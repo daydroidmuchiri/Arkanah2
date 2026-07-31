@@ -1,23 +1,39 @@
-# Cloudflare Pages header rules. Pages consumes this file and does not serve it.
+# Cloudflare Pages header rules. Pages consumes this file and never serves it.
 #
-# Why this exists (2026-07-31): Pages' default is max-age=14400 on every asset,
-# while index.html is max-age=0. That combination broke the site for returning
-# visitors — new HTML would run up to four hours of stale JS/CSS. It was caught
-# after the lightbox rewrite shipped: the markup had the new data-full hooks but
-# the cached main.js knew nothing about them, so the Amenities images simply did
-# not open. Several "the deploy hasn't propagated" moments the same day were
-# this, not edge lag.
+# Why this exists (2026-07-31): returning visitors were running stale JS/CSS for
+# up to four hours. New HTML plus four-hour-old code is not theoretical — it is
+# what shipped after the lightbox rewrite, where the markup carried the new
+# data-full hooks but the cached main.js knew nothing about them, so the
+# Amenities images did not open at all.
 #
-# Filenames here are stable (no content hashing — there is no build step), so
-# the only safe policy for code is to revalidate every load. That costs a 304
-# when nothing changed and removes the stale-code window entirely.
+# IMPORTANT — this file alone is not sufficient. The `max-age=14400` seen on the
+# custom domain was NOT the Pages default: the pages.dev origin returns
+# `max-age=0` for every asset. 14400 is the zone's **Browser Cache TTL**
+# (Cloudflare Free plan default, 4 hours) rewriting the origin's headers. Until
+# that zone setting is changed to "Respect Existing Headers"
+# (Caching → Configuration → Browser Cache TTL), nothing below takes effect on
+# nomadtwintowers.com. Verify with:
+#   curl -sI https://nomadtwintowers.com/js/main.js | grep -i cache-control
 #
-# Images, fonts and other assets deliberately keep the Pages default: their
-# contents never change under a given filename, and a new render ships under a
-# new name.
+# Once the zone respects origin headers, everything would otherwise inherit the
+# origin's max-age=0 — including images and fonts — so the long-lived rules
+# below are needed to avoid trading one problem for a slower site.
 
+# Code: filenames are stable because there is no build step to content-hash
+# them, so revalidate every load. Costs a 304 when nothing has changed.
 /css/*
   Cache-Control: public, max-age=0, must-revalidate
 
 /js/*
   Cache-Control: public, max-age=0, must-revalidate
+
+# Renders and floor plans: new artwork ships under a new filename, so a week is
+# safe. Kept revalidating after that because a few files have been overwritten
+# in place (apple-touch-icon.png, the favicon rebuild on 2026-07-30).
+/assets/*
+  Cache-Control: public, max-age=604800, must-revalidate
+
+# Self-hosted Fraunces/Manrope subsets. These genuinely never change under these
+# names, so cache them hard.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
