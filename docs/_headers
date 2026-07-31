@@ -6,13 +6,19 @@
 # data-full hooks but the cached main.js knew nothing about them, so the
 # Amenities images did not open at all.
 #
-# IMPORTANT — this file alone is not sufficient. The `max-age=14400` seen on the
-# custom domain was NOT the Pages default: the pages.dev origin returns
-# `max-age=0` for every asset. 14400 is the zone's **Browser Cache TTL**
-# (Cloudflare Free plan default, 4 hours) rewriting the origin's headers. Until
-# that zone setting is changed to "Respect Existing Headers"
-# (Caching → Configuration → Browser Cache TTL), nothing below takes effect on
-# nomadtwintowers.com. Verify with:
+# IMPORTANT — this file alone is not sufficient for the code rules. The
+# `max-age=14400` on the custom domain is NOT the Pages default: the pages.dev
+# origin honours everything below. 14400 is the zone's **Browser Cache TTL**
+# (Cloudflare Free plan default, 4 hours).
+#
+# Measured 2026-07-31, it behaves as a FLOOR, not a blanket override — the
+# /fonts/* rule below reaches the browser intact at a full year, while
+# `max-age=0` is raised to 14400. So no value written here can produce
+# max-age=0 while that setting stands: it has to be changed to
+# "Respect Existing Headers" in Caching → Configuration → Browser Cache TTL.
+# Until then the /css/* and /js/* rules are inert on nomadtwintowers.com and
+# the stale-code window remains. The /assets/* and /fonts/* rules already work,
+# since both exceed the floor. Verify with:
 #   curl -sI https://nomadtwintowers.com/js/main.js | grep -i cache-control
 #
 # Once the zone respects origin headers, everything would otherwise inherit the

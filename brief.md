@@ -772,6 +772,19 @@ on deploy — see Open questions re: deploy-root exposure).
     change under a given filename, and new renders arrive under new names.
   - `_headers` is consumed by Pages and never served, so it does not appear on
     the site.
+  - **Correction, same day — the header file alone does not fix the live
+    domain.** The `max-age=14400` is not a Pages default: the pages.dev origin
+    honours every rule in the file. It is the zone's **Browser Cache TTL**
+    (Cloudflare Free plan default, 4 hours), and it behaves as a *floor*, not a
+    blanket override — measured by shipping a `/fonts/*` rule at a year, which
+    reaches the browser intact, while `max-age=0` is raised to 14400. So no
+    value in `_headers` can produce `max-age=0` while that setting stands.
+    **Someone with dashboard access must set Caching → Configuration → Browser
+    Cache TTL to "Respect Existing Headers".** The Cloudflare API MCP could not
+    authenticate (`10000: Authentication error`), so this could not be done from
+    here. Until it is, `/css/*` and `/js/*` are inert on nomadtwintowers.com and
+    the stale-code window remains; `/assets/*` (7 days) and `/fonts/*` (1 year)
+    already apply, since both exceed the floor.
   - **Verification lesson worth keeping**: `curl` against the origin proves what
     is deployed, not what a returning browser runs. For anything touching JS or
     CSS behaviour, load the page in a browser and assert on a marker only the
