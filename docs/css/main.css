@@ -35,6 +35,11 @@
   --cream-2: #eae4d6;
   --gold: #cda060;
   --gold-soft: #e2bf8b;
+  /* Gold for TEXT on the cream sections. #92763c is still used for strokes,
+     borders and focus rings, but as text it measures 3.78:1 on --cream, under
+     the 4.5:1 WCAG AA minimum for body-size type (audited 2026-07-31). This is
+     4.62:1. Decorative uses are exempt and deliberately left on #92763c. */
+  --gold-text-on-light: #84682e;
   --text-on-dark: #e9e6de;
   --muted-on-dark: #9aa1ab;
   --muted-on-light: #5c6572;
@@ -107,10 +112,12 @@ h3 { font-size: 1.35rem; }
 .serif-accent { font-style: italic; font-weight: 500; color: var(--gold-soft); }
 .lede { font-size: clamp(1rem, 1.6vw, 1.15rem); max-width: 34rem; }
 
-.section { padding-block: var(--pad-y); scroll-margin-top: 4.2rem; }
+/* scroll-margin-top must clear the sticky header (82px measured 2026-07-31);
+   at 4.2rem/67px, clicking a nav link tucked 15px of each section underneath. */
+.section { padding-block: var(--pad-y); scroll-margin-top: 6rem; }
 .section--light { background: var(--cream); color: #232a37; }
-.section--light .eyebrow { color: #92763c; }
-.section--light .eyebrow::before { background: #92763c; }
+.section--light .eyebrow { color: var(--gold-text-on-light); }
+.section--light .eyebrow::before { background: var(--gold-text-on-light); }
 .section--light .lede, .section--light p { color: #47505e; }
 .wrap { width: var(--w); margin-inline: auto; }
 .section-head { max-width: 44rem; margin-bottom: clamp(2.5rem, 6vw, 4.5rem); display: grid; gap: 1.1rem; }
@@ -355,7 +362,7 @@ h3 { font-size: 1.35rem; }
 }
 .stats > div { background: var(--cream); padding: 1.8rem 1.4rem; display: grid; gap: 0.3rem; }
 .stat-num { font-family: var(--font-display); font-size: clamp(1.9rem, 3.4vw, 2.7rem); color: #232a37; }
-.stat-num sup { font-size: 0.55em; color: #92763c; }
+.stat-num sup { font-size: 0.55em; color: var(--gold-text-on-light); }
 .stat-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted-on-light); }
 @media (max-width: 700px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 
@@ -563,7 +570,7 @@ h3 { font-size: 1.35rem; }
   color: var(--muted-on-light);
 }
 .film-note a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-.film-note a:hover { color: #92763c; }
+.film-note a:hover { color: var(--gold-text-on-light); }
 
 .map-facade {
   position: relative;
@@ -599,9 +606,9 @@ h3 { font-size: 1.35rem; }
 @media (max-width: 880px) { .enquiry-grid { grid-template-columns: 1fr; } }
 .contact-rows { display: grid; gap: 1.4rem; margin-top: 2rem; }
 .contact-rows a { display: grid; gap: 0.15rem; }
-.contact-rows .lbl { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: #92763c; }
+.contact-rows .lbl { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-text-on-light); }
 .contact-rows .val { font-family: var(--font-display); font-size: 1.2rem; color: #232a37; transition: color 0.25s; }
-.contact-rows a:hover .val { color: #92763c; }
+.contact-rows a:hover .val { color: var(--gold-text-on-light); }
 .form { display: grid; gap: 1.1rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
 @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
@@ -622,7 +629,7 @@ h3 { font-size: 1.35rem; }
 .field input.is-invalid, .field textarea.is-invalid { border-bottom-color: #b0432f; }
 .form-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.4rem; }
 .form-note { font-size: 0.8rem; color: var(--muted-on-light); }
-.form-status { font-size: 0.88rem; font-weight: 600; color: #92763c; min-height: 1.4em; }
+.form-status { font-size: 0.88rem; font-weight: 600; color: var(--gold-text-on-light); min-height: 1.4em; }
 
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--line-on-dark); padding-block: 3.2rem 2.4rem; background: var(--ink); }
