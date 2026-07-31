@@ -88,6 +88,8 @@
           { "@type": "LocationFeatureSpecification", "name": "Residents' Lounge", "value": true },
           { "@type": "LocationFeatureSpecification", "name": "Sky Restaurant", "value": true },
           { "@type": "LocationFeatureSpecification", "name": "Supermarket", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Masjid", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Hagisa Community Hub", "value": true },
           { "@type": "LocationFeatureSpecification", "name": "Basement Parking", "value": true },
           { "@type": "LocationFeatureSpecification", "name": "24/7 Security", "value": true }
         ],
@@ -381,6 +383,37 @@
               <h3>Sky Restaurant</h3>
             </figcaption>
           </figure>
+          <!-- Added 2026-07-31 from the client's third render batch. The masjid
+               is price-list-confirmed (4th floor) and had no presence on the
+               page at all until now, despite being central to how this
+               development reads in Eastleigh. -->
+          <figure class="amen-highlight">
+            <picture>
+              <source type="image/webp" srcset="assets/masjid-800.webp 800w, assets/masjid-1200.webp 1200w, assets/masjid.webp 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw">
+              <img src="assets/masjid-800.jpg" srcset="assets/masjid-800.jpg 800w, assets/masjid-1200.jpg 1200w, assets/masjid.jpg 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw" alt="Prayer hall of the masjid, with brass lanterns and rows of prayer rugs" width="1600" height="893" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <h3>Masjid</h3>
+            </figcaption>
+          </figure>
+          <figure class="amen-highlight">
+            <picture>
+              <source type="image/webp" srcset="assets/community-hall-800.webp 800w, assets/community-hall-1200.webp 1200w, assets/community-hall.webp 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw">
+              <img src="assets/community-hall-800.jpg" srcset="assets/community-hall-800.jpg 800w, assets/community-hall-1200.jpg 1200w, assets/community-hall.jpg 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw" alt="Residents gathered in conversation across the Hagisa Community Hub" width="1600" height="813" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <h3>Hagisa Community Hub</h3>
+            </figcaption>
+          </figure>
+          <figure class="amen-highlight">
+            <picture>
+              <source type="image/webp" srcset="assets/supermarket-800.webp 800w, assets/supermarket-1200.webp 1200w, assets/supermarket.webp 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw">
+              <img src="assets/supermarket-800.jpg" srcset="assets/supermarket-800.jpg 800w, assets/supermarket-1200.jpg 1200w, assets/supermarket.jpg 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw" alt="Supermarket aisles beneath the retail podium" width="1600" height="883" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <h3>Supermarket</h3>
+            </figcaption>
+          </figure>
         </div>
         <div class="amen-grid">
           <div class="amen reveal">
@@ -412,6 +445,21 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M6 3v7a3 3 0 0 0 6 0V3M9 10v11M17 3c-1.5 1.5-2 3-2 5s1 3 2 3 2-1 2-3-.5-3.5-2-5zM17 11v10"/></svg>
             <h3>Sky Restaurant</h3>
             <p>A restaurant with skyline views, for residents and guests.</p>
+          </div>
+          <div class="amen reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M3 21h18M6 21V12M18 21V12M12 4.5c-2.4 1.8-3.8 3.6-3.8 5.5 0 .8.2 1.5.6 2h6.4c.4-.5.6-1.2.6-2 0-1.9-1.4-3.7-3.8-5.5zM10 21v-3a2 2 0 0 1 4 0v3"/></svg>
+            <h3>Masjid</h3>
+            <p>A masjid on the fourth floor, within the building.</p>
+          </div>
+          <div class="amen reveal" data-delay="1">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M17 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9.5 6a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0M22 20v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <h3>Hagisa Community Hub</h3>
+            <p>A community hall for residents to gather, meet and hold events.</p>
+          </div>
+          <div class="amen reveal" data-delay="2">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.4a2 2 0 0 0 2-1.55L21 8H6M10 20.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0M19 20.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/></svg>
+            <h3>Supermarket</h3>
+            <p>A 1,701 sqm supermarket anchoring Basement 1.</p>
           </div>
         </div>
       </div>
@@ -528,6 +576,27 @@
               <img src="assets/sky-lounge.jpg" srcset="assets/sky-lounge-800.jpg 800w, assets/sky-lounge-1200.jpg 1200w, assets/sky-lounge.jpg 1600w" sizes="(max-width: 700px) 82vw, 560px" data-full="assets/sky-lounge.jpg" alt="Residents' lounge interior with panoramic city views at dusk" width="1600" height="1200" loading="lazy" decoding="async">
             </picture>
             <figcaption>Residents' Lounge</figcaption>
+          </figure>
+          <figure class="gal-item">
+            <picture>
+              <source type="image/webp" srcset="assets/masjid-800.webp 800w, assets/masjid-1200.webp 1200w, assets/masjid.webp 1600w" sizes="(max-width: 700px) 82vw, 560px">
+              <img src="assets/masjid.jpg" srcset="assets/masjid-800.jpg 800w, assets/masjid-1200.jpg 1200w, assets/masjid.jpg 1600w" sizes="(max-width: 700px) 82vw, 560px" data-full="assets/masjid.jpg" alt="Prayer hall of the masjid, with brass lanterns and rows of prayer rugs" width="1600" height="893" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>The Masjid</figcaption>
+          </figure>
+          <figure class="gal-item">
+            <picture>
+              <source type="image/webp" srcset="assets/community-hall-800.webp 800w, assets/community-hall-1200.webp 1200w, assets/community-hall.webp 1600w" sizes="(max-width: 700px) 82vw, 560px">
+              <img src="assets/community-hall.jpg" srcset="assets/community-hall-800.jpg 800w, assets/community-hall-1200.jpg 1200w, assets/community-hall.jpg 1600w" sizes="(max-width: 700px) 82vw, 560px" data-full="assets/community-hall.jpg" alt="Residents gathered in conversation across the Hagisa Community Hub" width="1600" height="813" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>Hagisa Community Hub</figcaption>
+          </figure>
+          <figure class="gal-item">
+            <picture>
+              <source type="image/webp" srcset="assets/supermarket-800.webp 800w, assets/supermarket-1200.webp 1200w, assets/supermarket.webp 1600w" sizes="(max-width: 700px) 82vw, 560px">
+              <img src="assets/supermarket.jpg" srcset="assets/supermarket-800.jpg 800w, assets/supermarket-1200.jpg 1200w, assets/supermarket.jpg 1600w" sizes="(max-width: 700px) 82vw, 560px" data-full="assets/supermarket.jpg" alt="Supermarket aisles beneath the retail podium" width="1600" height="883" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>The Supermarket</figcaption>
           </figure>
         </div>
       </div>

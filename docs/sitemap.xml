@@ -8,7 +8,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://nomadtwintowers.com/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-07-31</lastmod>
     <image:image>
       <image:loc>https://nomadtwintowers.com/assets/front-view.jpg</image:loc>
       <image:title>Nomad Twin Towers, Eastleigh, Nairobi</image:title>
@@ -60,6 +60,18 @@
     <image:image>
       <image:loc>https://nomadtwintowers.com/assets/restaurant-main.jpg</image:loc>
       <image:title>Sky restaurant with skyline views, Nomad Twin Towers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/masjid.jpg</image:loc>
+      <image:title>Masjid prayer hall, Nomad Twin Towers Eastleigh</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/community-hall.jpg</image:loc>
+      <image:title>Hagisa Community Hub, Nomad Twin Towers Eastleigh</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nomadtwintowers.com/assets/supermarket.jpg</image:loc>
+      <image:title>Supermarket beneath the retail podium, Nomad Twin Towers</image:title>
     </image:image>
   </url>
 </urlset>

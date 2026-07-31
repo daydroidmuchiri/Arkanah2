@@ -130,6 +130,9 @@ The site now runs entirely on the second render batch, received 2026-07-27
 | restaurant-main.jpg | Gallery + Amenities highlight | Sky restaurant (see Missing item 12 re: naming) |
 | retail-02.jpg | Gallery | Retail podium boutique corridor |
 | retail.jpg | Residences card (Shops) | Retail concourse, two levels of shopfronts (placed 2026-07-30) |
+| masjid.jpg | Amenities highlight + card + Gallery | Masjid prayer hall (batch 3, placed 2026-07-31) |
+| community-hall.jpg | Amenities highlight + card + Gallery | Hagisa Community Hub (batch 3, placed 2026-07-31) |
+| supermarket.jpg | Amenities highlight + card + Gallery | Supermarket aisles (batch 3, placed 2026-07-31) |
 | 1-br-living-room.jpg | Gallery + Residences card (photo toggle) | One bedroom residence, living room |
 | 2-br-living-room.jpg | Gallery + Residences card (photo toggle) | Two bedroom residence, living room |
 | bedroom.jpg | Gallery | Master bedroom |
@@ -664,3 +667,42 @@ on deploy — see Open questions re: deploy-root exposure).
   - **The ceiling is now off-site.** Everything left that would move the AI
     Overview and the brand SERP needs the client: the street address, profiles
     to claim, and portal listings. See `seo-local-listings.md` §6.
+
+- 2026-07-31: **third render batch placed** — `images/batch-2026-07-31/`
+  (masjid, community-hall, supermarket), prepped through
+  `packages/pipeline/src/prep-images.mjs` at the same spec as every other asset
+  (1600px, q80, `--widths=800,1200 --webp`, 18 files written).
+  - **The masjid had zero presence on the site until now** — 0 occurrences of
+    "masjid", "mosque" or "prayer" anywhere in `index.html`, despite the price
+    list confirming one on the 4th floor and this brief repeatedly noting the
+    development is Muslim-oriented. That gap is now closed: photo highlight,
+    icon card, gallery entry, and a `LocationFeatureSpecification` in the
+    JSON-LD.
+  - **The supermarket was named 11 times with no image**, and had no amenity
+    card at all. Both fixed.
+  - Amenity highlights went 4 → 7 (lays out 4+3 in the existing four-column
+    grid; checked in-browser, it reads as a balanced second row and needed no
+    CSS change). Icon cards went 6 → 9, which lands as an exact 3×3 in the
+    existing three-column grid. Gallery 14 → 17. Sitemap 13 → 16 images,
+    `lastmod` 2026-07-31.
+  - **Two calls Daniel made after being shown the evidence:**
+    - *Supermarket render ships as supplied.* The image carries a prominent
+      gondola of brown and green long-neck bottles plus wall shelving that
+      reads as beer and wine. This was cropped out in a tested alternative
+      (left 68%, keeping the wood-slat columns, packaged-goods aisles and the
+      couple with the trolley) and Daniel chose the full render instead.
+      Recorded because it sits four tiles from the masjid in the same grid.
+    - *"Hagisa Community Hub" used as the name*, taken from signage inside the
+      render. It appears in no client document — the price list has only a
+      generic 6th-floor event hall. Note this diverges from how the restaurant
+      was handled (Missing item 12 kept "Sky Restaurant" generic rather than
+      assert "Alacat" until confirmed). Worth confirming at handover; it is now
+      live copy and is also in the JSON-LD and the sitemap image titles.
+  - **Escalated, still unresolved**: the Open Question at the top of this file
+    about `pool-closeup.jpg` — a resident in a headscarf holding what reads as
+    a cocktail glass — is now considerably sharper, because that tile is the
+    *first* amenity highlight and the masjid is the *fifth*, so both are on
+    screen together. The note said to settle it "before this goes live"; it
+    went live unsettled on 2026-07-27 and is still there. Swap candidates on
+    file if wanted: `gym-and-wellness-upclose.jpg`, `sky-lounge.jpg`, or drop
+    the tile and run six highlights.
