@@ -550,6 +550,8 @@ h3 { font-size: 1.35rem; }
   aspect-ratio: 16 / 9;
   background: var(--ink);
   border: 1px solid var(--line-on-light);
+  /* main.js makes the poster itself a play target — signal that it is clickable */
+  cursor: pointer;
 }
 .film-note {
   max-width: 62rem;

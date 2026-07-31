@@ -218,6 +218,24 @@
     });
   }
 
+  /* ---------- Film: click the poster to play ----------
+     With preload="none" and native controls, only the small play button at
+     bottom-left starts playback — clicking the middle of a 992px cinematic
+     poster does nothing, which is where most people click first (confirmed in
+     a real browser 2026-07-31: readyState stayed 0). This toggles play on a
+     click anywhere except the native control strip, which is left alone so the
+     scrubber, volume and fullscreen keep working. */
+  const film = $(".film");
+  if (film) {
+    const CONTROLS_H = 48; /* native control strip, approx */
+    film.addEventListener("click", (e) => {
+      const r = film.getBoundingClientRect();
+      if (e.clientY > r.bottom - CONTROLS_H) return;
+      if (film.paused) film.play().catch(() => {}); /* rejects if the browser blocks it */
+      else film.pause();
+    });
+  }
+
   /* ---------- Map facade: load iframe only on request ---------- */
   const mapBtn = $("[data-load-map]");
   if (mapBtn) {
