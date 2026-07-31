@@ -424,9 +424,18 @@ h3 { font-size: 1.35rem; }
   content: "";
   position: absolute;
   inset: 0;
+  /* Without this the scrim covers the whole image and eats the click: a
+     pseudo-element is not an event target, so e.target resolves to the <figure>
+     and the lightbox handler's closest('...img') returns null. Confirmed in a
+     real browser 2026-07-31 — elementFromPoint at the tile centre returned
+     FIGURE.amen-highlight, not IMG. Programmatic img.click() bypasses hit
+     testing entirely, which is why automated tests missed it. */
+  pointer-events: none;
   background: linear-gradient(0deg, rgba(18, 22, 30, 0.88) 0%, rgba(18, 22, 30, 0.18) 48%, rgba(18, 22, 30, 0) 68%);
 }
-.amen-highlight figcaption { position: absolute; left: 1.3rem; right: 1.3rem; bottom: 1.2rem; z-index: 1; }
+/* Same reason as the scrim above — the caption sits over the image bottom, so
+   clicking the label would otherwise miss. It is decorative text, no links. */
+.amen-highlight figcaption { position: absolute; left: 1.3rem; right: 1.3rem; bottom: 1.2rem; z-index: 1; pointer-events: none; }
 .amen-highlight h3 { color: var(--text-on-dark); font-size: 1.15rem; }
 .amen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line-on-light); border: 1px solid var(--line-on-light); }
 @media (max-width: 980px) { .amen-grid { grid-template-columns: repeat(2, 1fr); } }

@@ -743,7 +743,7 @@ on deploy — see Open questions re: deploy-root exposure).
     opacity 1 → 0.235 → 0.039 → 0.003 → 0 across 240ms on `--ease`. Also
     confirmed residence-card images are *not* captured by the delegated
     handler, and the photo/plan toggle still works.
-- 2026-07-31: **OPEN — gallery prev/next buttons may not scroll.** Found while
+- 2026-07-31: **RESOLVED — gallery prev/next buttons work.** Found while
   testing the above; **not caused by it**, and reproduced identically against
   the deployed pre-change site. The handler fires and calls
   `scrollBy({left: 585.6, behavior: "smooth"})` — the exact call that *does*
@@ -830,3 +830,35 @@ on deploy — see Open questions re: deploy-root exposure).
     without it the box rendered 992×900 instead of 992×558. Same trap as images.
   - Repo now carries a 21.6 MB binary. Acceptable once, but a second film
     should probably go to a video host rather than into git.
+
+- 2026-07-31: **tested in a real browser via the Chrome extension, which found a
+  bug every automated check had missed.**
+  - **Gallery arrows: fine, nothing to fix.** Real mouse clicks step the track
+    0 → 586 → 1171 and back to 586, and the prev button enables/disables
+    correctly. The earlier "buttons do not scroll" finding was an artifact of
+    Playwright's programmatic `.click()`; the open item is closed.
+  - **REAL BUG FOUND AND FIXED: the Amenities tiles were not clickable.**
+    `.amen-highlight::after` — the gradient scrim — is `inset: 0` over the whole
+    image, and `.amen-highlight figcaption` sits above it. Neither had
+    `pointer-events: none`, so a genuine click hit the scrim. A pseudo-element
+    is not an event target, so `e.target` resolved to the `<figure>` and the
+    lightbox handler's `closest('.amen-highlight img, .gal-item img')` returned
+    `null`. `elementFromPoint` at the tile centre returned
+    `FIGURE.amen-highlight`, not `IMG`. Fixed by adding `pointer-events: none`
+    to both, verified by a real click opening the lightbox on `masjid.jpg`.
+    **This shipped broken on 2026-07-31 and was live until this fix.**
+  - **Why every automated test passed**: they called `img.click()` directly on
+    the element, which dispatches straight to that node and bypasses hit
+    testing entirely. Nothing about a synthetic `.click()` can reveal an
+    overlay intercepting pointer input. **For anything click-driven, assert on
+    `document.elementFromPoint(x, y)` resolving to the intended target, or
+    click through a real input event.**
+  - **The lightbox crossfade still cannot be visually confirmed by automation.**
+    In both headless Playwright and the extension-driven tab, `requestAnimation
+    Frame` stops firing (one frame per 400 ms) because the tab is not painting,
+    so CSS transitions sit at `progress: 0` and opacity samples read a flat 1.
+    What *is* proven: the rule is present, the class is applied on swap, the
+    transition is declared at 240 ms on `--ease`, `getAnimations()` reports it
+    running with the right properties, and driving `currentTime` by hand
+    interpolates 1 → 0.235 → 0.039 → 0.003 → 0. Reduced motion is off, so it is
+    not that. Confirming it renders needs a human to click a photo and press →.
