@@ -220,13 +220,17 @@ on deploy — see Open questions re: deploy-root exposure).
   (`/build` and the `pnpm --filter` preview/build steps don't apply; review
   gate 2 should use the automated checks that make sense plus a judgment
   pass, and deploy is any static host).
-- `assets/pool-closeup.jpg` (in the Gallery + Amenities highlight as
-  "Rooftop Pool · Golden Hour") shows a resident holding what reads as a
-  cocktail glass. The price list's 4th floor includes a **masjid**, which
-  reinforces (independently of the earlier render-attire observation) that
-  this is a Muslim-oriented development — worth a client check on whether
-  that image is on-brand before this goes live, or whether to swap in
-  `assets/gym-and-wellness-upclose.jpg` or drop the shot. Not yet decided.
+- ~~`assets/pool-closeup.jpg` cocktail glass~~ — **DECIDED 2026-07-31: keep
+  it, unchanged.** The image (Gallery + first Amenities highlight, "Rooftop
+  Pool · Golden Hour") shows a resident in a headscarf holding what reads as a
+  cocktail glass. Raised on 2026-07-27, and raised again on 2026-07-31 when
+  placing the masjid put a prayer hall four tiles away in the same grid —
+  highlight 1 against highlight 5, both on screen together. Daniel's call both
+  times was to keep it, consistent with shipping the supermarket render with
+  its alcohol aisle intact the same day. Swap candidates that were on the table
+  and are still unused as highlights, should this ever be revisited:
+  `assets/gym-and-wellness-upclose.jpg`, `assets/sky-lounge.jpg`, or drop the
+  tile and run six highlights (lays out 4+2). **Closed — do not re-raise.**
 - ~~Deploy-root exposure~~ — RESOLVED 2026-07-27, in two steps (the first
   wasn't actually sufficient on its own — see below):
   1. Moved the actual site into `docs/` and changed the GitHub Pages
