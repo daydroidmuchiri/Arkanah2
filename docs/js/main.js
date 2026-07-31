@@ -138,24 +138,70 @@
     track.addEventListener("scroll", syncBtns, { passive: true });
     syncBtns();
 
-    /* Lightbox */
+    /* Lightbox — shared by the Amenities highlights and the Gallery (2026-07-31).
+       Both feed one sequence in document order, so the arrow keys walk the whole
+       set rather than stopping at the end of whichever section was clicked. */
     const box = $("#lightbox");
     const boxImg = $("#lightbox img");
-    const galImgs = $$(".gal-item img", track);
+    const galImgs = $$(".amen-highlight img, .gal-item img");
     let galIndex = 0;
-    const showInBox = (i) => {
+    const FADE_MS = 240; /* keep in step with the .lightbox img transition */
+
+    const showInBox = (i, instant) => {
       galIndex = (i + galImgs.length) % galImgs.length;
       const img = galImgs[galIndex];
       /* data-full = full-res JPEG, so the zoom view never shows the small srcset pick */
-      boxImg.src = img.dataset.full || img.currentSrc || img.src;
-      boxImg.alt = img.alt;
+      const src = img.dataset.full || img.currentSrc || img.src;
+      const apply = () => {
+        boxImg.src = src;
+        boxImg.alt = img.alt;
+      };
+      if (instant || reducedMotion) {
+        boxImg.classList.remove("is-swapping");
+        apply();
+        return;
+      }
+      boxImg.classList.add("is-swapping");
+      /* Wait for the fade-out AND the decode. Without the timer, a cached image
+         resolves instantly and swaps mid-fade, which looks like a hard cut. */
+      const decoded = new Promise((res) => {
+        const pre = new Image();
+        pre.onload = pre.onerror = res;
+        pre.src = src;
+      });
+      const faded = new Promise((res) => setTimeout(res, FADE_MS));
+      Promise.all([decoded, faded]).then(() => {
+        apply();
+        /* decode() resolves once the new frame is paintable, so the fade-in
+           never reveals the previous image. Falls back cleanly if it rejects —
+           an unremoved .is-swapping would leave the photo invisible. */
+        const settle = () => boxImg.classList.remove("is-swapping");
+        (boxImg.decode ? boxImg.decode().catch(() => {}) : Promise.resolve()).then(settle);
+      });
     };
-    track.addEventListener("click", (e) => {
-      const img = e.target.closest("img");
-      if (!img) return;
-      showInBox(galImgs.indexOf(img));
+
+    const openAt = (img) => {
+      showInBox(galImgs.indexOf(img), true);
       box.showModal();
+    };
+    /* Delegated from the document so both sections are covered by one handler. */
+    document.addEventListener("click", (e) => {
+      const img = e.target.closest(".amen-highlight img, .gal-item img");
+      if (img) openAt(img);
     });
+    /* The triggers are plain <img>, so give them keyboard equivalence rather
+       than leaving 24 images mouse-only. */
+    galImgs.forEach((img) => {
+      img.tabIndex = 0;
+      img.setAttribute("role", "button");
+      img.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openAt(img);
+        }
+      });
+    });
+
     $(".lightbox-close").addEventListener("click", () => box.close());
     box.addEventListener("click", (e) => {
       if (e.target === box) box.close();
@@ -163,6 +209,12 @@
     box.addEventListener("keydown", (e) => {
       if (e.key === "ArrowRight") showInBox(galIndex + 1);
       if (e.key === "ArrowLeft") showInBox(galIndex - 1);
+    });
+    /* Focus the tile currently being viewed — which after arrowing is not the
+       one that opened the box — so keyboard users land where they left off
+       instead of at the top of the document. */
+    box.addEventListener("close", () => {
+      galImgs[galIndex]?.focus({ preventScroll: true });
     });
   }
 

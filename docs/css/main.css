@@ -414,8 +414,12 @@ h3 { font-size: 1.35rem; }
 @media (max-width: 980px) { .amen-highlights { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .amen-highlights { grid-template-columns: 1fr; max-width: 26rem; margin-inline: auto; } }
 .amen-highlight { position: relative; overflow: hidden; }
-.amen-highlight img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform 0.6s var(--ease); }
+/* These open the same lightbox as the gallery (2026-07-31), so they carry the
+   same zoom-in affordance. The scrim and inset caption stay — that treatment is
+   deliberately richer than the gallery's caption-below. */
+.amen-highlight img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; cursor: zoom-in; transition: transform 0.6s var(--ease); }
 .amen-highlight:hover img { transform: scale(1.05); }
+.amen-highlight img:focus-visible { outline: 2px solid var(--gold); outline-offset: -4px; }
 .amen-highlight::after {
   content: "";
   position: absolute;
@@ -489,7 +493,15 @@ h3 { font-size: 1.35rem; }
   max-width: min(1080px, 94vw);
 }
 .lightbox::backdrop { background: rgba(9, 12, 18, 0.88); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-.lightbox img { width: 100%; }
+/* Crossfade between photos (2026-07-31). main.js adds .is-swapping, waits for
+   BOTH the fade-out and the next image to decode, then swaps and releases —
+   otherwise a cached image swaps mid-fade and reads as a hard cut. */
+.lightbox img { width: 100%; transition: opacity 0.24s var(--ease), transform 0.24s var(--ease); }
+.lightbox img.is-swapping { opacity: 0; transform: scale(0.985); }
+.lightbox[open] { animation: lightbox-in 0.3s var(--ease); }
+.lightbox[open]::backdrop { animation: lightbox-fade 0.3s var(--ease); }
+@keyframes lightbox-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: none; } }
+@keyframes lightbox-fade { from { opacity: 0; } to { opacity: 1; } }
 .lightbox-close {
   position: absolute;
   top: -0.2rem;

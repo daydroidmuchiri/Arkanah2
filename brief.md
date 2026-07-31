@@ -710,3 +710,47 @@ on deploy — see Open questions re: deploy-root exposure).
     went live unsettled on 2026-07-27 and is still there. Swap candidates on
     file if wanted: `gym-and-wellness-upclose.jpg`, `sky-lounge.jpg`, or drop
     the tile and run six highlights.
+
+- 2026-07-31 (later): **lightbox crossfade, and the Amenities images wired into
+  the same lightbox.** Daniel's call was to unify behaviour but keep the
+  amenity tiles' own look — the 4:5 crop with the caption inset over a gradient
+  scrim is a richer treatment than the gallery's caption-below, so matching the
+  gallery visually would have been a downgrade.
+  - The lightbox previously reassigned `boxImg.src` outright, so arrowing
+    between photos was a hard cut. It now fades out, waits for **both** the
+    fade and the next image, then fades in. Both waits matter: a cached image
+    resolves instantly and would swap mid-fade, which reads exactly like the
+    hard cut being replaced.
+  - Class removal uses `img.decode()` rather than `requestAnimationFrame`.
+    rAF was tried first and observed *not firing* reliably, which left
+    `.is-swapping` stuck and would have pinned the photo at `opacity: 0` —
+    a blank lightbox. `decode()` resolves when the frame is paintable, and is
+    guarded with a `.catch()` for the same reason.
+  - Amenity and gallery images now feed **one** sequence in document order
+    (7 + 17 = 24), so the arrow keys walk the whole set instead of stopping at
+    the end of whichever section was clicked. Amenity images gained `data-full`
+    so the zoom view shows the 1600px file, not the srcset pick.
+  - The triggers are plain `<img>`, so they were mouse-only. Rather than take
+    that from 17 images to 24, they now carry `tabindex`/`role="button"`,
+    Enter/Space, a `:focus-visible` ring, and focus returns to the tile being
+    viewed on close.
+  - Entrance animation on the `<dialog>` and its backdrop. Reduced-motion is
+    handled: the JS skips the crossfade, and the existing media query already
+    collapses durations.
+  - **Verified oddly, on purpose.** Headless would not advance the animation
+    clock — `getAnimations()` showed the transition `running` but stuck at
+    `progress: 0`. Driving `currentTime` by hand confirmed the interpolation:
+    opacity 1 → 0.235 → 0.039 → 0.003 → 0 across 240ms on `--ease`. Also
+    confirmed residence-card images are *not* captured by the delegated
+    handler, and the photo/plan toggle still works.
+- 2026-07-31: **OPEN — gallery prev/next buttons may not scroll.** Found while
+  testing the above; **not caused by it**, and reproduced identically against
+  the deployed pre-change site. The handler fires and calls
+  `scrollBy({left: 585.6, behavior: "smooth"})` — the exact call that *does*
+  scroll when issued directly — yet `scrollLeft` stays 0. Suspicion is that
+  focusing the button on click cancels the in-flight smooth scroll, but this
+  was only ever exercised via programmatic `.click()`; a real mouse click has
+  not been confirmed either way, and the browser session dropped before that
+  test completed. **Check by hand in a normal browser before deciding whether
+  there is anything to fix.** Note the track is also `scroll-snap-type: x
+  mandatory`, and a scroll shorter than half an item snaps back to 0.
