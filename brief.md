@@ -904,3 +904,35 @@ on deploy — see Open questions re: deploy-root exposure).
   - **Not verifiable here**: viewport resizing does not affect the page through
     the extension (`resize_window` succeeds but `innerWidth` stays 1536), so
     responsive breakpoints remain as verified under Playwright earlier.
+
+- 2026-07-31: **visual audit (real browser).** The page holds up — layout,
+  spacing, typography and image quality are consistent throughout, the
+  three-card Residences grid aligns, the 4+3 amenity grid reads as intended,
+  the Location list, film block, form and footer all render correctly, and the
+  hero already carries a scrim so the headline sits legibly over the render.
+  Two measurable defects found and fixed.
+  - **Gold text on cream failed WCAG AA: 3.78:1**, under the 4.5:1 minimum for
+    body-size type. It affected every section eyebrow (THE VISION, AMENITIES,
+    RESIDENCES & RETAIL, THE FILM, LOCATION, OWNERSHIP, ENQUIRE), the contact
+    labels, the `sqm` superscripts in the stats bar, the form status line and
+    two hover states. Added `--gold-text-on-light: #84682e` (**4.62:1**) and
+    repointed the *text* uses only. `#92763c` stays on the ghost-button border,
+    the amenity icon strokes and the field focus ring — decorative and exempt
+    from the text threshold.
+  - **Anchor jumps tucked content under the sticky header.** `scroll-margin-top`
+    was `4.2rem`/67px against an **82px** header, so every nav click hid 15px of
+    the target section. Visible in the audit screenshots as clipped eyebrows.
+    Now `6rem`, verified to land 14px clear of the header.
+  - **Two false alarms, both worth recording so they are not "re-fixed".**
+    (1) The stats bar screenshots as **201 / 267 / 48 / 80 / 84 / 1,359** — all
+    exactly 80% of the real values, because the counters were mid-animation.
+    They settle to the correct **252 / 334 / 60 / 100 sqm / 105 / 1,701 sqm**.
+    (2) The gallery caption was first measured at 2.61:1, which would have been
+    a failure; that came from a bug in the audit's own background resolver
+    treating a transparent section background as black. Measured properly it is
+    **6.95:1** and passes. **Resolve the real painted background before
+    trusting any contrast number.**
+  - Every other text style measured clears AA comfortably: nav links 14.53,
+    dark-section lede 14.53, footer links 14.53, stat labels 12.67, gallery
+    arrows 10.40, price 9.80, eyebrow on dark 7.59, film note / location
+    distances / form note 7.17, residence features 9.62, amenity body 5.19.
