@@ -862,3 +862,45 @@ on deploy — see Open questions re: deploy-root exposure).
     running with the right properties, and driving `currentTime` by hand
     interpolates 1 → 0.235 → 0.039 → 0.003 → 0. Reduced motion is off, so it is
     not that. Confirming it renders needs a human to click a photo and press →.
+
+- 2026-07-31: **full site audit in a real browser (Chrome extension).** Result:
+  the site is in good shape. One live defect, one UX friction, one caveat.
+  - **Passing**: every key interactive element reachable by real hit-test
+    (gallery images, amenity tiles, map button, video, WhatsApp float, res-card
+    toggles, form fields, submit); 0 broken anchors; the single external link
+    (wa.me) correctly `rel="noopener"`; 34 images with 0 missing alt, 3
+    deliberate decorative `alt=""`, 0 missing width/height; all 5 form fields
+    labelled with an `aria-live="polite"` status region; exactly 1 `<h1>`, 32
+    headings, **0 heading-level skips**; all four landmarks; skip link;
+    `lang="en"`; **0 console errors or warnings** on a fresh load; 33–35
+    requests for ~320 KB with **0 failed**; the 21.6 MB film fetches **0 bytes**
+    until play; map iframe absent until clicked; brochure PDF (274 KB) and film
+    both 200; 404 page returns a real 404 with `noindex` and a link home;
+    lightbox opens on real click, closes on real Escape and on the × button,
+    and returns focus to the triggering tile.
+  - **Only third-party hosts are `cloudflareinsights.com` / `static.cloudflare
+    insights.com`.** No Google Fonts, no tag managers, no trackers. Fonts are
+    self-hosted and the map is click-to-load, so a visitor who never interacts
+    contacts exactly one third party.
+  - **LIVE DEFECT — the stale-CSS window is actively serving the broken
+    Amenities tiles.** Reproduced twice during this audit: on a fresh navigation
+    the browser reported `cssServedFromCache: YES` and
+    `getComputedStyle(fig,'::after').pointerEvents === 'auto'`, so
+    `elementFromPoint` at a tile centre returned `FIGURE.amen-highlight` and
+    the tiles did not open. The pointer-events fix is deployed and correct; it
+    simply is not reaching browsers. **This is no longer a hygiene item — the
+    Browser Cache TTL change is what ships an existing bug fix to users.**
+  - **UX friction — clicking the film's poster does nothing.** With
+    `preload="none"` and native controls, only the small play button at bottom
+    left starts it; a centre click is ignored (`readyState` stayed 0). On a
+    992 px cinematic poster most people will click the middle first. A
+    click-to-play handler on the video would fix it. Not a bug, and not changed
+    without a decision.
+  - **Noted — the enquiry form is entirely JS-dependent.** Its submit control is
+    `type="button"` and the `<form>` has no `action`, so with JS unavailable it
+    is inert. Mitigated in practice because the phone, WhatsApp and email are
+    all plain links beside it, but it does qualify the README's "fully usable
+    without JS" line.
+  - **Not verifiable here**: viewport resizing does not affect the page through
+    the extension (`resize_window` succeeds but `innerWidth` stays 1536), so
+    responsive breakpoints remain as verified under Playwright earlier.
