@@ -46,7 +46,13 @@ docs/js/main.js      nav, scroll reveals, counters, gallery, lightbox,
 docs/assets/*.jpg|webp  client renders, prepped to 800/1200/1600 px via
                      packages/pipeline/src/prep-images.mjs (--widths/--webp)
 docs/assets/*.svg|png   floor plans (1BR/2BR only — no penthouse), favicon
+docs/assets/nomad-twin-towers-film.mp4  client film, 21.6 MB. The only large
+                     file on the site — served with preload="none" behind a
+                     poster so it is fetched only on play. See brief.md before
+                     changing that.
 docs/fonts/*.woff2   Fraunces (display) + Manrope (body), self-hosted
+docs/_headers        Cloudflare Pages cache rules. The /css/ and /js/ rules are
+                     gated by the zone's Browser Cache TTL — see brief.md
 docs/404.html        not-found page (Cloudflare Pages serves it with a real
                      404; without it, unknown paths soft-404 as 200 + index)
 docs/robots.txt      + sitemap.xml — nomadtwintowers.com, see brief.md

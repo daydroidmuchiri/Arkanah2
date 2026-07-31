@@ -790,3 +790,43 @@ on deploy — see Open questions re: deploy-root exposure).
     CSS behaviour, load the page in a browser and assert on a marker only the
     new code produces — here, `tabIndex`/`role` being set on the 24 lightbox
     triggers.
+
+- 2026-07-31: **client film added** as a new `#film` section between Gallery and
+  Location. Source arrived over WhatsApp
+  (`WhatsApp Video 2026-07-31 at 09.55.48.mp4`), filed as
+  `docs/assets/nomad-twin-towers-film.mp4`.
+  - **The file is 21.6 MB against 331 KB for the entire rest of the page**, so
+    it is served `preload="none"` behind a poster and is only fetched when
+    somebody presses play. Verified: 0 video bytes on load, and playback starts
+    and advances once triggered. Do not add `autoplay`, `preload="metadata"` or
+    a looping background treatment without re-measuring — any of them would put
+    a 21.6 MB download in front of every visitor, including on mobile data,
+    which is most of this audience.
+  - **Quality caveat — worth chasing the original.** WhatsApp recompressed it to
+    **848×478** (below 720p), H.264/AAC, 1.23 Mbps, 2 min 27 s. Every still on
+    the site is 1600 px, so the film is the softest thing on the page. The
+    display box is deliberately capped at `62rem` (992 px) rather than the full
+    1180 px wrap to limit upscaling; it is still slightly upscaled at 992. **Ask
+    the client for the original export** — WhatsApp will have destroyed a file
+    that was almost certainly delivered at 1080p or better. Dropping a better
+    encode in under the same filename is the only change needed.
+  - Poster is `assets/film-poster.jpg`, a 16:9 crop (1600×900) of
+    `birds-eye-view.jpg`, which was prepped back in batch 2 and had never been
+    placed. It is an establishing aerial with the NOMAD signage legible on the
+    podium, so it reads as a title card. Note it is a render, not a frame from
+    the film — there is no ffmpeg available here to pull a real frame.
+  - Section is `section--light`, which breaks the strict light/dark alternation
+    the page has held since launch (it now runs …dark #gallery, light #film,
+    light #location…). Deliberate: any insertion breaks the rhythm somewhere,
+    and two light sections read far better than two dark ones, since the dark
+    sections are heavy blocks while this one is dominated by the video itself.
+  - `VideoObject` added to the JSON-LD graph (`#film`), with `duration
+    PT2M27S`, `thumbnailUrl`, `contentUrl`, and `about`/`publisher` pointing at
+    the existing development and developer nodes. Google can surface video
+    results from this, which is worth having given the SEO work.
+  - **CSS gotcha worth remembering**: `.film` needs an explicit `height: auto`.
+    The `height="900"` attribute is a presentational hint that sets the CSS
+    height, and `aspect-ratio` only computes a height when height is `auto` —
+    without it the box rendered 992×900 instead of 992×558. Same trap as images.
+  - Repo now carries a 21.6 MB binary. Acceptable once, but a second film
+    should probably go to a video host rather than into git.

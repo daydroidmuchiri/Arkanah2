@@ -171,6 +171,19 @@
         }
       },
       {
+        "@type": "VideoObject",
+        "@id": "https://nomadtwintowers.com/#film",
+        "name": "Nomad Twin Towers — Development Film",
+        "description": "A film tour of Nomad Twin Towers, the mixed-use development in Eastleigh, Nairobi: the retail podium and supermarket, one and two bedroom residences, the masjid, and the rooftop amenity floors.",
+        "thumbnailUrl": "https://nomadtwintowers.com/assets/film-poster.jpg",
+        "uploadDate": "2026-07-31",
+        "duration": "PT2M27S",
+        "contentUrl": "https://nomadtwintowers.com/assets/nomad-twin-towers-film.mp4",
+        "encodingFormat": "video/mp4",
+        "about": { "@id": "https://nomadtwintowers.com/#development" },
+        "publisher": { "@id": "https://nomadtwintowers.com/#developer" }
+      },
+      {
         "@type": "WebSite",
         "@id": "https://nomadtwintowers.com/#website",
         "url": "https://nomadtwintowers.com/",
@@ -604,6 +617,27 @@
         <button class="lightbox-close" aria-label="Close">×</button>
         <img alt="" width="800" height="600">
       </dialog>
+    </section>
+
+    <!-- ============ FILM ============ -->
+    <!-- Client film, received 2026-07-31. preload="none" matters: the file is
+         21.6 MB, against 331 KB for the whole rest of the page, so it must only
+         be fetched when someone actually presses play. The poster carries the
+         block until then. Same reasoning as the click-to-load map facade. -->
+    <section class="section section--light cv-auto" id="film">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow reveal">The Film</p>
+          <h2 class="reveal" data-delay="1">See it <span class="serif-accent">in motion.</span></h2>
+        </div>
+        <video class="film reveal" data-delay="1" controls playsinline preload="none"
+               poster="assets/film-poster.jpg" width="1600" height="900">
+          <source src="assets/nomad-twin-towers-film.mp4" type="video/mp4">
+          <p>Your browser cannot play this video.
+            <a href="assets/nomad-twin-towers-film.mp4" download>Download the film</a> instead.</p>
+        </video>
+        <p class="film-note reveal" data-delay="2">2 min 27 s · <a href="assets/nomad-twin-towers-film.mp4" download>Download</a></p>
+      </div>
     </section>
 
     <!-- ============ LOCATION ============ -->

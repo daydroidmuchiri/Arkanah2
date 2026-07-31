@@ -525,6 +525,35 @@ h3 { font-size: 1.35rem; }
   color: #47505e;
 }
 .loc-list strong { font-weight: 600; color: #232a37; }
+/* ---------- Film ---------- */
+/* aspect-ratio + width/height on the element keep the poster from shifting
+   layout. Source is 848x478 (WhatsApp-recompressed), so it is capped rather
+   than stretched to the full 1180px wrap — see brief.md. */
+.film {
+  display: block;
+  width: 100%;
+  max-width: 62rem;
+  margin-inline: auto;
+  /* height:auto is required — the height="900" attribute is a presentational
+     hint that sets the CSS height, and aspect-ratio only computes a height when
+     height is auto. Without this the box renders 900px tall. */
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+  border: 1px solid var(--line-on-light);
+}
+.film-note {
+  max-width: 62rem;
+  margin: 0.9rem auto 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted-on-light);
+}
+.film-note a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.film-note a:hover { color: #92763c; }
+
 .map-facade {
   position: relative;
   aspect-ratio: 4 / 3;
