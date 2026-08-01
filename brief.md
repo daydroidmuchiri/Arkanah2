@@ -48,7 +48,8 @@ commercial/retail price list or a hotel-booking experience, per Daniel's
 mixed-use scope.
 
 ## Brand
-Colors: primary #12161e (night slate-blue), accent #cda060 (champagne gold),
+Colors: primary #12161e (night slate-blue), accent **#d9a441** (champagne gold
+— enriched from #cda060 on 2026-08-01 at the client's request; see the log),
 light #f4f0e7 (warm ivory) — source: client renders `images/001–006.png`
 (deleted 2026-07-27, see Content & imagery — color values themselves are
 unaffected), cross-checked with `node packages/pipeline/src/color-from-image.mjs`
@@ -936,3 +937,159 @@ on deploy — see Open questions re: deploy-root exposure).
     dark-section lede 14.53, footer links 14.53, stat labels 12.67, gallery
     arrows 10.40, price 9.80, eyebrow on dark 7.59, film note / location
     distances / form note 7.17, residence features 9.62, amenity body 5.19.
+
+- 2026-08-01: **client feedback on the mobile view — five items, all actioned.**
+  Verbatim: *"the hero text is a little too large on mobile, covering too much
+  of the building, the building render could be brighter and higher contrast,
+  the logo is slightly small, the gold color is a bit muted, i would make it
+  richer, I'd add subtle animations as the user scrolls."*
+  - **Hero text on mobile — worse than "a little too large".** Measured at
+    390×844: `.hero-inner` was **929px tall in an 844px viewport**. The copy
+    did not merely cover the tower, it overflowed the screen — the Developer /
+    Obsha Properties meta row was below the fold on first paint. Cause: the
+    global `h1` clamp bottoms out at `2.6rem`/41.6px, which every phone gets.
+    Added a `max-width: 620px` block (hero only; desktop sizing untouched)
+    taking the h1 to `clamp(2rem, 5.6vw, 2.6rem)` and tightening the lede,
+    CTAs and meta row. Now **643px**, with ~280px of clean render above the
+    copy. Still overflows below ~600px of viewport height (320×568 measures
+    701px) — acceptable, the page scrolls, and it was ~880px there before.
+  - **Render brightness.** `filter: brightness(1.12) contrast(1.12)
+    saturate(1.08)` on `.hero-art` rather than re-exporting the JPEGs, so the
+    source renders and the whole responsive srcset stay as they are. The bigger
+    win was the scrim: the old top layer dimmed the top 30% of the frame by up
+    to 0.55 for the sake of the transparent header, which on a phone is exactly
+    where the tower's crown sits. It now protects the header band *harder* than
+    before and clears by 215px.
+  - **Logo.** Brand mark 34px → 42px (footer 30 → 36), wordmark 1.22 → 1.3rem.
+    Header height is still 84px — set by the wordmark block, not the mark — so
+    the `scroll-margin-top: 6rem` fix from 2026-07-31 is unaffected.
+  - **Gold.** Saturation up across the ramp at the same lightness band:
+    `--gold` #cda060 → **#d9a441** (52% → 67% sat), `--gold-soft` #e2bf8b →
+    **#edc989**, decorative `#92763c` → **#8f7226** (now a token,
+    `--gold-deep`), `--gold-text-on-light` #84682e → **#876614**. Every
+    contrast figure from the 2026-07-31 audit held or improved: gold on ink
+    7.59 → 8.05, gold-soft on ink 10.40 → 11.49, gold text on cream 4.62 →
+    4.69, decorative on cream 3.78 → 4.01.
+  - **Scroll motion.** Hero parallax (the render drifts at 82% of scroll speed;
+    in JS, because it is the piece you notice and Firefox still lacks CSS
+    scroll-driven animation), plus CSS `view()`-timeline settle on the split
+    and amenity photographs, a drift on section headings, and a gold
+    reading-progress hairline under the sticky header. All of it is inside
+    `prefers-reduced-motion: no-preference` and `@supports (animation-timeline:
+    view())`, so it degrades to exactly the old page.
+- 2026-08-01: **the 2026-07-31 line "the hero already carries a scrim so the
+  headline sits legibly over the render" was wrong, and is corrected here.**
+  That audit measured text on flat colours; nothing measured text against the
+  photograph. Sampling the composited pixels at 390×844 on the *old* CSS gives
+  hero eyebrow **2.43:1**, lede **3.72:1** and meta labels **4.37:1** — three
+  AA failures that had been on the live site since launch. Fixing the hero
+  fixed them (now 5.91 / 6.04 / 5.77). Two more found the same way:
+  - `.serif-accent` inside a heading on the **cream** sections was
+    `--gold-soft`, a colour built for the dark sections: **1.53:1** where a
+    heading needs 3:1, so "Eastleigh works." / "everything but work." were
+    half-invisible. Now `--gold-text-on-light`, **4.69:1**.
+  - The header wordmark's gold "TWIN TOWERS" sub-label over the hero measured
+    **2.66:1** at 9.3px. Now `#f1d5a2` while the header is transparent, **4.63**;
+    it returns to `--gold` the moment `.is-scrolled` paints a background.
+  - **Method matters more than the numbers.** Two traps, both of which produced
+    confidently wrong CSS before being caught, are written up in
+    `hero-scrim.md` with the script (`hero-scrim-audit.js`): percentage
+    gradient stops drift out from under fixed-height copy as the viewport
+    changes (the same CSS measured 6.37 at 390×844 and 3.68 at 375×667), and
+    sampling an element's *box* instead of its *text runs* averages in
+    background the glyphs never touch (4.11 vs 6.50 for the eyebrow at 2560).
+    The scrim is now anchored in px vertically and to the wrap (`calc(50% ±
+    px)`) horizontally, and passes at every width from 320 to 2560.
+  - **Also fixed, adjacent:** `.reveal` starts at `opacity: 0` and is un-hidden
+    by main.js, so with JS off the page rendered blank below the header. A
+    `<noscript>` style block now resets it. The README's "fully usable without
+    JS" claim is closer to true; the enquiry form (logged 2026-07-31) is still
+    the outstanding exception.
+  - **Map facade text, fixed on request the same day.** "Eastleigh, Nairobi —
+    interactive map loads on request" measured **3.95:1**: an inline
+    `color:#5c6572` on the `<p>` pinned it to `--muted-on-light`, a colour
+    chosen against `--cream`, while the facade paints its own lighter #d7d3c9.
+    Dropping the inline override lets it inherit `.section--light`'s body
+    colour — **5.45:1**, no new value in the palette. Size and measure are
+    unchanged; `max-width`/`font-size` moved from the inline style to
+    `.map-pin p`. A full-page sweep of all 178 text elements on flat
+    backgrounds now reports zero failures.
+  - **Known, pre-existing, NOT changed:** the residence cards' Photo / Floor
+    Plan toggle labels sit on a 0.6-alpha chip over a photograph, and the
+    amenity tile captions sit on a gradient over one. Both need pixel sampling
+    like the hero to judge properly, rather than a computed background.
+
+- 2026-08-01: **the "portrait crop for phones" idea does not work — recorded so
+  nobody spends a day on it.** The suggestion was that art-directing a portrait
+  crop of the hero render into `<picture>` would show more of the building on a
+  phone. The geometry says otherwise. With `object-fit: cover`, the visible
+  slice of the source is always a window of the *viewport's* aspect ratio, and
+  its width in source pixels is `viewportAspect × sourceHeight` — 0.462 × 1500
+  = **693px of front-view.png, whatever the file is cropped to**. Cropping the
+  file narrower changes nothing; cropping it *shorter* shows even less. The
+  tower is 725×1325 in the source (aspect 0.547) and the phone window is 0.462,
+  so a crown-to-podium view of the full tower width cannot fit at 100svh — not
+  a framing problem, an arithmetic one.
+  - What *is* true: on a phone the full source **height** is always visible, so
+    the tower already reads crown to podium; what is lost is side context
+    (trees, neighbouring blocks). That is the tight-looking crop, and it is
+    inherent.
+  - The one lever that would change the composition is a **different render**,
+    not a different crop of this one. `images/batch-2026-07-27/drama-shot.png`
+    is already 2000×2500 portrait, so its phone window is 1155px wide — 58% of
+    its width against front-view's 35% — a low-angle shot with the retail
+    podium's storefronts at the base. It is a taste call, not a fix, and it is
+    not free: the phone scrim is tuned to front-view's pixels, and drama-shot
+    puts bright glazing exactly where the CTAs sit, so it would need a full
+    re-measure with `hero-scrim-audit.js`. Left alone pending a decision.
+
+- 2026-08-01: **client sent the official logo and the real brochure.** Both had
+  been open items since launch; both are now in.
+  - **Brochure.** What was shipping was a **one-page, 280 KB** stand-in. The
+    client's is **14 pages, 6.1 MB** ("NOMAD TWIN TOWERS", made in Canva).
+    Dropped in at `docs/assets/nomad-twin-towers-brochure.pdf`, same path, so
+    the About section's download link needed no change. Size is fine: it moves
+    only on a download click, never on page load, and `_headers` already sends
+    `/assets/*` with `must-revalidate`, which is what lets a file be replaced
+    in place like this and still reach returning visitors. The README's "the
+    film is the only large file on the site" line was corrected.
+  - **Logo — the stand-ins are gone.** The site had been carrying *two*
+    approximations: the "NT" monogram cropped out of the price list, and a
+    NOMAD / TWIN TOWERS wordmark typeset in Fraunces and Manrope beside it. The
+    real thing is a single horizontal lockup — NOMAD with the twin towers
+    forming the A, TWIN TOWERS beneath between two gold rules. Source filed at
+    `reference/logo-official-2026-08-01.jpeg`.
+  - It arrived as a **JPEG on white**, which is the whole reason
+    `logo-assets.mjs` exists. Everything is derived from that one file: the
+    lockup is knocked out of the white and recoloured for the dark header, and
+    the favicons are cut from the towers device. **Ask the client for the vector
+    original** — a trace would beat any of this — and re-run the script if it
+    turns up.
+  - Two things in that script are worth not re-learning. **The ink is sampled as
+    the modal colour of each cluster, not the darkest pixel**: the darkest pixel
+    is a JPEG ringing artefact (rgb(0,0,30) against a true navy near
+    rgb(5,32,85)), and since alpha is solved as `(255-pixel)/(255-ink)`, too
+    dark an ink makes every solid area come out ~90% opaque — a logo subtly
+    see-through everywhere. And **alpha is solved rather than thresholded**, so
+    the antialiasing survives instead of turning to jaggies.
+  - **Header geometry.** The lockup is 2.43:1 where the old brand was roughly
+    square, so at a size that keeps TWIN TOWERS legible (~6px cap height) the
+    brand is 70px tall against 48px. `.nav-bar`'s padding came down 1.05 →
+    0.95rem to hold the header near its old size: **84px → 101px**, and
+    `.section`'s `scroll-margin-top` went 6rem → **7rem** to match. Verified by
+    clicking a nav link: the target lands 37px clear of the header. The asset is
+    trimmed hard to the ink, so the logo's clear space has to come from that
+    padding — trim it further and the tower spires touch the top of the screen.
+  - **The gold rules are `--gold-soft`, not `--gold`.** Over the hero render the
+    palette gold measured **3.13:1** (2.29 on the worst pixel) against the 3:1
+    WCAG 1.4.11 minimum for graphics — the same trap the hero eyebrow fell into.
+    The lighter champagne clears it. The cream type measures 5.65:1.
+  - **Favicons rebuilt from the towers device**, replacing the NT monogram,
+    which the official logo does not use at all. Navy on cream, opaque, square —
+    square being non-negotiable after the 2026-07-30 globe incident. The device
+    is a portrait 0.68 mark, so a square always leaves side margin; tab-sized
+    icons (≤48px) get almost no padding on top of that or they read as a sliver,
+    the large ones keep it. All files got *smaller* (favicon-192: 15.8 → 4.5 KB).
+  - `logo-mark.png` deleted — nothing references it. A full sweep of the 167
+    text elements on flat backgrounds reports zero contrast failures, and the
+    hero audit still passes at 5.56 lowest.

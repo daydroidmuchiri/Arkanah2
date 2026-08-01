@@ -54,6 +54,39 @@
     }
   });
 
+  /* ---------- Hero parallax ----------
+     The render drifts at 82% of scroll speed as the hero leaves, so the tower
+     separates from the copy on the way out. The rest of the scroll-linked
+     motion is pure CSS (see "Scroll-linked motion" in main.css); this one is in
+     JS because it is the piece you actually notice, and CSS scroll-driven
+     animation is still missing in Firefox.
+
+     Pure translate, no scale: the art is inset:0 on a hero that clips, and
+     shifting it down by 0.18 × scrollY always leaves the top edge at -0.82 ×
+     scrollY — still above the hero's top — so no gap can open, and the phone
+     crop is not tightened (which would undo the point of the hero rework). */
+  const hero = $(".hero");
+  const heroArt = $(".hero-art");
+  if (hero && heroArt && !reducedMotion) {
+    let queued = false;
+    const applyParallax = () => {
+      queued = false;
+      const limit = hero.offsetHeight;
+      const y = Math.min(scrollY, limit); /* stop once the hero is fully past */
+      heroArt.style.transform = `translate3d(0, ${(y * 0.18).toFixed(1)}px, 0)`;
+    };
+    addEventListener(
+      "scroll",
+      () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(applyParallax);
+      },
+      { passive: true }
+    );
+    applyParallax();
+  }
+
   /* ---------- Reveal on scroll ---------- */
   if (!reducedMotion && "IntersectionObserver" in window) {
     const io = new IntersectionObserver(

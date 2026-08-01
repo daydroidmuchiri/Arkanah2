@@ -33,18 +33,58 @@
   --ink-3: #202634;
   --cream: #f4f0e7;
   --cream-2: #eae4d6;
-  --gold: #cda060;
-  --gold-soft: #e2bf8b;
-  /* Gold for TEXT on the cream sections. #92763c is still used for strokes,
-     borders and focus rings, but as text it measures 3.78:1 on --cream, under
-     the 4.5:1 WCAG AA minimum for body-size type (audited 2026-07-31). This is
-     4.62:1. Decorative uses are exempt and deliberately left on #92763c. */
-  --gold-text-on-light: #84682e;
+  /* Gold enriched 2026-08-01 on client feedback that the old champagne read as
+     muted. Saturation is up across the ramp (--gold 52% → 67%) at the same
+     lightness band, so every contrast figure below held or improved — nothing
+     from the 2026-07-31 audit regressed. Old values: #cda060 / #e2bf8b /
+     #92763c / #84682e. */
+  --gold: #d9a441;        /* 8.05:1 on --ink (was 7.59:1) */
+  --gold-soft: #edc989;   /* 11.49:1 on --ink (was 10.40:1) */
+  /* Decorative gold on the cream sections — strokes, borders, focus rings, the
+     amenity icons. Non-text, so exempt from 4.5:1; it clears the 3:1 non-text
+     minimum at 4.01:1 (was 3.78:1). */
+  --gold-deep: #8f7226;
+  /* Gold for TEXT on the cream sections. --gold-deep as text measures 4.01:1,
+     under the 4.5:1 WCAG AA minimum for body-size type (audited 2026-07-31).
+     This is 4.69:1. */
+  --gold-text-on-light: #876614;
   --text-on-dark: #e9e6de;
   --muted-on-dark: #9aa1ab;
   --muted-on-light: #5c6572;
-  --line-on-dark: rgba(205, 160, 96, 0.22);
+  --line-on-dark: rgba(217, 164, 65, 0.22);
   --line-on-light: rgba(35, 42, 55, 0.15);
+  /* Hero scrim, wide screens. Three layers, each with one job:
+       1. top    — the pre-scroll transparent header's wordmark.
+       2. side   — the copy is left-aligned inside a 1180px wrap, so a
+                   left-to-right ramp buys its contrast where the text actually
+                   is and leaves the tower, which sits centre-right, untouched.
+                   This is what lets the render stay bright: a vertical wash
+                   heavy enough for the headline would have dimmed the building
+                   across its full width.
+       3. bottom — the meta row and CTAs.
+     None of the stops are percentages of the viewport, because none of what
+     they protect scales with it. The copy block is a fixed height for a given
+     type scale, so it sits the same distance off the bottom of a 900px viewport
+     and a 1200px one; the header is a fixed 84px; and the wrap the side ramp
+     covers stops growing at 1180px, so it drifts towards the middle of the
+     frame as the screen widens. Every version of this tuned in percentages
+     passed at the width it was tuned at and failed at the next one — the
+     eyebrow measured 4.68 at 1440 and 4.34 at 1920 off identical CSS. Anchoring
+     the side ramp to the wrap's own edges (50% ± px) holds it steady.
+     Alphas come from sampling the composited pixels behind each line of text —
+     the method, and the script that does it, are in the repo root's
+     hero-scrim.md (internal, not served). Re-measure with it if the hero copy,
+     its type scale or the render changes. */
+  --hero-scrim:
+    linear-gradient(180deg, rgba(18, 22, 30, 0.62) 0, rgba(18, 22, 30, 0.48) 90px,
+                            rgba(18, 22, 30, 0.1) 155px, rgba(18, 22, 30, 0) 215px),
+    linear-gradient(90deg, rgba(18, 22, 30, 0.72) calc(50% - 620px),
+                           rgba(18, 22, 30, 0.58) calc(50% - 260px),
+                           rgba(18, 22, 30, 0.18) calc(50% + 80px),
+                           rgba(18, 22, 30, 0) calc(50% + 320px)),
+    linear-gradient(0deg, rgba(18, 22, 30, 0.93) 0, rgba(18, 22, 30, 0.55) 225px,
+                          rgba(18, 22, 30, 0.35) 450px, rgba(18, 22, 30, 0.12) 630px,
+                          rgba(18, 22, 30, 0) 740px);
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   --w: min(1180px, 92vw);
@@ -112,12 +152,21 @@ h3 { font-size: 1.35rem; }
 .serif-accent { font-style: italic; font-weight: 500; color: var(--gold-soft); }
 .lede { font-size: clamp(1rem, 1.6vw, 1.15rem); max-width: 34rem; }
 
-/* scroll-margin-top must clear the sticky header (82px measured 2026-07-31);
-   at 4.2rem/67px, clicking a nav link tucked 15px of each section underneath. */
-.section { padding-block: var(--pad-y); scroll-margin-top: 6rem; }
+/* scroll-margin-top must clear the sticky header (82px measured 2026-07-31,
+   98px since the official lockup went in on 2026-08-01); at 4.2rem/67px,
+   clicking a nav link tucked 15px of each section underneath. 7rem/112px clears
+   it with 14px spare. Re-measure this if the header's height changes again. */
+.section { padding-block: var(--pad-y); scroll-margin-top: 7rem; }
 .section--light { background: var(--cream); color: #232a37; }
 .section--light .eyebrow { color: var(--gold-text-on-light); }
 .section--light .eyebrow::before { background: var(--gold-text-on-light); }
+/* The italic accent inside a heading is --gold-soft, which is built for the
+   dark sections; on cream it measured 1.53:1 and the heading half-vanished.
+   That predates the 2026-08-01 gold change (which took it to 1.39:1) and is a
+   WCAG failure either way — a heading is large text, so it needs 3:1. This is
+   4.69:1, and it reads as the richer gold the client asked for rather than as
+   a wash. */
+.section--light .serif-accent { color: var(--gold-text-on-light); }
 .section--light .lede, .section--light p { color: #47505e; }
 .wrap { width: var(--w); margin-inline: auto; }
 .section-head { max-width: 44rem; margin-bottom: clamp(2.5rem, 6vw, 4.5rem); display: grid; gap: 1.1rem; }
@@ -143,9 +192,9 @@ h3 { font-size: 1.35rem; }
 .btn--solid { background: var(--gold); color: #17130f; }
 .btn--solid:hover { background: var(--gold-soft); }
 .btn--ghost { color: var(--text-on-dark); }
-.btn--ghost:hover { background: rgba(205, 160, 96, 0.12); }
-.section--light .btn--ghost { color: #232a37; border-color: #92763c; }
-.section--light .btn--ghost:hover { background: rgba(146, 118, 60, 0.1); }
+.btn--ghost:hover { background: rgba(217, 164, 65, 0.12); }
+.section--light .btn--ghost { color: #232a37; border-color: var(--gold-deep); }
+.section--light .btn--ghost:hover { background: rgba(143, 114, 38, 0.1); }
 
 /* ---------- Header ---------- */
 .site-header {
@@ -176,28 +225,25 @@ h3 { font-size: 1.35rem; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 1.05rem;
+  /* Was 1.05rem against a 48px-tall brand. The official lockup is 70px tall, so
+     this came down to hold the header near its previous size: 70 + 2×15.2 =
+     100px against the old 84px. It is not trimmed any tighter than this because
+     the asset is cropped hard to the ink — the tower spires reach the very top
+     of the image box, so the clear space around the logo has to come from here
+     or they touch the edge of the screen. Anything that clears the header is
+     set off that 100px — see .section's scroll-margin-top. */
+  padding-block: 0.95rem;
 }
-.brand { display: inline-flex; align-items: center; gap: 0.7rem; }
-.brand-mark { width: 34px; height: 34px; }
-.site-footer .brand-mark { width: 30px; height: 30px; }
-.brand-name {
-  font-family: var(--font-display);
-  font-size: 1.22rem;
-  letter-spacing: 0.14em;
-  color: var(--text-on-dark);
-  /* "TWIN TOWERS" broke onto two lines and collided with the nav in the band
-     just above the old 820px hamburger breakpoint — see that media query. */
-  white-space: nowrap;
-}
-.brand-name small {
-  display: block;
-  font-family: var(--font-body);
-  font-size: 0.58rem;
-  font-weight: 600;
-  letter-spacing: 0.42em;
-  color: var(--gold);
-}
+.brand { display: inline-flex; align-items: center; }
+/* The client's official lockup, replacing the monogram + typeset wordmark that
+   stood in for it (2026-08-01). It is a 2.43:1 horizontal mark, so its width is
+   what gets set and the height follows: 180px keeps TWIN TOWERS legible at
+   about a 6px cap height, below which it turns to mush. That makes the brand
+   70px tall against the old 48px, which is why .nav-bar's padding came down —
+   see there. The asset is 560px wide, ~3× for any DPR. */
+.brand-logo { width: 170px; height: auto; }
+.site-footer .brand-logo { width: 150px; }
+@media (max-width: 400px) { .brand-logo { width: 155px; } }
 .nav-links { display: flex; align-items: center; gap: clamp(1.2rem, 2.6vw, 2.4rem); }
 .nav-links a {
   font-size: 0.78rem;
@@ -269,15 +315,20 @@ h3 { font-size: 1.35rem; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* The dusk render comes out of the renderer soft and low-contrast, and the
+     scrim flattened it further (client, 2026-08-01). Lifted here rather than
+     by re-exporting the JPEGs so the source renders stay untouched and the
+     responsive srcset does not need regenerating. */
+  filter: brightness(1.12) contrast(1.12) saturate(1.08);
 }
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  background:
-    linear-gradient(180deg, rgba(18, 22, 30, 0.55) 0%, rgba(18, 22, 30, 0) 30%),
-    linear-gradient(0deg, rgba(18, 22, 30, 0.92) 0%, rgba(18, 22, 30, 0.25) 45%, rgba(18, 22, 30, 0) 70%);
+  /* The scrim is what carries every bit of the hero copy's contrast, so it is
+     set from measurement rather than by eye — see --hero-scrim. */
+  background: var(--hero-scrim);
 }
 .hero-inner {
   width: var(--w);
@@ -287,6 +338,15 @@ h3 { font-size: 1.35rem; }
   gap: 1.6rem;
 }
 .hero h1 { max-width: 15ch; }
+/* The eyebrow is the hardest line in the hero: 11.5px, and it sits at the top
+   of the copy block over open sky, where the scrim has nearly run out. --gold
+   measures 2.4:1 there and would need 0.66 alpha behind it — enough to visibly
+   grey the sky the client asked to brighten. --gold-soft still only reaches
+   4.21:1. This is a champagne one step paler again, which clears 4.5:1 against
+   a scrim the render can afford; it is deliberately hero-only, so the eyebrow
+   everywhere else keeps the palette gold. */
+.hero .eyebrow { color: #f1d5a2; }
+.hero .eyebrow::before { background: #f1d5a2; }
 .hero .lede { color: #ccc9c1; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.6rem; }
 .hero-meta {
@@ -306,6 +366,50 @@ h3 { font-size: 1.35rem; }
   color: var(--muted-on-dark);
 }
 .hero-meta dd { font-family: var(--font-display); font-size: 1.25rem; color: var(--gold-soft); }
+
+/* Mobile hero. The global h1 clamp bottoms out at 2.6rem/41.6px, which on a
+   390×844 phone made .hero-inner 929px tall — taller than the viewport. The
+   copy covered the tower top to bottom and the last meta row was cut off
+   (client, 2026-08-01). Desktop sizing is deliberately untouched.
+   Note the hero is bottom-aligned, so how much render stays clear is set by
+   content height + the *bottom* padding; the top padding only guards against
+   overflow on short viewports. */
+@media (max-width: 620px) {
+  /* Phone scrim. A 4:3 render in a ~0.46 viewport crops to the centre ~35% of
+     the frame — the lit face of the tower, with none of the sky that carries
+     the desktop copy. Sampling the composited pixels behind each line at
+     390×844 (2026-08-01) gave the alpha each band needs to clear WCAG; these
+     stops sit at or above that curve, and reach zero 726px off the bottom —
+     past the top of the copy — so the crown of the tower is left completely
+     unscrimmed. Re-measure if the hero copy or its type sizes change. */
+  :root {
+    /* No side layer here: the copy runs the full width of the phone, so there
+       is nothing to protect it from left of. The vertical ramp does all of it,
+       and has to be much stronger than the desktop one — it is carrying what
+       the side layer carries up there.
+       Pixel stops matter more here than anywhere. The copy block is ~643px on
+       every phone, so on a 667px-tall screen it starts 563px off the bottom and
+       on an 844px one it starts at exactly the same 563px — but as a percentage
+       that is 84% versus 67%. The percentage version measured 6.37:1 behind the
+       eyebrow on a tall phone and 3.68:1 on a short one, from the same CSS.
+       In pixels both read the same. */
+    --hero-scrim:
+      linear-gradient(180deg, rgba(18, 22, 30, 0.62) 0, rgba(18, 22, 30, 0.48) 90px,
+                              rgba(18, 22, 30, 0.1) 155px, rgba(18, 22, 30, 0) 215px),
+      linear-gradient(0deg, rgba(18, 22, 30, 0.93) 0, rgba(18, 22, 30, 0.84) 186px,
+                            rgba(18, 22, 30, 0.66) 354px, rgba(18, 22, 30, 0.48) 490px,
+                            rgba(18, 22, 30, 0.34) 574px, rgba(18, 22, 30, 0.1) 658px,
+                            rgba(18, 22, 30, 0) 726px);
+  }
+  .hero-inner { padding-block: 5rem 2rem; gap: 1rem; }
+  .hero h1 { font-size: clamp(2rem, 5.6vw, 2.6rem); max-width: none; }
+  .hero .lede { font-size: 0.94rem; line-height: 1.55; }
+  .hero-ctas { gap: 0.7rem; margin-top: 0.2rem; }
+  .hero-ctas .btn { padding: 0.85rem 1.4rem; font-size: 0.72rem; letter-spacing: 0.13em; }
+  .hero-meta { gap: 1rem 1.8rem; margin-top: 1.1rem; padding-top: 1.1rem; }
+  .hero-meta dt { font-size: 0.58rem; letter-spacing: 0.22em; }
+  .hero-meta dd { font-size: 1.02rem; }
+}
 
 /* ---------- Marquee ---------- */
 .marquee {
@@ -340,7 +444,17 @@ h3 { font-size: 1.35rem; }
 }
 @media (max-width: 880px) { .split { grid-template-columns: 1fr; } }
 .split-media { position: relative; }
-.split-media img { width: 100%; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.45); }
+/* Clips the scroll-linked over-scale below. It has to sit on the <picture>, not
+   on .split-media, because the offset gold frame (::after) deliberately hangs
+   outside the figure and would be clipped away. The drop shadow moves here off
+   the <img> for the same reason in reverse — a shadow is painted outside the
+   border box, so leaving it on the clipped element would erase it. */
+.split-media picture {
+  display: block;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.45);
+}
+.split-media img { width: 100%; }
 .split-media::after {
   content: "";
   position: absolute;
@@ -379,7 +493,7 @@ h3 { font-size: 1.35rem; }
   flex-direction: column;
   transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
 }
-.res-card:hover { transform: translateY(-6px); border-color: rgba(205, 160, 96, 0.55); }
+.res-card:hover { transform: translateY(-6px); border-color: rgba(217, 164, 65, 0.55); }
 .res-card figure { border-bottom: 1px solid var(--line-on-dark); background: var(--cream); }
 .res-card figure img { aspect-ratio: 600 / 440; object-fit: cover; width: 100%; }
 .res-body { padding: 1.7rem 1.6rem 1.9rem; display: flex; flex-direction: column; gap: 1rem; flex: 1; }
@@ -402,7 +516,7 @@ h3 { font-size: 1.35rem; }
   background: rgba(18, 22, 30, 0.6);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(205, 160, 96, 0.4);
+  border: 1px solid rgba(217, 164, 65, 0.4);
 }
 .res-toggle button {
   padding: 0.4rem 0.85rem;
@@ -456,7 +570,7 @@ h3 { font-size: 1.35rem; }
   transition: background-color 0.3s var(--ease);
 }
 .amen:hover { background: var(--cream-2); }
-.amen svg { width: 34px; height: 34px; stroke: #92763c; }
+.amen svg { width: 34px; height: 34px; stroke: var(--gold-deep); }
 .amen h3 { font-size: 1.06rem; color: #232a37; }
 .amen p { font-size: 0.88rem; color: var(--muted-on-light); }
 
@@ -472,7 +586,7 @@ h3 { font-size: 1.35rem; }
   place-items: center;
   transition: background-color 0.25s, opacity 0.25s;
 }
-.gal-btn:hover { background: rgba(205, 160, 96, 0.12); }
+.gal-btn:hover { background: rgba(217, 164, 65, 0.12); }
 .gal-btn:disabled { opacity: 0.3; cursor: default; }
 .gallery-track {
   display: flex;
@@ -586,11 +700,16 @@ h3 { font-size: 1.35rem; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(rgba(146, 118, 60, 0.12) 1px, transparent 1px) 0 0 / 100% 44px,
-    linear-gradient(90deg, rgba(146, 118, 60, 0.12) 1px, transparent 1px) 0 0 / 44px 100%;
+    linear-gradient(rgba(143, 114, 38, 0.12) 1px, transparent 1px) 0 0 / 100% 44px,
+    linear-gradient(90deg, rgba(143, 114, 38, 0.12) 1px, transparent 1px) 0 0 / 44px 100%;
 }
 .map-pin { position: relative; display: grid; justify-items: center; gap: 0.9rem; text-align: center; padding: 1rem; }
 .map-pin svg { width: 44px; height: 44px; }
+/* Was an inline style on the <p> pinning it to --muted-on-light, which is
+   chosen against --cream; the facade paints its own lighter #d7d3c9, where that
+   colour measured 3.95:1 — under AA at 14.4px. Dropping the override lets it
+   inherit .section--light's body colour, 5.45:1 on the facade. */
+.map-pin p { max-width: 22ch; font-size: 0.9rem; }
 
 /* ---------- Investment ---------- */
 .invest-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-on-dark); border: 1px solid var(--line-on-dark); margin-top: clamp(2.5rem, 6vw, 4rem); }
@@ -625,7 +744,7 @@ h3 { font-size: 1.35rem; }
   transition: border-color 0.25s;
 }
 .field textarea { resize: vertical; min-height: 96px; }
-.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-bottom-color: #92763c; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-bottom-color: var(--gold-deep); }
 .field input.is-invalid, .field textarea.is-invalid { border-bottom-color: #b0432f; }
 .form-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.4rem; }
 .form-note { font-size: 0.8rem; color: var(--muted-on-light); }
@@ -637,7 +756,7 @@ h3 { font-size: 1.35rem; }
 .footer-nav { display: flex; flex-wrap: wrap; gap: 1.6rem; }
 .footer-nav a { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted-on-dark); transition: color 0.25s; }
 .footer-nav a:hover { color: var(--gold-soft); }
-.footer-fine { margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid rgba(205, 160, 96, 0.12); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-size: 0.78rem; color: var(--muted-on-dark); }
+.footer-fine { margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid rgba(217, 164, 65, 0.12); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-size: 0.78rem; color: var(--muted-on-dark); }
 
 /* ---------- WhatsApp float ---------- */
 .wa-float {
@@ -663,6 +782,66 @@ h3 { font-size: 1.35rem; }
 .reveal[data-delay="1"] { transition-delay: 0.1s; }
 .reveal[data-delay="2"] { transition-delay: 0.2s; }
 .reveal[data-delay="3"] { transition-delay: 0.3s; }
+
+/* ---------- Scroll-linked motion ---------- */
+/* Added 2026-08-01: the client asked for subtle movement as you scroll. The
+   reveals above are one-shot — these are tied to scroll position, so they keep
+   moving with the finger. All of it is CSS scroll-driven animation: it runs off
+   the main thread, costs no JS, and simply does not apply in browsers without
+   `animation-timeline` (Firefox, at time of writing), where the page renders
+   exactly as it did before. The hero parallax is the one exception — it is in
+   main.js so it works everywhere, since it is the piece you actually notice.
+   Everything here is inside the no-preference media query, so reduced-motion
+   users get none of it. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* Photographs settle from a slight over-scale as they cross the viewport.
+       Not the residence cards — those figures also hold the floor plans, and
+       over-scaling a plan crops detail off its edges. */
+    .split-media img,
+    .amen-highlight img {
+      animation: settle-in linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 45%;
+    }
+    /* The hover zoom on the amenity tiles owns the same property — let it win. */
+    .amen-highlight:hover img { animation: none; }
+
+    @keyframes settle-in {
+      from { transform: scale(1.07); }
+      to { transform: scale(1); }
+    }
+
+    /* Section headings drift up a touch on approach. Scoped to the headings so
+       the effect stays occasional rather than applying to the whole page. */
+    .section-head, .split-copy {
+      animation: drift-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 90%;
+    }
+    @keyframes drift-up {
+      from { transform: translateY(18px); }
+      to { transform: none; }
+    }
+
+    /* Reading-progress hairline across the top of the sticky header. */
+    .site-header.is-scrolled::after {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      bottom: -1px;
+      height: 2px;
+      background: var(--gold);
+      transform-origin: 0 50%;
+      animation: scroll-progress linear both;
+      animation-timeline: scroll(root block);
+    }
+    @keyframes scroll-progress {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+  }
+}
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {

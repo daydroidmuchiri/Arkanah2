@@ -9,7 +9,9 @@
   <!-- Icons must be SQUARE or Google ignores them and shows its default globe in
        search results — the old exports were 16x36 and 32x52, which is exactly why
        that happened. Sizes are multiples of 48px per Google's recommendation, and
-       /favicon.ico is the path it falls back to. Regenerate from logo-mark.png. -->
+       /favicon.ico is the path it falls back to. Rebuilt 2026-08-01 from the twin
+       towers device in the client's official lockup, replacing the "NT" monogram
+       (which the official logo does not use). Regenerate with logo-assets.mjs. -->
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
   <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96.png">
@@ -48,6 +50,10 @@
   <link rel="preload" href="fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/main.css">
   <script src="js/main.js" defer></script>
+  <!-- .reveal starts at opacity 0 and is un-hidden by main.js, so without JS the
+       page rendered blank below the header. Everything else here is genuine
+       progressive enhancement; this closes the one gap. -->
+  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 
   <!-- Structured data for search -->
   <!-- Structured data. Every figure here comes from the client's official price
@@ -201,9 +207,13 @@
 
   <header class="site-header">
     <div class="nav-bar">
+      <!-- The client's official lockup (2026-08-01), knocked out of its white
+           background and recoloured for the dark header by logo-assets.mjs.
+           It replaced an "NT" monogram crop plus a typeset NOMAD / TWIN TOWERS,
+           which together approximated a logo nobody had sent us yet. The <a>
+           carries the accessible name, so the image itself is decorative. -->
       <a class="brand" href="#top" aria-label="Nomad Twin Towers — home">
-        <img class="brand-mark" src="assets/logo-mark.png" alt="" width="34" height="34" decoding="async">
-        <span class="brand-name">NOMAD<small>TWIN TOWERS</small></span>
+        <img class="brand-logo" src="assets/logo-lockup-light.png" alt="" width="560" height="231" decoding="async">
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span></button>
       <nav>
@@ -659,8 +669,8 @@
         <div class="map-facade reveal" data-delay="1">
           <div class="map-grid" aria-hidden="true"></div>
           <div class="map-pin">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#92763c" stroke-width="1.5" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6" fill="#92763c"/></svg>
-            <p style="max-width:22ch;font-size:.9rem;color:#5c6572">Eastleigh, Nairobi — interactive map loads on request to keep the page fast.</p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8f7226" stroke-width="1.5" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6" fill="#8f7226"/></svg>
+            <p>Eastleigh, Nairobi — interactive map loads on request to keep the page fast.</p>
             <button class="btn btn--ghost" data-load-map>Load Interactive Map</button>
           </div>
         </div>
@@ -741,8 +751,7 @@
     <div class="wrap">
       <div class="footer-grid">
         <a class="brand" href="#top" aria-label="Nomad Twin Towers — back to top">
-          <img class="brand-mark" src="assets/logo-mark.png" alt="" width="30" height="30" decoding="async">
-          <span class="brand-name">NOMAD<small>TWIN TOWERS</small></span>
+          <img class="brand-logo" src="assets/logo-lockup-light.png" alt="" width="560" height="231" decoding="async">
         </a>
         <nav class="footer-nav" aria-label="Footer">
           <a href="#about">Vision</a>
