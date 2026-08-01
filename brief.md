@@ -1047,12 +1047,10 @@ on deploy — see Open questions re: deploy-root exposure).
   been open items since launch; both are now in.
   - **Brochure.** What was shipping was a **one-page, 280 KB** stand-in. The
     client's is **14 pages, 6.1 MB** ("NOMAD TWIN TOWERS", made in Canva).
-    Dropped in at `docs/assets/nomad-twin-towers-brochure.pdf`, same path, so
-    the About section's download link needed no change. Size is fine: it moves
-    only on a download click, never on page load, and `_headers` already sends
-    `/assets/*` with `must-revalidate`, which is what lets a file be replaced
-    in place like this and still reach returning visitors. The README's "the
-    film is the only large file on the site" line was corrected.
+    Size is fine: it moves only on a download click, never on page load. The
+    README's "the film is the only large file on the site" line was corrected.
+    **It now ships as `nomad-twin-towers-brochure-2026-08.pdf`, not at the old
+    path — see the cache correction below.**
   - **Logo — the stand-ins are gone.** The site had been carrying *two*
     approximations: the "NT" monogram cropped out of the price list, and a
     NOMAD / TWIN TOWERS wordmark typeset in Fraunces and Manrope beside it. The
@@ -1093,3 +1091,36 @@ on deploy — see Open questions re: deploy-root exposure).
   - `logo-mark.png` deleted — nothing references it. A full sweep of the 167
     text elements on flat backgrounds reports zero contrast failures, and the
     hero audit still passes at 5.56 lowest.
+
+- 2026-08-01: **CORRECTION — `must-revalidate` does not make in-place file
+  replacement safe, and the deploy earlier today proved it.** The entry above
+  originally claimed that `_headers` sending `/assets/*` with
+  `must-revalidate` is "what lets a file be replaced in place and still reach
+  returning visitors". That is wrong. The rule is
+  `max-age=604800, must-revalidate`: `must-revalidate` only governs what
+  happens **after** the freshness window, so for seven days the edge considers
+  the object fresh and never asks the origin. Replacing a file in place under
+  `/assets/*` therefore keeps serving the old bytes for up to a week, per PoP.
+  - **Measured immediately after the deploy**, on nomadtwintowers.com:
+    `/assets/favicon-192.png` returned `cf-cache-status: HIT`, `Age: 75627`
+    (~21 hours, i.e. cached before the deploy) and **15787 bytes — the old
+    file**, while the origin `nomad-twin-towers.pages.dev` served the correct
+    4542. Same deploy, same rule: `favicon-48`, `favicon-96` and
+    `apple-touch-icon` happened to miss the cache and updated instantly, which
+    is exactly why this is easy to miss — it is per-object and per-PoP luck.
+  - `/favicon.ico` was never at risk: it sits at the root, so it does not match
+    `/assets/*` and inherits `max-age=0, must-revalidate` instead. It came
+    through as `REVALIDATED`.
+  - **The brochure was the one that mattered** — a prospective buyer clicking
+    "Request the Brochure" could have got the one-page placeholder for a week.
+    Fixed the way this file's own `/assets/*` comment already prescribes ("new
+    artwork ships under a new filename"): it is now
+    `nomad-twin-towers-brochure-2026-08.pdf`. **Date any future brochure.**
+  - The favicon PNGs keep stable paths on purpose (external consumers cache
+    them), so they cannot be versioned away and will self-heal within seven
+    days. A Cloudflare cache purge clears them immediately if that matters.
+  - **Also worth knowing for next time:** the 404 seen on
+    `/assets/logo-lockup-light.png` seconds after the deploy was a propagation
+    race, not a failure — the HTML was live before the asset had reached that
+    edge. It resolved on its own within a minute. Do not chase it; re-check
+    against `nomad-twin-towers.pages.dev` first, which is the origin truth.
