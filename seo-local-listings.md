@@ -119,7 +119,12 @@ Gracehouse's panel is carried by its photo pack. Everything in
 `drop-off.jpg`, `street-view-01.jpg`, `street-view-02.jpg`
 
 Use the full-size `.jpg` (1600px), not the `-800`/`-1200` responsive variants.
-Set `logo-mark.png` as the profile logo. One caveat carried from `brief.md`:
+For the profile logo use the client's official lockup —
+`reference/logo-official-2026-08-01.jpeg`, which is navy on white and so suits a
+profile card directly. **Not** `docs/assets/logo-lockup-light.png`: that one is
+recoloured cream for this site's dark header and would vanish on a white
+profile. (`logo-mark.png`, named here until 2026-08-01, was our in-house
+monogram and is deleted.) One caveat carried from `brief.md`:
 `pool-closeup.jpg` shows what reads as a cocktail glass, and the 4th floor has
 a **masjid** — check with the client before it goes on a public profile.
 
@@ -226,8 +231,11 @@ Note the price list contradicts itself on residential floors — "18" total vs
      client today rather than at handover.
    - It is why `Organization.url` was removed rather than repointed (§7).
      Once the domain is live again, put it back.
-6. **Obsha logo asset** — still none on file; `logo-mark.png` is our in-house
-   monogram.
+6. **Obsha logo asset** — still none on file. Note this is now the *only*
+   outstanding logo: the client sent the official **Nomad Twin Towers** lockup
+   on 2026-08-01 (`reference/logo-official-2026-08-01.jpeg`), which is what the
+   site and its favicons are built from. **Obsha Properties**, the developer, is
+   a separate brand and still has no asset — it is text-credited only.
 7. **Social profiles**: do Instagram / TikTok / LinkedIn exist? Instagram and
    TikTok matter disproportionately in this market.
 
