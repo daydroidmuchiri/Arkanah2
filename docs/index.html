@@ -96,6 +96,9 @@
           { "@type": "LocationFeatureSpecification", "name": "Supermarket", "value": true },
           { "@type": "LocationFeatureSpecification", "name": "Masjid", "value": true },
           { "@type": "LocationFeatureSpecification", "name": "Hagisa Community Hub", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Food Court", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Medical Spa", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Medical Centre", "value": true },
           { "@type": "LocationFeatureSpecification", "name": "Basement Parking", "value": true },
           { "@type": "LocationFeatureSpecification", "name": "24/7 Security", "value": true }
         ],
@@ -440,6 +443,38 @@
               <h3>Supermarket</h3>
             </figcaption>
           </figure>
+          <!-- Added 2026-08-02 from the client's fourth render batch. All three
+               are named on the official price list with a floor against each —
+               food court on 3, medical spa on 4 (the same wellness floor as the
+               masjid), healthcare centre on 5 — so the copy below can cite the
+               floor rather than hedge. -->
+          <figure class="amen-highlight">
+            <picture>
+              <source type="image/webp" srcset="assets/food-court-800.webp 800w, assets/food-court-1200.webp 1200w, assets/food-court.webp 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw">
+              <img src="assets/food-court-800.jpg" srcset="assets/food-court-800.jpg 800w, assets/food-court-1200.jpg 1200w, assets/food-court.jpg 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw" data-full="assets/food-court.jpg" alt="Diners at open seating in the food court, beneath a lit fretwork ceiling" width="1600" height="884" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <h3>Food Court</h3>
+            </figcaption>
+          </figure>
+          <figure class="amen-highlight">
+            <picture>
+              <source type="image/webp" srcset="assets/medical-spa-800.webp 800w, assets/medical-spa-1200.webp 1200w, assets/medical-spa.webp 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw">
+              <img src="assets/medical-spa-800.jpg" srcset="assets/medical-spa-800.jpg 800w, assets/medical-spa-1200.jpg 1200w, assets/medical-spa.jpg 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw" data-full="assets/medical-spa.jpg" alt="Treatment rooms of the medical spa, curtained off behind floor-to-ceiling glazing" width="1600" height="816" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <h3>Medical Spa</h3>
+            </figcaption>
+          </figure>
+          <figure class="amen-highlight">
+            <picture>
+              <source type="image/webp" srcset="assets/medical-centre-800.webp 800w, assets/medical-centre-1200.webp 1200w, assets/medical-centre.webp 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw">
+              <img src="assets/medical-centre-800.jpg" srcset="assets/medical-centre-800.jpg 800w, assets/medical-centre-1200.jpg 1200w, assets/medical-centre.jpg 1600w" sizes="(max-width: 780px) 90vw, (max-width: 980px) 46vw, 22vw" data-full="assets/medical-centre.jpg" alt="Reception desk and patient bays of the medical centre, with city views" width="1600" height="810" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <h3>Medical Centre</h3>
+            </figcaption>
+          </figure>
         </div>
         <div class="amen-grid">
           <div class="amen reveal">
@@ -486,6 +521,21 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.4a2 2 0 0 0 2-1.55L21 8H6M10 20.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0M19 20.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/></svg>
             <h3>Supermarket</h3>
             <p>A 1,701 sqm supermarket anchoring Basement 1.</p>
+          </div>
+          <div class="amen reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M3 12h18a9 9 0 0 1-18 0zM2 21h20M9 8c0-1.2 1-1.6 1-2.8M13 8c0-1.2 1-1.6 1-2.8"/></svg>
+            <h3>Food Court</h3>
+            <p>A food court on the third floor, with open seating, a barista café and a kids' play area.</p>
+          </div>
+          <div class="amen reveal" data-delay="1">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M12 21c0-5 3.2-9 8-10-1 5.2-4.2 8.4-8 10zM12 21c0-5-3.2-9-8-10 1 5.2 4.2 8.4 8 10zM12 21v-6"/></svg>
+            <h3>Medical Spa</h3>
+            <p>A medical spa on the fourth-floor wellness level, alongside a men's spa.</p>
+          </div>
+          <div class="amen reveal" data-delay="2">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
+            <h3>Medical Centre</h3>
+            <p>A healthcare centre on the fifth floor, with a dialysis unit.</p>
           </div>
         </div>
       </div>
@@ -623,6 +673,27 @@
               <img src="assets/supermarket.jpg" srcset="assets/supermarket-800.jpg 800w, assets/supermarket-1200.jpg 1200w, assets/supermarket.jpg 1600w" sizes="(max-width: 700px) 82vw, 560px" data-full="assets/supermarket.jpg" alt="Supermarket aisles beneath the retail podium" width="1600" height="883" loading="lazy" decoding="async">
             </picture>
             <figcaption>The Supermarket</figcaption>
+          </figure>
+          <figure class="gal-item">
+            <picture>
+              <source type="image/webp" srcset="assets/food-court-800.webp 800w, assets/food-court-1200.webp 1200w, assets/food-court.webp 1600w" sizes="(max-width: 700px) 82vw, 560px">
+              <img src="assets/food-court.jpg" srcset="assets/food-court-800.jpg 800w, assets/food-court-1200.jpg 1200w, assets/food-court.jpg 1600w" sizes="(max-width: 700px) 82vw, 560px" data-full="assets/food-court.jpg" alt="Diners at open seating in the food court, beneath a lit fretwork ceiling" width="1600" height="884" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>The Food Court</figcaption>
+          </figure>
+          <figure class="gal-item">
+            <picture>
+              <source type="image/webp" srcset="assets/medical-spa-800.webp 800w, assets/medical-spa-1200.webp 1200w, assets/medical-spa.webp 1600w" sizes="(max-width: 700px) 82vw, 560px">
+              <img src="assets/medical-spa.jpg" srcset="assets/medical-spa-800.jpg 800w, assets/medical-spa-1200.jpg 1200w, assets/medical-spa.jpg 1600w" sizes="(max-width: 700px) 82vw, 560px" data-full="assets/medical-spa.jpg" alt="Treatment rooms of the medical spa, curtained off behind floor-to-ceiling glazing" width="1600" height="816" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>The Medical Spa</figcaption>
+          </figure>
+          <figure class="gal-item">
+            <picture>
+              <source type="image/webp" srcset="assets/medical-centre-800.webp 800w, assets/medical-centre-1200.webp 1200w, assets/medical-centre.webp 1600w" sizes="(max-width: 700px) 82vw, 560px">
+              <img src="assets/medical-centre.jpg" srcset="assets/medical-centre-800.jpg 800w, assets/medical-centre-1200.jpg 1200w, assets/medical-centre.jpg 1600w" sizes="(max-width: 700px) 82vw, 560px" data-full="assets/medical-centre.jpg" alt="Reception desk and patient bays of the medical centre, with city views" width="1600" height="810" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>The Medical Centre</figcaption>
           </figure>
         </div>
       </div>

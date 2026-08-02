@@ -134,6 +134,9 @@ The site now runs entirely on the second render batch, received 2026-07-27
 | masjid.jpg | Amenities highlight + card + Gallery | Masjid prayer hall (batch 3, placed 2026-07-31) |
 | community-hall.jpg | Amenities highlight + card + Gallery | Hagisa Community Hub (batch 3, placed 2026-07-31) |
 | supermarket.jpg | Amenities highlight + card + Gallery | Supermarket aisles (batch 3, placed 2026-07-31) |
+| food-court.jpg | Amenities highlight + card + Gallery | Food court, 3rd floor (batch 4, placed 2026-08-02) |
+| medical-spa.jpg | Amenities highlight + card + Gallery | Medical spa, 4th floor (batch 4, placed 2026-08-02) |
+| medical-centre.jpg | Amenities highlight + card + Gallery | Medical centre, 5th floor (batch 4, placed 2026-08-02) |
 | 1-br-living-room.jpg | Gallery + Residences card (photo toggle) | One bedroom residence, living room |
 | 2-br-living-room.jpg | Gallery + Residences card (photo toggle) | Two bedroom residence, living room |
 | bedroom.jpg | Gallery | Master bedroom |
@@ -1124,3 +1127,61 @@ on deploy — see Open questions re: deploy-root exposure).
     race, not a failure — the HTML was live before the asset had reached that
     edge. It resolved on its own within a minute. Do not chase it; re-check
     against `nomad-twin-towers.pages.dev` first, which is the origin truth.
+
+- 2026-08-02: **fourth render batch placed — food court, medical spa, medical
+  centre** (`images/batch-2026-08-02/`, prepped through `prep-images.mjs` at
+  the same spec as every other asset: 1600px, q80, `--widths=800,1200 --webp`,
+  18 files). Each one is placed in all four places an amenity lives: a photo
+  highlight, an icon card, a Gallery entry and a JSON-LD
+  `LocationFeatureSpecification`.
+  - **The price list pins a floor to all three**, so the copy cites floors
+    instead of hedging: food court on the **3rd** ("Food, Entertainment &
+    Family Floor" — open seating, kids' play area, barista café), medical spa
+    on the **4th** ("Premium Lifestyle & Wellness Floor", the same floor as the
+    masjid, alongside a men's spa), healthcare centre on the **5th**
+    ("Healthcare & Offices Floor", with a dialysis centre).
+  - **"Medical Spa" is deliberately not a duplicate of "Sky Gym & Spa."** Both
+    are real and both are on the price list: the Sky Gym & Spa is the
+    residents' amenity floor, the Medical Spa is a 4th-floor retail tenancy.
+    The card copy carries that distinction so the two do not read as one
+    amenity listed twice.
+  - Spelling is **"Medical Centre"** — the page is British-English
+    ("The centre of everything"), and it matches the client's own filename.
+    `ShoppingCenter` in the JSON-LD stays American: it is a schema.org type.
+  - Counts: amenity highlights 7 → 10, icon cards 9 → **12 (an exact 4×3)**,
+    Gallery 17 → 20, JSON-LD amenities 9 → 12, sitemap 16 → 19 images,
+    lastmod 2026-08-02.
+  - **CSS change — the highlight strip now centres an orphan trailing row.**
+    At 10 tiles the four-column grid left the last row hard left against two
+    empty cells, which reads as unfinished (7 tiles had left one gap; two is
+    conspicuous). `.amen-highlights` is now `repeat(8, 1fr)` with each tile
+    `grid-column: span 2` — a span-2 tile absorbs the gap it straddles, so
+    **tile widths are unchanged at every breakpoint** (measured: 276px before
+    and after at 1440px). The half-tile granularity is what allows
+    `:nth-child(4n+1):nth-last-child(2) { grid-column: 3 / span 2 }` to centre
+    a trailing pair — 301px inset each side, verified. Keyed off the item
+    count rather than a fixed index, so it stays correct as batches arrive.
+    The 980px/560px breakpoints reset `grid-column` to `auto`.
+  - Verified in a real browser at 1440/900/390: rows 4-4-2 centred, 2-col, then
+    1-col; no horizontal overflow; captions stay inside their tiles; all 40
+    images load; JSON-LD parses; sitemap well-formed; every referenced asset
+    resolves (139 refs, 0 missing). Hit-tested the new tiles with
+    `elementFromPoint` at both tile centre **and** over the caption — all
+    return the right `IMG`, so the 2026-07-31 scrim bug does not recur — and a
+    real click on Medical Centre opened the lightbox at the full 1600×810.
+  - **Two render-quality issues shipped as supplied, following the batch-3
+    precedent (client's artwork, client's call), but the client should see
+    them:**
+    1. `medical-centre.jpg` has **garbled signage** on the back wall — a
+       string of nonsense CJK-like glyphs above "Runley BPT". It is a
+       generation artifact, small on the tile but legible in the lightbox at
+       full size. The background skyline is also generic high-rise, not
+       Eastleigh — true of other renders in the set, noted only for
+       completeness.
+    2. `food-court.jpg` shows **five invented tenant brands** in legible
+       signage — "Fuel & Go Smoothies", "Keto Kitchen", "Vegan Vibes",
+       "Bulk & Burn Grill", "Protein Power-Up". They read as a gym-nutrition
+       food hall, which sits oddly against the price list's description of
+       that floor (kids' play area, barista café, family floor), and a buyer
+       could reasonably take named stalls for confirmed tenants. No site copy
+       repeats any of these names.
