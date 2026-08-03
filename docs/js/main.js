@@ -297,7 +297,12 @@
       return [
         "Hello Nomad Twin Towers,",
         "",
-        `My name is ${d.get("name")}. I would like to enquire about a ${d.get("unit")}.`,
+        /* The article lives in the <option value>, not here — "a Retail Shop"
+           but "the Investment Portfolio". Hardcoding "a" produced "a Investment
+           Portfolio", and before 2026-08-03 the select could not name a shop or
+           a hotel suite at all, so those enquiries arrived labelled as whichever
+           residence happened to be first in the list. */
+        `My name is ${d.get("name")}. I would like to enquire about ${d.get("unit")}.`,
         d.get("message") ? `\n${d.get("message")}` : "",
         "",
         `Phone: ${d.get("phone")}`,
@@ -327,6 +332,21 @@
       open(`https://wa.me/${waNumber}?text=${encodeURIComponent(buildMessage())}`, "_blank", "noopener");
       status.textContent = "Opening WhatsApp…";
     });
+
+    /* Each product card's CTA carries data-unit, so arriving at the form from
+       "Request Shop Details" preselects Retail Shop rather than leaving the
+       buyer on the first option. Matches on the option's value, and only sets
+       what actually exists — an unmatched data-unit leaves the select alone
+       rather than blanking it. */
+    const unitField = $("#f-unit");
+    if (unitField) {
+      for (const trigger of document.querySelectorAll("a[data-unit]")) {
+        trigger.addEventListener("click", () => {
+          const wanted = trigger.getAttribute("data-unit");
+          if ([...unitField.options].some((o) => o.value === wanted)) unitField.value = wanted;
+        });
+      }
+    }
   }
 
   /* ---------- Footer year ---------- */

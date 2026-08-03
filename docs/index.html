@@ -323,7 +323,7 @@
                 <li>Open-plan kitchen with stone worktops</li>
                 <li>En-suite bedroom</li>
               </ul>
-              <a class="btn btn--ghost" href="#enquire">Request Floor Plans</a>
+              <a class="btn btn--ghost" href="#enquire" data-unit="a One Bedroom Residence">Request Floor Plans</a>
             </div>
           </article>
           <article class="res-card reveal" data-delay="1">
@@ -343,7 +343,7 @@
                 <li>Open-plan living and dining area</li>
                 <li>Two bedrooms</li>
               </ul>
-              <a class="btn btn--ghost" href="#enquire">Request Floor Plans</a>
+              <a class="btn btn--ghost" href="#enquire" data-unit="a Two Bedroom Residence">Request Floor Plans</a>
             </div>
           </article>
           <!-- Shops card added 2026-07-30 on the client's mark-up. No floor plan
@@ -361,7 +361,7 @@
                 <li>Anchored by a 1,701 sqm supermarket</li>
                 <li>105 basement parking bays</li>
               </ul>
-              <a class="btn btn--ghost" href="#enquire">Request Shop Details</a>
+              <a class="btn btn--ghost" href="#enquire" data-unit="a Retail Shop">Request Shop Details</a>
             </div>
           </article>
         </div>
@@ -799,10 +799,19 @@
             </div>
             <div class="field">
               <label for="f-unit">Interested In</label>
+              <!-- The value carries the sentence-ready phrase (article included)
+                   because it is dropped straight into the WhatsApp/email body by
+                   buildMessage() in main.js — this form posts to no endpoint, so
+                   the value IS the message. Display text stays title-case.
+                   Retail Shop and Hotel Suite added 2026-08-03: both are priced
+                   on the client's official list, and until now 334 shops and 60
+                   hotel rooms had no way to be named in an enquiry at all. -->
               <select id="f-unit" name="unit">
-                <option>One Bedroom Residence</option>
-                <option>Two Bedroom Residence</option>
-                <option>Investment Portfolio</option>
+                <option value="a One Bedroom Residence">One Bedroom Residence</option>
+                <option value="a Two Bedroom Residence">Two Bedroom Residence</option>
+                <option value="a Retail Shop">Retail Shop</option>
+                <option value="a Hotel Suite">Hotel Suite</option>
+                <option value="the Investment Portfolio">Investment Portfolio</option>
               </select>
             </div>
           </div>
