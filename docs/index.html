@@ -12,7 +12,11 @@
        /favicon.ico is the path it falls back to. Rebuilt 2026-08-01 from the twin
        towers device in the client's official lockup, replacing the "NT" monogram
        (which the official logo does not use). Regenerate with logo-assets.mjs. -->
-  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <!-- The .ico carries three PNG entries — 16, 32 and 48 — but only advertised
+       32x32, which is the one size Google's favicon guidance does not want (it
+       asks for a multiple of 48). Declaring what the file actually contains lets
+       a consumer pick the 48. Corrected 2026-08-05. -->
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
   <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
@@ -278,7 +282,17 @@
           <div class="split-copy">
             <p class="eyebrow reveal">The Vision</p>
             <h2 class="reveal" data-delay="1">Built for the way <span class="serif-accent">Eastleigh works.</span></h2>
-            <p class="reveal" data-delay="2">Nomad Twin Towers is a landmark mixed-use address in the heart of Eastleigh's business district — 334 shops and a 1,701 sqm supermarket at street level, 252 luxury residences above, and hotel suites crowning the towers. Every residence is designed for natural light, with floor-to-ceiling glazing throughout.</p>
+            <!-- "at street level" was wrong on both counts and Google was
+                 repeating it back in the AI Overview as "334 ground-level shops"
+                 (SERP captured 2026-08-05, in reference/). Per the client's price
+                 list only 52 of the 334 sit on the ground floor — 16 road-front
+                 plus 36 indoor — and the supermarket is the Basement 1 anchor.
+                 The JSON-LD above has always had this right; the prose did not,
+                 and the prose is what got quoted. "Across the retail podium"
+                 rather than a floor count on purpose: the brief and the JSON-LD
+                 say Ground–6th, but the price list shows no shop count against
+                 the 6th, so a number here would overclaim. -->
+            <p class="reveal" data-delay="2">Nomad Twin Towers is a landmark mixed-use address in the heart of Eastleigh's business district — 334 shops across the retail podium, a 1,701 sqm supermarket in Basement 1, 252 luxury residences above, and hotel suites crowning the towers. Every residence is designed for natural light, with floor-to-ceiling glazing throughout.</p>
             <p class="reveal" data-delay="2">Eastleigh trades from first light, and the towers are built for that rhythm: a home minutes from Business Bay Square and three kilometres from the CBD, above a retail podium that works as hard as the district around it. Take a residence, take a shop — or hold both.</p>
             <!-- Dated filename on purpose: /assets/* is cached for a week, so a
                  brochure replaced in place keeps serving the old PDF from edges

@@ -1185,3 +1185,45 @@ on deploy — see Open questions re: deploy-root exposure).
        that floor (kids' play area, barista café, family floor), and a buyer
        could reasonably take named stalls for confirmed tenants. No site copy
        repeats any of these names.
+
+- 2026-08-05: **the site was telling Google the shops are at street level, and
+  Google was repeating it.** A client-supplied SERP capture
+  (`reference/google-serp-nomad-twin-towers-2026-08-05.png`) shows the brand
+  ranking #1 with a full rich result — favicon, sitename, title, description and
+  the front-view thumbnail all present — and an AI Overview describing the
+  development from our own copy. That overview said "**334 ground-level shops**"
+  and "shops and a supermarket at street level".
+  - Not a Google misreading. The Vision paragraph read "334 shops and a 1,701
+    sqm supermarket **at street level**", and "at street level" attaches to
+    both. Against the price list, wrong twice: only **52 of the 334** shops are
+    on the ground floor (16 road-front + 36 indoor), the rest on floors 1–5; and
+    the supermarket is the **Basement 1** anchor.
+  - The JSON-LD had always been correct ("334 retail units from Ground to 6th
+    floor, anchored by a 1,701 sqm supermarket in Basement 1"), so the
+    structured data and the prose contradicted each other — **and the prose is
+    what got quoted.** Worth remembering: schema.org accuracy does not protect
+    you if the visible sentence says something else.
+  - Now "334 shops across the retail podium, a 1,701 sqm supermarket in
+    Basement 1". Deliberately no floor count in the prose: the brief and JSON-LD
+    say Ground–6th, but the price list shows no shop count against the 6th
+    (event hall / hotel restaurant), so a number would overclaim.
+  - Commercially this mattered more than a pedantic correction — it framed the
+    retail podium, which is the investor product, as a ground-floor shopping
+    strip.
+
+- 2026-08-05: **the "NT" favicon in that SERP is Google's cache, not our file.**
+  Checked before changing anything: `favicon.ico` carries three PNG entries
+  (16/32/48) and all are the towers device, as are favicon-48/96/192 and
+  apple-touch-icon. Every one matches local byte-for-byte at the edge, so the
+  `/assets/*` seven-day window from the 2026-08-01 rebuild has expired and
+  self-healed exactly as predicted. Nothing to fix in the repo.
+  - One real defect found while checking: the `<link rel="icon">` for the .ico
+    advertised `sizes="32x32"` while the file actually contains 16, 32 and 48.
+    Google's favicon guidance asks for a multiple of 48, so we were declaring
+    the one size it does not want. Now `sizes="16x16 32x32 48x48"`.
+  - **This does not force a refresh.** Google's favicon crawler is separate and
+    caches for weeks. `/favicon.ico` must stay at its well-known path so it
+    cannot be versioned away, which means the filename trick that works for
+    `/assets/*` is unavailable here. The only real accelerator is a Search
+    Console **URL Inspection → Request Indexing** on the homepage, which needs
+    the client's account. Do not go chasing this in code.
