@@ -671,8 +671,10 @@ h3 { font-size: 1.35rem; }
 .loc-list strong { font-weight: 600; color: #232a37; }
 /* ---------- Film ---------- */
 /* aspect-ratio + width/height on the element keep the poster from shifting
-   layout. Source is 848x478 (WhatsApp-recompressed), so it is capped rather
-   than stretched to the full 1180px wrap — see brief.md. */
+   layout. The 62rem (992px) cap is deliberate: the film is encoded at 1280x720
+   but at only ~0.5 Mbps, because 5:51 has to fit under Cloudflare Pages' 25 MiB
+   per-file limit. Capping short of the full 1180px wrap keeps that soft image
+   off its worst display size — see brief.md. */
 .film {
   display: block;
   width: 100%;

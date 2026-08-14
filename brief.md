@@ -1227,3 +1227,46 @@ on deploy — see Open questions re: deploy-root exposure).
     `/assets/*` is unavailable here. The only real accelerator is a Search
     Console **URL Inspection → Request Indexing** on the homepage, which needs
     the client's account. Do not go chasing this in code.
+
+- 2026-08-14: **the film was replaced with the 5:51 cut — and the source we were
+  given is a TV broadcast rip, so this encode is provisional.** Client dropped
+  `Xayeysiiska Nomad.mp4` ("the Nomad advertisement", Somali) in the repo root:
+  1920×1080, 5 min 51 s, H.264/AAC, 3.89 Mbps, **163 MiB**.
+  - **Check the corners before trusting a client video.** Every frame carried
+    three burned-in third-party watermarks: **HORN PETROLEUM** top-left (an
+    unrelated fuel company), a **Hereri** channel bug top-right, and a green
+    **5G** telco badge bottom-left. They are on the NOMAD title card too. This
+    is a broadcast recording, not the client's master — and the 2:27 cut already
+    on the site is clean, same campaign, same shots, so a clean master of this
+    cut almost certainly exists. **Ask for it.** Second time running that a
+    client film arrived degraded by the delivery channel (see 2026-07-31,
+    WhatsApp).
+  - Removed with three `delogo` boxes in source coordinates, applied *before*
+    `scale` so they land on the right pixels. Verified by tiling the top-left
+    300×120 region across the whole runtime: clean over sky, ceilings and walls,
+    with mild horizontal smear where the corner holds vertical detail. At the
+    62rem display cap that region is ~127 CSS px wide, and the low bitrate
+    softens everything anyway, so it does not read on the page.
+  - **Stripping a broadcaster's bug and a sponsor's logo to republish is a
+    rights question, not a technical one.** Shipped anyway on the client's
+    instruction, as provisional — swap in the clean master when it arrives.
+  - **163 MiB could never have shipped.** Cloudflare Pages caps a single file at
+    **25 MiB** and GitHub rejects pushes over 100 MB. That cap is the whole
+    reason the encode looks the way it does: 5:51 inside 25 MiB is ~0.5 Mbps
+    total, so 1280×720 at 380k video + 96k AAC, two-pass. The result is **softer
+    per second than the 2:27 film it replaces** (1.23 Mbps) despite a much
+    better source. Trimming the ad would be the only way to buy quality back.
+  - Root `*.mp4` is now gitignored (root-anchored, so `docs/assets/*.mp4` stays
+    tracked). Masters stay out of the repo; only the encode is committed.
+  - **Filename is dated: `nomad-twin-towers-film-2026-08.mp4`.** `/assets/*` is
+    cached a week, so reusing the old name would have kept feeding returning
+    visitors the old 2:27 cut. Same trap the brochure taught us on 2026-08-01.
+  - Poster deliberately **unchanged**. The film's own title card makes a decent
+    frame and delogos cleanly, but it is broadcast-soft, and the poster is the
+    one image 100% of visitors see whether or not they press play — the crisp
+    1600px render crop still wins. Revisit with the clean master.
+  - `preload="none"` unchanged and still load-bearing. Do not add `autoplay` or
+    `preload="metadata"`: most of this audience is on mobile data.
+  - JSON-LD `#film` updated — `duration PT5M51S`, new `contentUrl`, real
+    `uploadDate`, and a `description` widened to match the longer cut (it now
+    covers the food court, gym, pool and sky lounge as well).
