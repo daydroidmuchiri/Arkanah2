@@ -1270,3 +1270,56 @@ on deploy — see Open questions re: deploy-root exposure).
   - JSON-LD `#film` updated — `duration PT5M51S`, new `contentUrl`, real
     `uploadDate`, and a `description` widened to match the longer cut (it now
     covers the food court, gym, pool and sky lounge as well).
+
+- 2026-08-14: **added an AV1 encode alongside the H.264 one, which buys back
+  most of the quality the 25 MiB cap took away.** No change to the source, the
+  delogo, the resolution or the bitrate — the gain is purely the codec.
+  - Measured, not assumed. Encoded a 40 s segment four ways at identical
+    bitrate and scored each with VMAF against a near-lossless reference:
+
+        H.264 (what shipped)   VMAF 64.73
+        H.264 + hqdn3d         VMAF 64.91
+        VP9                    VMAF 76.71
+        AV1 (SVT, preset 4)    VMAF 83.24
+
+    ~65 is "noticeably impaired", ~83 is "good". At the ~0.5 Mbps this film is
+    forced into, H.264 simply falls apart and AV1 does not.
+  - **The delivered gain is smaller than that test implied — measure the real
+    files, not a segment.** Scoring the two full-length encodes over the same
+    window gives **H.264 67.73 vs AV1 78.51, so +10.8, not +18.5.** Two reasons:
+    the shipped H.264 is two-pass across the whole film, so this window got more
+    than its even share of bits; and SVT-AV1's VBR undershot the target, landing
+    at 328k video against the 380k asked for. Quote +10.8 to anyone who asks.
+  - Because AV1 undershot, it is also **smaller: 17.79 MiB against 20.17 MiB** —
+    better picture AND ~12% less mobile data for the clients who get it. Pushing
+    `-b:v` to ~460k would spend the spare budget on more quality instead; not
+    done, on the grounds that this audience is on mobile data and the current
+    result already wins on both axes.
+  - **Denoising before encoding does nothing here** (+0.2, and it slightly HURT
+    AV1). The intuition that cleaning broadcast noise frees up bits did not
+    survive measurement. Do not spend time on it again.
+  - **Upscaling was considered and rejected.** Resolution is not the constraint,
+    bitrate is: 1080p at the same 0.5 Mbps spreads the same bits over 2.25x the
+    pixels and looks worse. AI super-resolution fails for the same reason — the
+    invented detail is exactly the high-frequency texture a 0.5 Mbps encode
+    discards first.
+  - **Reusing the old 2:27 film's cleaner video under the new audio was also
+    considered and rejected**, though it was a closer call than expected. The
+    two films share a footage library — 79% of the new cut's 105 shots have a
+    strong match in the old file, and the old encode genuinely looks better
+    (848x478 at 1.23 Mbps beats 1280x720 at 0.38 Mbps). It fails on arithmetic:
+    the old file holds **147 s of footage against 351 s of audio**, so 58% of the
+    runtime has no clean source. And the edits do not correspond — 21 shots
+    against 105 — so it is a full re-edit synced to Somali narration, not a
+    remux. Worth re-reading before anyone proposes it again.
+  - Markup is two `<source>` elements, AV1 first. **The `codecs=` parameter is
+    load-bearing**: without it Safari reports it can play `video/mp4`, selects
+    the AV1 file and then fails. The value `av01.0.05M.08` is read off the
+    encode, not guessed. Download links stay on the H.264 file, which plays in
+    any desktop player.
+  - Cost is a second binary in the repo (17.8 MB on top of the 20.2 MB H.264).
+    Each visitor still downloads only one, and only on play. If that weight ever
+    becomes a problem, AV1 could be encoded at roughly half the bitrate and
+    still match today's H.264.
+  - Still provisional, and still worth chasing the clean master — a clean source
+    in AV1 would be better again, and the two are independent.

@@ -721,8 +721,9 @@
     <!-- Client film. The 5:51 cut replaced the original 2:27 one on 2026-08-14;
          the dated filename is load-bearing, since /assets/* is cached a week and
          reusing the old name would keep serving the old cut. preload="none"
-         matters: the file is 20 MB, against 331 KB for the whole rest of the
-         page, so it must only be fetched when someone actually presses play. The
+         matters: whichever encode the browser picks is ~20 MB, against 331 KB
+         for the whole rest of the page (only one is ever fetched, never both),
+         so it must only be fetched when someone actually presses play. The
          poster carries the block until then. Same reasoning as the click-to-load
          map facade. See brief.md — this encode is provisional. -->
     <section class="section section--light cv-auto" id="film">
@@ -731,8 +732,19 @@
           <p class="eyebrow reveal">The Film</p>
           <h2 class="reveal" data-delay="1">See it <span class="serif-accent">in motion.</span></h2>
         </div>
+        <!-- AV1 first, H.264 second. The browser takes the first source it can
+             decode, so AV1-capable clients (most of this audience, on Chrome or
+             Android) get a far better picture for the same bytes: measured
+             VMAF 83.2 against 64.7 at identical bitrate, because 5:51 inside
+             Pages' 25 MiB cap is only ~0.5 Mbps and H.264 falls apart there.
+             The codecs= parameter is NOT optional — without it Safari claims it
+             can play video/mp4, picks the AV1 file and then fails. The value is
+             read off the encode itself (profile Main=0, seq_level_idx 5, Main
+             tier, 8-bit), not guessed. Downloads deliberately point at the
+             H.264 file: it plays in any desktop player, AV1 still may not. -->
         <video class="film reveal" data-delay="1" controls playsinline preload="none"
                poster="assets/film-poster.jpg" width="1600" height="900">
+          <source src="assets/nomad-twin-towers-film-2026-08-av1.mp4" type='video/mp4; codecs="av01.0.05M.08"'>
           <source src="assets/nomad-twin-towers-film-2026-08.mp4" type="video/mp4">
           <p>Your browser cannot play this video.
             <a href="assets/nomad-twin-towers-film-2026-08.mp4" download>Download the film</a> instead.</p>
