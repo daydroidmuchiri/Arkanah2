@@ -170,7 +170,7 @@ where it would otherwise have been publicly servable alongside `index.html`
 on deploy — see Open questions re: deploy-root exposure).
 
 ## Missing items
-1. ~~Real sales phone/WhatsApp number~~ — RESOLVED 2026-07-27: `+254 711 111 188`, from the price list. **Superseded 2026-08-24** by `+254 141 700 000` per Daniel; the live site now carries the new number. Not verified as WhatsApp-registered yet.
+1. ~~Real sales phone/WhatsApp number~~ — RESOLVED 2026-07-27: `+254 711 111 188`, from the price list. **Superseded 2026-08-24** by `+254 141 700 000`, supplied and confirmed by Daniel; the live site and the brochure PDF both carry it. Whether the line has a WhatsApp account is still untested.
 2. ~~Real sales email~~ — RESOLVED IN PRINCIPLE 2026-07-29. No email address ever appeared in the client's materials, so rather than guess a mailbox we're creating the one already on the page: the domain is being registered through **Cloudflare Registrar**, and **Cloudflare Email Routing** (free, included with the domain) will forward `sales@nomadtwintowers.com` to a Gmail account. The site needs no change — the address it already displays becomes real the moment routing is switched on. This also avoids showing a raw Gmail address next to USD 180,000 apartments, which is the kind of detail a cautious diaspora buyer notices.
    Still to do, none of it in this repo: (a) register the domain (see item 8); (b) add the routing rule in the Cloudflare dashboard and verify the destination Gmail; (c) if replies should also come *from* `sales@nomadtwintowers.com` rather than the Gmail, add it in Gmail under Settings → Accounts → "Send mail as" — Google emails a confirmation code to that address, which Email Routing forwards through. Usually works without external SMTP, but confirm it before promising the client a fully branded mailbox.
 3. ~~Confirmed prices, unit sizes, floor count and completion date~~ — PARTIALLY RESOLVED 2026-07-27: unit sizes and prices now match the official price list (USD, per sqm — see Business summary). Still open: (a) the price list's apartment table says "18" under "Total Floors" for both unit types, while the Project Overview footer of the same document says residential spans floors "7TH–18TH" (12 floors) — these two numbers in the client's own document don't obviously reconcile; worth asking the client to clarify rather than guessing. (b) Completion date (Q4 2027) is not stated anywhere in the price list — still a placeholder.
@@ -1338,12 +1338,13 @@ on deploy — see Open questions re: deploy-root exposure).
     than the local `0141700000` Daniel supplied. Not cosmetic: `wa.me` only
     resolves an international number, and §2 of `seo-local-listings.md`
     requires byte-identical international NAP across every platform.
-  - **Two things still unverified, both flagged to Daniel.** (a) `0141` is
-    outside the `0100`–`0115` Kenyan mobile prefixes we know of, so it may be
-    a typo — a wrong number silently kills the site's primary channel, since
-    WhatsApp is where every enquiry lands. (b) `wa.me` only opens a chat if
-    the number has a WhatsApp account; tapping the float on a phone settles
-    it in seconds. Neither is checkable from the repo.
+  - **The number was queried and confirmed.** `0141` sits outside the
+    `0100`–`0115` Kenyan mobile prefixes this repo knew of, so it was flagged
+    to Daniel as a possible typo; he confirmed it 2026-08-24 as correct. Treat
+    the prefix list above as incomplete, not the number as suspect. The one
+    thing still untested is whether the line has a WhatsApp account — `wa.me`
+    only opens a chat if it does, and tapping the float on a phone settles it
+    in seconds. Not checkable from the repo.
   - README, this brief and `seo-local-listings.md` updated the same day. The
     2026-07-27 changelog entry above still reads `+254 711 111 188` on
     purpose — that is what went live that day, and rewriting it would falsify

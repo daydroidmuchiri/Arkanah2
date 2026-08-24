@@ -94,13 +94,12 @@ logo-assets.mjs      regenerates the lockup and the whole favicon set from the
 
 ## Placeholder content to replace before launch
 
-- **Phone/WhatsApp** `+254 141 700 000` — supplied by Daniel 2026-08-24,
-  superseding `+254 711 111 188` from the client's price list
+- **Phone/WhatsApp** `+254 141 700 000` — supplied and confirmed by Daniel
+  2026-08-24, superseding `+254 711 111 188` from the client's price list
   (`reference/nomad-twin-towers-price-list-2026-07-27.jpeg`). In
-  `docs/index.html` only (`docs/js/main.js` derives it from the floating
-  WhatsApp button's href). Not yet confirmed as WhatsApp-registered, and
-  `0141` is outside the `0100`–`0115` mobile prefixes we know of — worth
-  a tap on the float before treating the channel as live.
+  `docs/index.html` and the brochure PDF (`docs/js/main.js` derives it from
+  the floating WhatsApp button's href). Still untested: whether the line has
+  a WhatsApp account — one tap on the float answers it.
 - **Email** `sales@nomadtwintowers.com` — **live 2026-07-29** via Cloudflare
   Email Routing (free with the domain), forwarding to `makoriian11@gmail.com`.
   MX/SPF/DKIM records are created and the zone is `ready`. It lives in
