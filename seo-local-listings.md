@@ -56,7 +56,7 @@ here; do not retype.
 ```
 Development name : Nomad Twin Towers
 Developer        : Obsha Properties
-Sales phone      : +254 711 111 188        (price-list confirmed)
+Sales phone      : +254 141 700 000        (per Daniel 2026-08-24)
 Sales email      : sales@nomadtwintowers.com   (live via Cloudflare Email Routing)
 Website          : https://nomadtwintowers.com/
 Locality         : Eastleigh, Nairobi
@@ -68,7 +68,7 @@ Map pin          : -1.280676, 36.848874   (client-supplied; Timboroa Street,
 Street address   : ⚠ UNCONFIRMED — see §6
 ```
 
-Write the phone in **international format** (`+254 711 111 188`) on every
+Write the phone in **international format** (`+254 141 700 000`) on every
 platform. Note the site's own WhatsApp deep link is derived from this number in
 `docs/js/main.js` — if the sales line ever changes, that is the single place to
 edit.

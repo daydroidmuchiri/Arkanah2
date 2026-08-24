@@ -86,9 +86,11 @@ Developer: **Obsha Properties** — credited in the footer 2026-07-27
 received for Obsha itself; text credit only.
 
 ## Contact & location
-Phone/WhatsApp: **+254 711 111 188** — REAL, from the client's price list,
-replaced the `+254 700 000 000` placeholder 2026-07-27 (tel link, WhatsApp
-float, contact row — js/main.js derives the WhatsApp number from the page).
+Phone/WhatsApp: **+254 141 700 000** — supplied by Daniel 2026-08-24,
+superseding the price-list number `+254 711 111 188` that had itself replaced
+the `+254 700 000 000` placeholder 2026-07-27 (tel link, WhatsApp float,
+contact row, three JSON-LD `telephone` fields — js/main.js derives the
+WhatsApp number from the page).
 Email: `sales@nomadtwintowers.com` — CONFIRMED as the address the site will
 use, 2026-07-29. It was never given in the price list, but Daniel confirmed
 the plan: register the domain through Cloudflare Registrar and use Cloudflare
@@ -168,7 +170,7 @@ where it would otherwise have been publicly servable alongside `index.html`
 on deploy — see Open questions re: deploy-root exposure).
 
 ## Missing items
-1. ~~Real sales phone/WhatsApp number~~ — RESOLVED 2026-07-27: `+254 711 111 188`, from the price list.
+1. ~~Real sales phone/WhatsApp number~~ — RESOLVED 2026-07-27: `+254 711 111 188`, from the price list. **Superseded 2026-08-24** by `+254 141 700 000` per Daniel; the live site now carries the new number. Not verified as WhatsApp-registered yet.
 2. ~~Real sales email~~ — RESOLVED IN PRINCIPLE 2026-07-29. No email address ever appeared in the client's materials, so rather than guess a mailbox we're creating the one already on the page: the domain is being registered through **Cloudflare Registrar**, and **Cloudflare Email Routing** (free, included with the domain) will forward `sales@nomadtwintowers.com` to a Gmail account. The site needs no change — the address it already displays becomes real the moment routing is switched on. This also avoids showing a raw Gmail address next to USD 180,000 apartments, which is the kind of detail a cautious diaspora buyer notices.
    Still to do, none of it in this repo: (a) register the domain (see item 8); (b) add the routing rule in the Cloudflare dashboard and verify the destination Gmail; (c) if replies should also come *from* `sales@nomadtwintowers.com` rather than the Gmail, add it in Gmail under Settings → Accounts → "Send mail as" — Google emails a confirmation code to that address, which Email Routing forwards through. Usually works without external SMTP, but confirm it before promising the client a fully branded mailbox.
 3. ~~Confirmed prices, unit sizes, floor count and completion date~~ — PARTIALLY RESOLVED 2026-07-27: unit sizes and prices now match the official price list (USD, per sqm — see Business summary). Still open: (a) the price list's apartment table says "18" under "Total Floors" for both unit types, while the Project Overview footer of the same document says residential spans floors "7TH–18TH" (12 floors) — these two numbers in the client's own document don't obviously reconcile; worth asking the client to clarify rather than guessing. (b) Completion date (Q4 2027) is not stated anywhere in the price list — still a placeholder.
@@ -1323,3 +1325,38 @@ on deploy — see Open questions re: deploy-root exposure).
     still match today's H.264.
   - Still provisional, and still worth chasing the clean master — a clean source
     in AV1 would be better again, and the two are independent.
+- 2026-08-24: **sales number changed to `+254 141 700 000`** per Daniel,
+  replacing the price-list number `+254 711 111 188` that had been live since
+  2026-07-27. Five places in `docs/index.html`: three JSON-LD `telephone`
+  fields (development, retail, developer), the `tel:` href and its visible
+  text in the contact rows, and the `wa.me` deep link on the floating WhatsApp
+  button. `docs/js/main.js` needed no change — it still scrapes the number off
+  `.wa-float`'s href at runtime, which is exactly the single-source-of-truth
+  arrangement the 2026-07-27 note predicted would pay off. Deployed and
+  verified live on `nomadtwintowers.com`.
+  - Written in international form (`+254141700000` / `254141700000`) rather
+    than the local `0141700000` Daniel supplied. Not cosmetic: `wa.me` only
+    resolves an international number, and §2 of `seo-local-listings.md`
+    requires byte-identical international NAP across every platform.
+  - **Two things still unverified, both flagged to Daniel.** (a) `0141` is
+    outside the `0100`–`0115` Kenyan mobile prefixes we know of, so it may be
+    a typo — a wrong number silently kills the site's primary channel, since
+    WhatsApp is where every enquiry lands. (b) `wa.me` only opens a chat if
+    the number has a WhatsApp account; tapping the float on a phone settles
+    it in seconds. Neither is checkable from the repo.
+  - README, this brief and `seo-local-listings.md` updated the same day. The
+    2026-07-27 changelog entry above still reads `+254 711 111 188` on
+    purpose — that is what went live that day, and rewriting it would falsify
+    the log. Nothing was submitted to the listings platforms under the old
+    number (§6 blockers are still open), so there is no published NAP to fix.
+  - **The brochure PDF still carries the old number, and the site serves it.**
+    `docs/assets/nomad-twin-towers-brochure-2026-08.pdf` (the client's own
+    file, received 2026-08-01) holds `+254 711 111 188` in three places: a
+    clickable `/URI (tel:+254711111188)` link annotation, that annotation's
+    `/Contents`, and the document `/Title` metadata. The number a reader
+    actually *sees* is drawn in a compressed content stream, so patching the
+    annotations would fix the tap target and leave the printed number wrong —
+    worse than leaving it alone. This needs a re-export from whoever holds the
+    source document; it is not a repo-side fix. Until then anyone who
+    downloads the brochure gets the dead line, which is the same failure mode
+    the site change was meant to prevent.
