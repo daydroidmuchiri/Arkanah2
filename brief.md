@@ -1349,14 +1349,60 @@ on deploy — see Open questions re: deploy-root exposure).
     purpose — that is what went live that day, and rewriting it would falsify
     the log. Nothing was submitted to the listings platforms under the old
     number (§6 blockers are still open), so there is no published NAP to fix.
-  - **The brochure PDF still carries the old number, and the site serves it.**
-    `docs/assets/nomad-twin-towers-brochure-2026-08.pdf` (the client's own
-    file, received 2026-08-01) holds `+254 711 111 188` in three places: a
-    clickable `/URI (tel:+254711111188)` link annotation, that annotation's
-    `/Contents`, and the document `/Title` metadata. The number a reader
-    actually *sees* is drawn in a compressed content stream, so patching the
-    annotations would fix the tap target and leave the printed number wrong —
-    worse than leaving it alone. This needs a re-export from whoever holds the
-    source document; it is not a repo-side fix. Until then anyone who
-    downloads the brochure gets the dead line, which is the same failure mode
-    the site change was meant to prevent.
+  - **The brochure PDF carried the old number too, and the site serves it —
+    now fixed in place** (`docs/assets/nomad-twin-towers-brochure-2026-08.pdf`,
+    the client's own file, received 2026-08-01). It held `+254 711 111 188` in
+    four places: the printed text on the CONTACT DETAILS page, a clickable
+    `/URI (tel:+254711111188)` annotation, that annotation's `/Contents`, and
+    the outline/bookmark `/Title`. See the 2026-08-24 entry below for how the
+    printed text was changed, which was not trivial.
+
+- 2026-08-24 (same day, later): **the brochure PDF's printed number was
+  changed in place — the font had no `0` glyph, which is the whole story.**
+  `docs/assets/nomad-twin-towers-brochure-2026-08.pdf` is served from the site,
+  so leaving `+254 711 111 188` in it would have handed every downloader the
+  dead line. Four places held it: the printed text on the CONTACT DETAILS page,
+  the `tel:` link annotation, that annotation's `/Contents`, and the outline
+  `/Title`. The last three are plain strings and were trivial. The printed text
+  was not.
+  - **Why it was not a byte swap.** The page draws text as Identity-H CID
+    glyph IDs against a subsetted `AGPPHP+Montserrat-Regular`, one
+    `<GID> Tj` per glyph with an explicit `Td` advance between each. The
+    subset carried exactly the digits `1 2 4 5 7 8` — the digits of the old
+    number — and **no `0`**. GID 1486 (the zero slot, confirmed by the
+    `<05CF> <05D0> <0031>` ToUnicode bfrange putting `1` at 1487) existed but
+    was an empty glyph with advance 0. Every other font in the file is a
+    subset of the same eight-descriptor shared program at object 148, and
+    none of them had a zero either — no page in the brochure displays one.
+    So `700 000` would have rendered as `7` followed by five blanks.
+  - **What was done.** Grafted the real Montserrat `0` outline into GID 1486
+    of the shared font program. The source is Google Fonts' variable
+    Montserrat instanced at `wght=400`, and it is provably the same cut: the
+    advance widths of all six digits already embedded match exactly
+    (1=361, 2=568, 4=661, 5=566, 7=589, 8=638) and so do their glyph
+    bounding boxes, to the unit. Point counts differ only because the
+    variable font carries extra interpolation points. Then: `/W` gained
+    `1486 [662]`, the ToUnicode bfrange was widened to `<05CE> <05D0> <0030>`
+    so the text still extracts, and the glyph run was re-laid with the new
+    GIDs and advances.
+  - **Three things that were easy to miss.** (a) The line is *centred*, not
+    left- or right-aligned — three of the four lines in that block centre on
+    x=154.8836 — and the new number is 23pt wider in text space, so it had to
+    be re-centred, not just retyped. (b) A separate `88.7969 70 132.187 1 re
+    f` rule draws the underline; left alone it stopped short of the last
+    digit. (c) The `tel:` annotation's `/Rect` is sized to the old text and
+    had to grow with it, or the tap target would have missed the number.
+  - **Verified, not assumed.** All 14 pages were rendered before and after and
+    pixel-diffed: 13 are byte-identical and page 13 differs only inside a
+    175x17px box around the phone line. `pdftotext` over the whole document
+    differs on exactly one line. The rendered page was read back visually to
+    confirm the zeros actually draw.
+  - **One wart.** The edit is a PDF incremental update (objects appended, new
+    xref, `/Prev` chain) — the spec-sanctioned way to modify a PDF, and it is
+    why the change is provably surgical. The cost is that the superseded
+    objects remain in the file, so `grep` still finds three copies of the old
+    number in dead bytes. No viewer will ever show them; the file grew 10 KB.
+    Do not "fix" this by rewriting the file wholesale — the risk is real and
+    the benefit is cosmetic.
+  - Reproduction scripts are not kept in the repo; the method is written down
+    here because the next number change will hit the same missing-glyph wall.
