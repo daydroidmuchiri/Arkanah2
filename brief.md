@@ -1350,7 +1350,7 @@ on deploy — see Open questions re: deploy-root exposure).
     the log. Nothing was submitted to the listings platforms under the old
     number (§6 blockers are still open), so there is no published NAP to fix.
   - **The brochure PDF carried the old number too, and the site serves it —
-    now fixed in place** (`docs/assets/nomad-twin-towers-brochure-2026-08.pdf`,
+    now fixed in place** (`docs/assets/nomad-twin-towers-brochure-2026-08-24.pdf`,
     the client's own file, received 2026-08-01). It held `+254 711 111 188` in
     four places: the printed text on the CONTACT DETAILS page, a clickable
     `/URI (tel:+254711111188)` annotation, that annotation's `/Contents`, and
@@ -1406,3 +1406,14 @@ on deploy — see Open questions re: deploy-root exposure).
     the benefit is cosmetic.
   - Reproduction scripts are not kept in the repo; the method is written down
     here because the next number change will hit the same missing-glyph wall.
+  - **Shipped under a new filename, the second time this lesson was needed.**
+    The patched PDF first went out replacing `...-2026-08.pdf` in place, and
+    the edge did exactly what the 2026-08-01 entry above says it does: the
+    plain URL kept returning the old 6,348,526-byte file while the origin held
+    the new 6,359,003-byte one — confirmed by a cache-buster query returning
+    `cf-cache-status: MISS` and the correct number. `/assets/*` is
+    `max-age=604800`, so that would have stood for a week. It is now
+    `nomad-twin-towers-brochure-2026-08-24.pdf`, per the rule the HTML comment
+    beside the download link already stated. The old URL still serves the old
+    number from cache until it expires and then 404s; purge it in the
+    Cloudflare dashboard if anyone is known to hold that link.
